@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Farmer\'s Market</string>
+    <string name="order_status">TextView</string>
+    <string name="order_price">TextView</string>
+    <string name="order_provider">TextView</string>
+    <string name="order_product_name">Durian</string>
+    <string name="order_button_view">View order</string>
+    <string name="order_product_image">TODO</string>
 </resources>
