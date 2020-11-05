@@ -4,7 +4,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "product",primaryKeys = {"productID","accountID"})
+@Entity(tableName = "feedback_product",primaryKeys = {"productID","accountID"})
 public class FeedbackProduct {
     public int productID ;
     public int accountID;

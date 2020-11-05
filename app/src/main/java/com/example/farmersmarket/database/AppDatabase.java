@@ -8,24 +8,42 @@ import androidx.room.RoomDatabase;
 
 import com.example.farmersmarket.dao.AccountDAO;
 import com.example.farmersmarket.dao.AccountTypeDAO;
+import com.example.farmersmarket.dao.FeedbackProductDAO;
 import com.example.farmersmarket.dao.FeedbackShippingDAO;
 import com.example.farmersmarket.dao.NotificationDAO;
+import com.example.farmersmarket.dao.OrderDetailDAO;
 import com.example.farmersmarket.dao.OrdersDAO;
+import com.example.farmersmarket.dao.ProductDAO;
+import com.example.farmersmarket.dao.ProductImageDAO;
+import com.example.farmersmarket.dao.ProductTypeDAO;
 import com.example.farmersmarket.dao.ShippingUnitDAO;
+import com.example.farmersmarket.dao.StoreHouseDAO;
 import com.example.farmersmarket.object.Account;
 import com.example.farmersmarket.object.AccountType;
+import com.example.farmersmarket.object.FeedbackProduct;
 import com.example.farmersmarket.object.FeedbackShipping;
 import com.example.farmersmarket.object.Notification;
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.object.Product;
+import com.example.farmersmarket.object.ProductImage;
+import com.example.farmersmarket.object.ProductType;
 import com.example.farmersmarket.object.ShippingUnit;
+import com.example.farmersmarket.object.StoreHouse;
 
 @Database(entities = {
         Account.class,
         AccountType.class,
+        FeedbackProduct.class,
         FeedbackShipping.class,
         Notification.class,
+        OrderDetail.class,
         Orders.class,
-        ShippingUnit.class
+        Product.class,
+        ProductImage.class,
+        ProductType.class,
+        ShippingUnit.class,
+        StoreHouse.class,
 }, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -33,18 +51,29 @@ public abstract class AppDatabase extends RoomDatabase {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "farmer_market";
 
-
     public abstract AccountDAO accountDAO();
 
     public abstract AccountTypeDAO accountTypeDAO();
+
+    public abstract FeedbackProductDAO feedBackProductDAO();
 
     public abstract FeedbackShippingDAO feedbackShippingDAO();
 
     public abstract NotificationDAO notificationDAO();
 
+    public abstract OrderDetailDAO orderDetail();
+
     public abstract OrdersDAO ordersDAO();
 
+    public abstract ProductDAO productDAO();
+
+    public abstract ProductImageDAO productImageDAO();
+
+    public abstract ProductTypeDAO productTypeDAO();
+
     public abstract ShippingUnitDAO shippingUnitDAO();
+
+    public abstract StoreHouseDAO storeHouseDAO();
 
     public static AppDatabase getAppDatabase(final Context context) {
         if (appDatabase == null) {
