@@ -7,8 +7,8 @@ import java.sql.Date;
 
 @Entity(tableName = "orders", foreignKeys =  {
         @ForeignKey(entity = Account.class, parentColumns = "accountID", childColumns = "accountID"),
-        @ForeignKey(entity = ShippingUnit.class, parentColumns = "shippingID",
-                childColumns = "shippingID")
+        @ForeignKey(entity = ShippingUnit.class, parentColumns = "shippingID", childColumns = "shippingID"),
+        @ForeignKey(entity = StoreHouse.class, parentColumns = "storeHouseID", childColumns = "storeHouseID")
 })
 public class Orders {
     public int orderID;
