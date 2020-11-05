@@ -23,7 +23,7 @@ public interface ShippingUnitDAO {
     void deleteShippingUnit(ShippingUnit shippingUnit);
 
     @Query("select * from shipping_unit")
-    ArrayList<ShippingUnit> getAllShippingUnits();
+    public ShippingUnit[] getAllShippingUnits();
 
     @Query("select count(1) from shipping_unit")
     int getShippingUnitCount();
@@ -32,5 +32,5 @@ public interface ShippingUnitDAO {
     ShippingUnit getShippingUnit(int shippingUnitID);
 
     @Query("select * from shipping_unit where accountID = :accountID")
-    ArrayList<ShippingUnit> getShippingUnitOfAccount(int accountID);
+    public ShippingUnit[] getShippingUnitOfAccount(int accountID);
 }

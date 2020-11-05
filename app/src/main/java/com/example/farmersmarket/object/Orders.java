@@ -2,6 +2,8 @@ package com.example.farmersmarket.object;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.sql.Date;
 
@@ -10,8 +12,11 @@ import java.sql.Date;
         @ForeignKey(entity = ShippingUnit.class, parentColumns = "shippingID", childColumns = "shippingID"),
         @ForeignKey(entity = StoreHouse.class, parentColumns = "storeHouseID", childColumns = "storeHouseID")
 })
+@TypeConverters(ConvertDate.class)
 public class Orders {
+    @PrimaryKey
     public int orderID;
+
     public int storeHouseID;
     public int accountID;
     public int shippingID;

@@ -21,7 +21,7 @@ public interface StoreHouseDAO {
     void deleteStoreHouse(StoreHouse storeHouse);
 
     @Query("select * from store_house")
-    ArrayList<StoreHouse> getAllStoreHouse();
+    public StoreHouse[] getAllStoreHouse();
 
     @Query("select count(1) from store_house")
     int getStoreHouseCount();

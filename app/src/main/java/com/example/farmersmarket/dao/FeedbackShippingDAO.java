@@ -23,7 +23,7 @@ public interface FeedbackShippingDAO {
     void deleteFeedbackShipping(FeedbackShipping feedbackShipping);
 
     @Query("select * from feedback_shipping")
-    ArrayList<FeedbackShipping> getAllFeedbackShipping();
+    public FeedbackShipping[] getAllFeedbackShipping();
 
     @Query("select count(1) from feedback_shipping")
     int getFeedbackShippingCount();
@@ -32,8 +32,8 @@ public interface FeedbackShippingDAO {
     FeedbackShipping getFeedbackShipping(int accountID, int shippingID);
 
     @Query("select * from feedback_shipping where accountID = :accountID")
-    ArrayList<FeedbackShipping> getFeedbackOfAccount(int accountID);
+    public FeedbackShipping[] getFeedbackOfAccount(int accountID);
 
     @Query("select * from feedback_shipping where shippingID = :shippingID")
-    ArrayList<FeedbackShipping> getFeedbackOfShippingUnit(int shippingID);
+    public FeedbackShipping[] getFeedbackOfShippingUnit(int shippingID);
 }

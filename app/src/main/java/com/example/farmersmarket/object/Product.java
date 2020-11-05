@@ -4,7 +4,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "product", foreignKeys ={
-        @ForeignKey(entity = StoreHouse.class, parentColumns = "storeID", childColumns = "storeID"),
+        @ForeignKey(entity = StoreHouse.class, parentColumns = "storeHouseID", childColumns = "storeHouseID"),
         @ForeignKey(entity = ProductType.class, parentColumns = "productTypeID", childColumns = "productTypeID")
 }
 )
@@ -12,7 +12,7 @@ public class Product {
     @PrimaryKey
     public int productID;
 
-    public int storeID;
+    public int storeHouseID;
     public int productTypeID;
     public String name;
     public double amount;

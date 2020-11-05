@@ -21,7 +21,7 @@ public interface ProductDAO {
     void deleteProduct(Product product);
 
     @Query("select * from product")
-    ArrayList<Product> getAllProduct();
+    public Product[] getAllProduct();
 
     @Query("select count(1) from product")
     int getProductCount();

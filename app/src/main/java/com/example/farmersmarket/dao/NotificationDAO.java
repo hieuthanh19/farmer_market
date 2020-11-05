@@ -23,11 +23,11 @@ public interface NotificationDAO {
     void deleteNotification(Notification notification);
 
     @Query("select * from notification")
-    ArrayList<Notification> getAllNotification();
+    public Notification[] getAllNotification();
 
     @Query("select count(1) from notification")
     int getNotificationCount();
 
     @Query("select * from notification where accountID = :accountID")
-    Notification getNotification(int accountID, int shippingID);
+    Notification getNotification(int accountID);
 }

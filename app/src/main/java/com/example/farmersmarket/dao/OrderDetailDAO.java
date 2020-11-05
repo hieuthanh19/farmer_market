@@ -21,7 +21,7 @@ public interface OrderDetailDAO {
     void deleteOrderDetail(OrderDetail orderDetail);
 
     @Query("select * from order_detail")
-    ArrayList<OrderDetail> getAllOrderDetail();
+    public OrderDetail[] getAllOrderDetail();
 
     @Query("select count(1) from order_detail")
     int getOrderDetailCount();

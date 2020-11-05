@@ -21,7 +21,7 @@ public interface ProductImageDAO {
     void deleteProductImage(ProductImage productImage);
 
     @Query("select * from product_image")
-    ArrayList<ProductImage> getAllProductImage();
+    public ProductImage[] getAllProductImage();
 
     @Query("select count(1) from product_image")
     int getProductImageCount();

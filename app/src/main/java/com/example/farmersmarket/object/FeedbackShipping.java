@@ -3,6 +3,7 @@ package com.example.farmersmarket.object;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.sql.Date;
 
@@ -13,6 +14,7 @@ import java.sql.Date;
                         childColumns = "shippingID")
         }
 )
+@TypeConverters(ConvertDate.class)
 public class FeedbackShipping {
     public int accountID;
     public int shippingID;

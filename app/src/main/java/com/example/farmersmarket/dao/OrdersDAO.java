@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.farmersmarket.Order;
 import com.example.farmersmarket.object.Orders;
 
 import java.util.ArrayList;
@@ -15,29 +14,29 @@ import java.util.ArrayList;
 public interface OrdersDAO {
 
     @Insert
-    void insertOrder(Order order);
+    void insertOrder(Orders order);
 
     @Update
-    void updateOrder(Order order);
+    void updateOrder(Orders order);
 
     @Delete
-    void deleteOrder(Order order);
+    void deleteOrder(Orders order);
 
     @Query("select * from orders")
-    ArrayList<Orders> getAllOrders();
+    public Orders[] getAllOrders();
 
     @Query("select count(1) from orders")
     int getOrdersCount();
 
     @Query("select * from orders where orderID = :orderID")
-    Order getOrder(int orderID);
+    Orders getOrder(int orderID);
 
     @Query("select * from orders where accountID = :accountID")
-    ArrayList<Orders> getOrdersOfAccount(int accountID);
+    public Orders[] getOrdersOfAccount(int accountID);
 
     @Query("select * from orders where storeHouseID = :storeHouseID")
-    ArrayList<Orders> getOrdersOfStoreHouse(int storeHouseID);
+    public Orders[] getOrdersOfStoreHouse(int storeHouseID);
 
     @Query("select * from orders where shippingID = :shippingID")
-    ArrayList<Orders> getOrdersOfShipping(int shippingID);
+    public Orders[] getOrdersOfShipping(int shippingID);
 }
