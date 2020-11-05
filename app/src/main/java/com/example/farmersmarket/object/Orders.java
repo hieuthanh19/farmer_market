@@ -26,4 +26,20 @@ public class Orders {
     public double total;
     public String description;
     public int status;
+
+    public Orders(int orderID, int storeHouseID, int accountID, int shippingID, Date orderedDate, Date deliveredDate, String address, double total, String description, int status) {
+        this.orderID = orderID;
+        this.storeHouseID = storeHouseID;
+        this.accountID = accountID;
+        this.shippingID = shippingID;
+        this.orderedDate = orderedDate;
+        this.deliveredDate = deliveredDate;
+        this.address = address;
+        this.total = total;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Orders() {
+    }
 }

@@ -18,4 +18,16 @@ public class Notification {
     public String content;
     public Date createdDate;
     public int status;
+
+    public Notification(int notificationID, int accountID, String title, String content, Date createdDate, int status) {
+        this.notificationID = notificationID;
+        this.accountID = accountID;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.status = status;
+    }
+
+    public Notification() {
+    }
 }

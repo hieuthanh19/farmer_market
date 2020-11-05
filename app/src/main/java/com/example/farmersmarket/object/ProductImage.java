@@ -11,4 +11,14 @@ public class ProductImage {
     public int productID ;
     public String URL ;
     public int status;
+
+    public ProductImage(int imageID, int productID, String URL, int status) {
+        this.imageID = imageID;
+        this.productID = productID;
+        this.URL = URL;
+        this.status = status;
+    }
+
+    public ProductImage() {
+    }
 }

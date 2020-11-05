@@ -16,4 +16,17 @@ public class ShippingUnit {
     public double transportFee;
     public String image;
     public int status;
+
+    public ShippingUnit(int shippingID, int accountID, String name, String phoneNumber, double transportFee, String image, int status) {
+        this.shippingID = shippingID;
+        this.accountID = accountID;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.transportFee = transportFee;
+        this.image = image;
+        this.status = status;
+    }
+
+    public ShippingUnit() {
+    }
 }

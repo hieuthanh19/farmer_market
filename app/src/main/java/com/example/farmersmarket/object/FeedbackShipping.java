@@ -22,4 +22,16 @@ public class FeedbackShipping {
     public Date time;
     public String description;
     public int status;
+
+    public FeedbackShipping(int accountID, int shippingID, float rating, Date time, String description, int status) {
+        this.accountID = accountID;
+        this.shippingID = shippingID;
+        this.rating = rating;
+        this.time = time;
+        this.description = description;
+        this.status = status;
+    }
+
+    public FeedbackShipping() {
+    }
 }

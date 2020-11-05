@@ -9,4 +9,13 @@ public class AccountType {
     public int typeID;
     public String typeName;
     public int status;
+
+    public AccountType(int typeID, String typeName, int status) {
+        this.typeID = typeID;
+        this.typeName = typeName;
+        this.status = status;
+    }
+
+    public AccountType() {
+    }
 }

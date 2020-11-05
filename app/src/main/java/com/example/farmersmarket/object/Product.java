@@ -21,4 +21,20 @@ public class Product {
     public double currentPrice ;
     public String description;
     public int status;
+
+    public Product(int productID, int storeHouseID, int productTypeID, String name, double amount, double price, String origin, double currentPrice, String description, int status) {
+        this.productID = productID;
+        this.storeHouseID = storeHouseID;
+        this.productTypeID = productTypeID;
+        this.name = name;
+        this.amount = amount;
+        this.price = price;
+        this.origin = origin;
+        this.currentPrice = currentPrice;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Product() {
+    }
 }

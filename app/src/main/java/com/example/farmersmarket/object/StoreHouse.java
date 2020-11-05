@@ -16,4 +16,18 @@ public class StoreHouse {
     public float latiue;
     public String description;
     public int status;
+
+    public StoreHouse(int storeHouseID, int accountID, String storeName, String address, float longitude, float latiue, String description, int status) {
+        this.storeHouseID = storeHouseID;
+        this.accountID = accountID;
+        this.storeName = storeName;
+        this.address = address;
+        this.longitude = longitude;
+        this.latiue = latiue;
+        this.description = description;
+        this.status = status;
+    }
+
+    public StoreHouse() {
+    }
 }

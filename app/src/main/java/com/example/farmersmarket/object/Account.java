@@ -17,4 +17,20 @@ public class Account {
     public String email;
     public String image;
     public int status;
+
+    public Account(int accountID, int typeID, String phone, String password, String name, int gender, String address, String email, String image, int status) {
+        this.accountID = accountID;
+        this.typeID = typeID;
+        this.phone = phone;
+        this.password = password;
+        this.name = name;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.image = image;
+        this.status = status;
+    }
+
+    public Account() {
+    }
 }
