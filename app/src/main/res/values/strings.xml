@@ -7,4 +7,23 @@
     <string name="order_button_view">View order</string>
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Shopping Cart</string>
+
+    <string name="txtOrdeDetailAmount">TextView</string>
+    <string name="txtOrderDetailPrice">TextView</string>
+    <string name="txtOrderDtailProductTotal" />
+    <string name="txtOrderDtailOrderID">TextView</string>
+    <string name="txtOrderDtailOrderDate" />
+    <string name="txtOrderDtailStatus" />
+    <string name="txtOrderDtailProvideInfo" />
+    <string name="txtOrderDetailStoreName" />
+    <string name="txtOrderDetailProvide" />
+    <string name="txtOrderDetailProductName" />
+    <string name="txtOrderDetailParacel" />
+    <string name="btnOrderDetailViewStore" />
+    <string name="txtOrderDetailStoreStar" />
+    <string name="txtOrderDetailShippingTotal">TextView</string>
+    <string name="txtOrderDetailTotal" />
+    <string name="txtOrderDetailShippingTotalRS">TextView</string>
+    <string name="txtOrderDetailTotalRS">TextView</string>
+    <string name="txtOrderDtailProductTotalRS">TextView</string>
 </resources>
