@@ -79,9 +79,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (appDatabase == null) {
             synchronized (AppDatabase.class) {
                 if (appDatabase == null) {
-                    appDatabase = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class,
+                    appDatabase = Room.databaseBuilder(context, AppDatabase.class,
                             DATABASE_NAME)
-                            .fallbackToDestructiveMigration().build();
+                            .fallbackToDestructiveMigration().allowMainThreadQueries() .build();
                 }
             }
         }

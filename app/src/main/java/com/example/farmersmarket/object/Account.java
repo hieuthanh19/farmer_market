@@ -2,11 +2,12 @@ package com.example.farmersmarket.object;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "account", foreignKeys = @ForeignKey(entity = AccountType.class, parentColumns = "typeID", childColumns = "typeID"))
 public class Account {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int accountID;
     public int typeID;
     public String phone;
@@ -18,8 +19,8 @@ public class Account {
     public String image;
     public int status;
 
-    public Account(int accountID, int typeID, String phone, String password, String name, int gender, String address, String email, String image, int status) {
-        this.accountID = accountID;
+    @Ignore
+    public Account(int typeID, String phone, String password, String name, int gender, String address, String email, String image, int status) {
         this.typeID = typeID;
         this.phone = phone;
         this.password = password;

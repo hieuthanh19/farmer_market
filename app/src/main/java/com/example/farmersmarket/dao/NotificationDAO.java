@@ -23,7 +23,7 @@ public interface NotificationDAO {
     void deleteNotification(Notification notification);
 
     @Query("select * from notification")
-    public Notification[] getAllNotification();
+    Notification[] getAllNotification();
 
     @Query("select count(1) from notification")
     int getNotificationCount();

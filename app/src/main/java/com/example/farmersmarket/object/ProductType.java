@@ -1,16 +1,17 @@
 package com.example.farmersmarket.object;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "product_type")
 public class ProductType {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int productTypeID ;
     public String productTypeName ;
     public int status ;
 
-    public ProductType(int productTypeID, String productTypeName, int status) {
-        this.productTypeID = productTypeID;
+    @Ignore
+    public ProductType(String productTypeName, int status) {
         this.productTypeName = productTypeName;
         this.status = status;
     }

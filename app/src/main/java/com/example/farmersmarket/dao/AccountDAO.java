@@ -22,7 +22,7 @@ public interface AccountDAO {
     void deleteAccount(Account account);
 
     @Query("select * from account")
-    public Account[] getAllAccounts();
+    Account[] getAllAccounts();
 
     @Query("select count(1) from account")
     int getAccountsCount();

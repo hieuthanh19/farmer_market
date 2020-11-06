@@ -1,6 +1,7 @@
 package com.example.farmersmarket.object;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "order_detail",primaryKeys = {"ordersID","productID"})
@@ -12,6 +13,7 @@ public class OrderDetail {
     public String description ;
     public int status ;
 
+    @Ignore
     public OrderDetail(int ordersID, int productID, int quantity, double totalPrice, String description, int status) {
         this.ordersID = ordersID;
         this.productID = productID;

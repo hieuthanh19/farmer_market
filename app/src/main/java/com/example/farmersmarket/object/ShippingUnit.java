@@ -2,6 +2,7 @@ package com.example.farmersmarket.object;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "shipping_unit", foreignKeys = @ForeignKey(entity = Account.class, parentColumns = "accountID",
@@ -17,6 +18,7 @@ public class ShippingUnit {
     public String image;
     public int status;
 
+    @Ignore
     public ShippingUnit(int shippingID, int accountID, String name, String phoneNumber, double transportFee, String image, int status) {
         this.shippingID = shippingID;
         this.accountID = accountID;

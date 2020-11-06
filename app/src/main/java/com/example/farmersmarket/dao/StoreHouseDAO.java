@@ -8,6 +8,7 @@ import androidx.room.Update;
 import com.example.farmersmarket.object.StoreHouse;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface StoreHouseDAO {
@@ -21,7 +22,7 @@ public interface StoreHouseDAO {
     void deleteStoreHouse(StoreHouse storeHouse);
 
     @Query("select * from store_house")
-    public StoreHouse[] getAllStoreHouse();
+    StoreHouse[] getAllStoreHouse();
 
     @Query("select count(1) from store_house")
     int getStoreHouseCount();
@@ -30,5 +31,5 @@ public interface StoreHouseDAO {
     StoreHouse getStoreHouse(int storeHouseID);
 
     @Query("select * from store_house where accountID = :accountID")
-    StoreHouse getStoreHouseByAccountID(int accountID);
+    List<StoreHouse> getStoreHouseByAccountID(int accountID);
 }

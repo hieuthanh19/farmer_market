@@ -2,6 +2,7 @@ package com.example.farmersmarket.object;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -23,6 +24,7 @@ public class FeedbackShipping {
     public String description;
     public int status;
 
+    @Ignore
     public FeedbackShipping(int accountID, int shippingID, float rating, Date time, String description, int status) {
         this.accountID = accountID;
         this.shippingID = shippingID;

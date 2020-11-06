@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.fragment.dummy.DummyContent;
+import com.example.farmersmarket.object.Product;
 
 /**
  * A fragment representing a list of Items.
@@ -65,7 +66,7 @@ public class ItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
+//            recyclerView.setAdapter(new ProductVerticalViewAdapter(Product.));
         }
         return view;
     }

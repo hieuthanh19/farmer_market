@@ -21,7 +21,7 @@ public interface FeedbackProductDAO {
     void deleteFeedbackProduct(FeedbackProduct feedbackProduct);
 
     @Query("select * from feedback_product")
-    public FeedbackProduct[] getAllFeedbackProduct();
+    FeedbackProduct[] getAllFeedbackProduct();
 
     @Query("select count(1) from feedback_product")
     int getFeedbackProductCount();

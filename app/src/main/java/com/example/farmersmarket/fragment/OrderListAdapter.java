@@ -18,9 +18,9 @@ import java.util.List;
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
 
 
-    private ArrayList<Orders> arrOrder;
+    private final ArrayList<Orders> arrOrder;
     // Lưu Context để dễ dàng truy cập
-    private Context mContext;
+    private final Context mContext;
 
     public OrderListAdapter(ArrayList<Orders> orderList, Context mContext) {
         this.arrOrder = orderList;
@@ -37,7 +37,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Orders orders = (Orders) arrOrder.get(position);
+        Orders orders = arrOrder.get(position);
         holder.order_product_name.setText(Integer.toString(orders.orderID));
         holder.order_provider.setText(Integer.toString(orders.storeHouseID));
         holder.order_price.setText(Double.toString( orders.total));
@@ -58,10 +58,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
         public ViewHolder(View view) {
             super(view);
-            order_product_name = (TextView) view.findViewById(R.id.order_product_name);
-            order_provider = (TextView) view.findViewById(R.id.order_provider);
-            order_price = (TextView) view.findViewById(R.id.order_price);
-            order_status = (TextView) view.findViewById(R.id.order_status);
+            order_product_name = view.findViewById(R.id.order_product_name);
+            order_provider = view.findViewById(R.id.order_provider);
+            order_price = view.findViewById(R.id.order_price);
+            order_status = view.findViewById(R.id.order_status);
         }
 
     }

@@ -10,7 +10,7 @@
 
     <!--    Text-->
     <color name="text_sale">#C80000</color>
-    <color name="start">#FFDA6B</color>
+    <color name="star">#FFDA6B</color>
     
     <!--    Background-->
     <color name="background_green_light">#3353B175</color>

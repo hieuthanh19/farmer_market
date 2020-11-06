@@ -23,7 +23,7 @@ public interface OrdersDAO {
     void deleteOrder(Orders order);
 
     @Query("select * from orders")
-    public Orders[] getAllOrders();
+    Orders[] getAllOrders();
 
     @Query("select count(1) from orders")
     int getOrdersCount();
@@ -32,11 +32,11 @@ public interface OrdersDAO {
     Orders getOrder(int orderID);
 
     @Query("select * from orders where accountID = :accountID")
-    public Orders[] getOrdersOfAccount(int accountID);
+    Orders[] getOrdersOfAccount(int accountID);
 
     @Query("select * from orders where storeHouseID = :storeHouseID")
-    public Orders[] getOrdersOfStoreHouse(int storeHouseID);
+    Orders[] getOrdersOfStoreHouse(int storeHouseID);
 
     @Query("select * from orders where shippingID = :shippingID")
-    public Orders[] getOrdersOfShipping(int shippingID);
+    Orders[] getOrdersOfShipping(int shippingID);
 }

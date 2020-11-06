@@ -2,6 +2,7 @@ package com.example.farmersmarket.object;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -19,8 +20,8 @@ public class Notification {
     public Date createdDate;
     public int status;
 
-    public Notification(int notificationID, int accountID, String title, String content, Date createdDate, int status) {
-        this.notificationID = notificationID;
+    @Ignore
+    public Notification(int accountID, String title, String content, Date createdDate, int status) {
         this.accountID = accountID;
         this.title = title;
         this.content = content;

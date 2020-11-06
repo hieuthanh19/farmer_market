@@ -23,7 +23,7 @@ public interface AccountTypeDAO {
     void deleteAccountType(AccountType accountType);
 
     @Query("select * from account_type")
-    public AccountType[] getAllAccountTypes();
+    AccountType[] getAllAccountTypes();
 
     @Query("select count(1) from account_type")
     int getAccountTypeCount();
