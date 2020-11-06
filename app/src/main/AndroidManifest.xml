@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersMarket">
-        <activity android:name=".Order"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".OrderDetail"></activity>
+        <!-- <activity android:name=".QuangTest"></activity> -->
+        <activity android:name=".Order" />
+        <activity android:name=".QuangTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
