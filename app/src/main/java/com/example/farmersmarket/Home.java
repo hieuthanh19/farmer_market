@@ -1,22 +1,14 @@
 package com.example.farmersmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.example.farmersmarket.dao.AccountTypeDAO;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.ProductVerticalViewAdapter;
-import com.example.farmersmarket.object.Account;
-import com.example.farmersmarket.object.AccountType;
 import com.example.farmersmarket.object.Product;
-import com.example.farmersmarket.object.ProductType;
-import com.example.farmersmarket.object.StoreHouse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {

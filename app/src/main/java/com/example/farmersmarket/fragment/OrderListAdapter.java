@@ -13,7 +13,6 @@ import com.example.farmersmarket.R;
 import com.example.farmersmarket.object.Orders;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
 

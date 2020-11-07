@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import com.example.farmersmarket.object.Account;
 
-import java.util.ArrayList;
-
 @Dao
 public interface AccountDAO {
     @Insert

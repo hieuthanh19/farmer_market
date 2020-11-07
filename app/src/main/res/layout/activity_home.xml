@@ -33,10 +33,9 @@
         android:id="@+id/product_vertical_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:scrollbars="vertical"
-        tools:listitem="@layout/product_item"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/product_item" />
 
 
 </LinearLayout>

@@ -2,19 +2,16 @@ package com.example.farmersmarket.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.farmersmarket.R;
-import com.example.farmersmarket.fragment.dummy.DummyContent;
-import com.example.farmersmarket.object.Product;
 
 /**
  * A fragment representing a list of Items.
