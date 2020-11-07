@@ -1,4 +1,4 @@
-package com.example.farmersmarket.fragment;
+package com.example.farmersmarket.viewadapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +13,11 @@ import com.example.farmersmarket.object.Product;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link Product}.
- */
-public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVerticalViewAdapter.ViewHolder> {
-
+public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHorizontalViewAdapter.ViewHolder> {
     private final List<Product> products;
 //    private Context mContext;
 
-    public ProductVerticalViewAdapter(List<Product> products) {
+    public ProductHorizontalViewAdapter(List<Product> products) {
         this.products = products;
 //        this.mContext = context;
     }
@@ -35,10 +31,10 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
      * @return The newly created ViewHolder.
      */
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProductHorizontalViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_item, parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.product_item_vertical, parent, false);
+        return new ProductHorizontalViewAdapter.ViewHolder(view);
     }
 
     /**
@@ -48,7 +44,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
      * @param position The adapter position.
      */
     @Override
-    public void onBindViewHolder(final ProductVerticalViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ProductHorizontalViewAdapter.ViewHolder holder, int position) {
         // Get current product
         Product product = products.get(position);
         //Populate the view with data
@@ -74,7 +70,6 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
         public final TextView productID;
         public final TextView productName;
         public final TextView productAmount;
-        public final TextView productRating;
         public final TextView productPrice;
         public final ImageView productImage;
 
@@ -85,7 +80,6 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
             productID = view.findViewById(R.id.product_id);
             productName = view.findViewById(R.id.product_name);
             productAmount = view.findViewById(R.id.product_amount);
-            productRating = view.findViewById(R.id.product_rating);
             productPrice = view.findViewById(R.id.product_price);
             productImage = view.findViewById(R.id.product_image);
         }
@@ -95,7 +89,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
             productID.setText(String.valueOf(product.productID));
             productName.setText(product.name);
             productAmount.setText(String.valueOf(product.amount));
-            productPrice.setText(product.price + "VND/kg");
+            productPrice.setText(String.format("%sVND/kg", product.price));
         }
     }
 }

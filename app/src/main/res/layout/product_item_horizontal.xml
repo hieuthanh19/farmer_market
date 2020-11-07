@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/product_background"
+
         android:orientation="horizontal">
 
         <ImageView
@@ -21,8 +21,8 @@
 
         <TextView
             android:id="@+id/product_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
             android:text="ID"
             android:visibility="invisible" />
 
@@ -33,57 +33,44 @@
 
             <TextView
                 android:id="@+id/product_name"
+                style="@style/heading_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sf_display_bold"
                 android:text="Product Name"
-                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/product_amount"
+                style="@style/sub_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/product_text_margin"
-                android:fontFamily="@font/sf_display_regular"
                 android:text="amount"
-                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_name" />
 
-            <ImageView
-                android:id="@+id/image_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/product_text_margin"
-                android:src="@drawable/ic_baseline_star_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_amount"
-                app:tint="@color/star" />
-
             <TextView
                 android:id="@+id/product_rating"
+                style="@style/sub_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/product_rating_start_margin"
                 android:layout_marginTop="@dimen/product_text_margin"
-                android:fontFamily="@font/sf_display_regular"
+                android:drawableStart="@drawable/ic_baseline_star_24"
+                android:drawableTint="@color/star"
                 android:text="rating"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/image_star"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_amount" />
 
             <TextView
                 android:id="@+id/product_price"
+                style="@style/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/product_text_margin"
-                android:fontFamily="@font/sf_display_semibold"
                 android:text="price/kg"
-                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_star" />
+                app:layout_constraintTop_toBottomOf="@id/product_rating" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
