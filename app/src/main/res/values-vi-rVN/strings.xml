@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Farmer\'s Market</string>
+    <string name="app_name">Chợ nông sản</string>
     <string name="order_status">TextView</string>
     <string name="order_price">TextView</string>
     <string name="order_provider">TextView</string>
-    <string name="order_product_name">Durian</string>
+    <string name="order_product_name">Sầu riêng</string>
     <string name="order_button_view">View order</string>
     <string name="order_product_image">TODO</string>
-    <string name="description_shopping_cart">Shopping Cart</string>
+    <string name="description_shopping_cart">Xe hàng</string>
 
     <string name="txtOrdeDetailAmount">TextView</string>
     <string name="txtOrderDetailPrice">TextView</string>
@@ -26,10 +27,9 @@
     <string name="txtOrderDetailShippingTotalRS">TextView</string>
     <string name="txtOrderDetailTotalRS">TextView</string>
     <string name="txtOrderDtailProductTotalRS">TextView</string>
-    <string name="nav_bottom_home">Home</string>
-    <string name="nav_bottom_home_description">Home page</string>
-    <string name="nav_bottom_category">Category</string>
-    <string name="nav_bottom_order">Order</string>
-    <string name="nav_bottom_notification">Notification</string>
-    <string name="nav_bottom_account">Account</string>
+    <string name="nav_bottom_home">Trang chủ</string>
+    <string name="nav_bottom_category">Danh mục</string>
+    <string name="nav_bottom_order">ĐƠn hàng</string>
+    <string name="nav_bottom_notification">Thông báo</string>
+    <string name="nav_bottom_account">Cá nhân</string>
 </resources>

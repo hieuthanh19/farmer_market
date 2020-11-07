@@ -1,37 +1,30 @@
 package com.example.farmersmarket;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ListView;
 
-import com.example.farmersmarket.dao.AccountTypeDAO;
 import com.example.farmersmarket.database.AppDatabase;
-import com.example.farmersmarket.fragment.ProductVerticalViewAdapter;
-import com.example.farmersmarket.object.Account;
-import com.example.farmersmarket.object.AccountType;
+import com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter;
+import com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter;
 import com.example.farmersmarket.object.Product;
-import com.example.farmersmarket.object.ProductType;
-import com.example.farmersmarket.object.StoreHouse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
 
     public AppDatabase appDatabase;
     public List<Product> products;
-    private RecyclerView recyclerView;
-    private ProductVerticalViewAdapter productVerticalViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        recyclerView = findViewById(R.id.product_vertical_list);
+        RecyclerView recyclerViewProductVertical = findViewById(R.id.product_vertical_list);
+        RecyclerView recyclerViewProductHorizontal = findViewById(R.id.product_horizontal_list);
 
         appDatabase = AppDatabase.getAppDatabase(this);
 //        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin", 1));
@@ -53,9 +46,10 @@ public class Home extends AppCompatActivity {
 //                "This a a fruit", 1));
         products = appDatabase.productDAO().getAllProduct();
 
-        productVerticalViewAdapter = new ProductVerticalViewAdapter(products);
-        appDatabase.accountTypeDAO().getAllAccountTypes();
-        recyclerView.setAdapter(productVerticalViewAdapter);
+        ProductHorizontalViewAdapter productHorizontalViewAdapter = new ProductHorizontalViewAdapter(products);
+        recyclerViewProductHorizontal.setAdapter(productHorizontalViewAdapter);
+        ProductVerticalViewAdapter productVerticalViewAdapter = new ProductVerticalViewAdapter(products);
+        recyclerViewProductVertical.setAdapter(productVerticalViewAdapter);
 
     }
 

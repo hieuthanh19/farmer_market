@@ -5,4 +5,6 @@
     <dimen name="product_text_margin">4dp</dimen>
     <dimen name="product_rating_start_margin">4dp</dimen>
     <dimen name="card_corner_radius">19dp</dimen>
+    <dimen name="nav_bottom_icon_size">22dp</dimen>
+    <dimen name="product_vertical_margin">8dp</dimen>
 </resources>
