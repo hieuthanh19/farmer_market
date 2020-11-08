@@ -5,7 +5,7 @@
     <string name="order_price">TextView</string>
     <string name="order_provider">TextView</string>
     <string name="order_product_name">Sầu riêng</string>
-    <string name="order_button_view">View order</string>
+    <string name="order_button_view">Xem đơn hàng</string>
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Xe hàng</string>
 
@@ -29,7 +29,9 @@
     <string name="txtOrderDtailProductTotalRS">TextView</string>
     <string name="nav_bottom_home">Trang chủ</string>
     <string name="nav_bottom_category">Danh mục</string>
-    <string name="nav_bottom_order">ĐƠn hàng</string>
+    <string name="nav_bottom_order">Đơn hàng</string>ơ
     <string name="nav_bottom_notification">Thông báo</string>
     <string name="nav_bottom_account">Cá nhân</string>
+    <string name="account_warehouse">Kho của tôi</string>
+    <string name="btn_login">Đăng nhập</string>
 </resources>

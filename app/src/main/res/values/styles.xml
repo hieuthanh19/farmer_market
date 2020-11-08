@@ -15,4 +15,10 @@
         <item name="android:fontFamily">@font/sf_display_semibold</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="heading_1">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/sf_display_semibold</item>
+    </style>
 </resources>
