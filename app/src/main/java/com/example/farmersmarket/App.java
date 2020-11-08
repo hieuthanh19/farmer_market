@@ -24,7 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class App extends AppCompatActivity {
 
-    private int ACCOUNT_ID;
+    public static int ACCOUNT_ID;
     //    public AppDatabase appDatabase;
 //    public List<Product> products;
 
@@ -33,9 +33,6 @@ public class App extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        Intent intent = getIntent();
-        ACCOUNT_ID = intent.getIntExtra(Login.ACCOUNT_ID, -1);
-
         // load default fragment
         loadFragment(new HomeFragment());
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);

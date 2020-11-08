@@ -52,8 +52,10 @@ public class Login extends AppCompatActivity {
         if (account != null) {
             // account exist
             loginError.setVisibility(View.INVISIBLE);
+            // set account ID
+            App.ACCOUNT_ID = account.accountID;
+            // open App activity
             Intent intent = new Intent(this, App.class);
-            intent.putExtra(ACCOUNT_ID, account.accountID);
             startActivity(intent);
         } else {
             // account not exist -> display error message
