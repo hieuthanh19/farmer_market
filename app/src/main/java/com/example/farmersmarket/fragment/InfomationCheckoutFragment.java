@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.example.farmersmarket.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class FragmentInfomationCheckout extends BottomSheetDialogFragment {
+public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,4 +1,4 @@
-package com.example.farmersmarket.fragment;
+package com.example.farmersmarket.viewadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -38,9 +38,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Orders orders = arrOrder.get(position);
         holder.order_product_name.setText(Integer.toString(orders.orderID));
-        holder.order_provider.setText(Integer.toString(orders.storeHouseID));
-        holder.order_price.setText(Double.toString( orders.total));
-        holder.order_product_name.setText(Integer.toString(orders.orderID));
 
     }
 
@@ -51,16 +48,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView order_product_name;
-        public TextView order_provider;
-        public TextView order_price;
-        public TextView order_status;
 
         public ViewHolder(View view) {
             super(view);
             order_product_name = view.findViewById(R.id.order_product_name);
-            order_provider = view.findViewById(R.id.order_provider);
-            order_price = view.findViewById(R.id.order_price);
-            order_status = view.findViewById(R.id.order_status);
         }
 
     }
