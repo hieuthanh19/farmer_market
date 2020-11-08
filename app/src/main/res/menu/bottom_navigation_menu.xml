@@ -18,7 +18,7 @@
     <item
         android:id="@+id/notification_page"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_baseline_notifications_24"
         android:title="@string/nav_bottom_notification" />
     <item
         android:id="@+id/account_page"

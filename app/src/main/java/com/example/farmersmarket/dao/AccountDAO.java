@@ -28,5 +28,8 @@ public interface AccountDAO {
     @Query("select * from account where accountID = :accountID")
     Account getAccount(int accountID);
 
+    @Query("select * from account where phone = :phoneNumber and password = :password")
+    Account login(String phoneNumber, String password);
+
 
 }
