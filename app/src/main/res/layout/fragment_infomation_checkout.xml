@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckoutTxtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckoutTxtTitle" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@android:drawable/btn_dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtShippingUnit"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtShippingUnit" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtAddress" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtProductCost"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtProductCost" />
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtProductCostResult"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtProductCostResult"
+            android:textAlignment="textEnd"
+            tools:text="123" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtShippingCost"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtShippingCost" />
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtShippingCostResult"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtShippingCostResult"
+            android:textAlignment="textEnd" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtTotalCost"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtTotalCost" />
+
+        <TextView
+            android:id="@+id/fragmentCheckouttxtTotalCostResult"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/fragmentCheckouttxtTotalCostResult"
+            android:textAlignment="textEnd" />
+
+    </LinearLayout>
+
+</LinearLayout>

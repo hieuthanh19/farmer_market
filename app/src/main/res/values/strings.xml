@@ -32,4 +32,15 @@
     <string name="nav_bottom_order">Order</string>
     <string name="nav_bottom_notification">Notification</string>
     <string name="nav_bottom_account">Account</string>
+    <string name="btnCheckOut">Thanh toán</string>
+    <string name="string_btncheckout">Thanh toán</string>
+    <string name="fragmentCheckoutTxtTitle">Thanh toán</string>
+    <string name="fragmentCheckouttxtShippingUnit">Đơn vị vận chuyển</string>
+    <string name="fragmentCheckouttxtAddress">Địa chỉ</string>
+    <string name="fragmentCheckouttxtProductCost">Tổng giá sản phẩm</string>
+    <string name="fragmentCheckouttxtShippingCost">Tổng phí vận chuyển</string>
+    <string name="fragmentCheckouttxtTotalCost">Tổng số tiền</string>
+    <string name="fragmentCheckouttxtTotalCostResult">123</string>
+    <string name="fragmentCheckouttxtShippingCostResult">123</string>
+    <string name="fragmentCheckouttxtProductCostResult" />
 </resources>
