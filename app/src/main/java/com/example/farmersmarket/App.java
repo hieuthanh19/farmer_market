@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.AccountFragment;
 import com.example.farmersmarket.fragment.CategoryFragment;
 import com.example.farmersmarket.fragment.HomeFragment;
@@ -42,22 +41,6 @@ public class App extends AppCompatActivity {
 //        RecyclerView recyclerViewProductVertical = findViewById(R.id.product_vertical_list);
 //        RecyclerView recyclerViewProductHorizontal = findViewById(R.id.product_horizontal_list);
 
-        AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
-
-//        appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "My Store", "ABC/12 DEF street", 1.2, 1.3,
-//                "this is my store", 1));
-//        appDatabase.productTypeDAO().insertProductType(new ProductType("fruit", 1));
-//
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
-//                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
-//                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
-//                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
-//                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
-//                "This a a fruit", 1));
     }
 
 

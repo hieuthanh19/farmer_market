@@ -47,13 +47,16 @@
     <string name="title_delete">Delete</string>
     <string name="login_error_phone">Phone number can\'t be empty</string>
     <string name="login_error_password">Password can\'t be empty!</string>
-    <string name="fragmentCheckoutTxtTitle">Thanh toán</string>
-    <string name="fragmentCheckouttxtShippingUnit">Vận chuyển</string>
-    <string name="fragmentCheckouttxtAddress">Địa chỉ</string>
-    <string name="fragmentCheckouttxtProductCost">Tổng giá sản phẩm</string>
-    <string name="fragmentCheckouttxtProductCostResult">Tổng phí vận chuyển</string>
-    <string name="fragmentCheckouttxtShippingCost">Phí vận chuyển</string>
+    <string name="fragmentCheckoutTxtTitle">Check out</string>
+    <string name="fragmentCheckouttxtShippingUnit">Shipping unit</string>
+    <string name="fragmentCheckouttxtAddress">Address</string>
+    <string name="fragmentCheckouttxtProductCost">Total Product Cost</string>
+    <string name="fragmentCheckouttxtProductCostResult">Total Shipping Cost</string>
+    <string name="fragmentCheckouttxtShippingCost">Shipping Cost</string>
     <string name="fragmentCheckouttxtShippingCostResult">123</string>
-    <string name="fragmentCheckouttxtTotalCost">Tổng số tiền</string>
+    <string name="fragmentCheckouttxtTotalCost">Total Cost</string>
     <string name="fragmentCheckouttxtTotalCostResult">123</string>
+    <string name="add_warehouse_permission_not_granted">Sorry! We don\'t have permission to open camera</string>
+    <string name="add_warehouse_create_success">New warehouse created successfully</string>
+    <string name="add_warehouse_title">Add Warehouse</string>
 </resources>

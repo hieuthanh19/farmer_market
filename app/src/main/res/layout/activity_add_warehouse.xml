@@ -34,7 +34,7 @@
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Warehouse"
+            android:text="@string/add_warehouse_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,14 +72,23 @@
         app:layout_constraintTop_toBottomOf="@id/divider">
 
         <ImageView
-            android:layout_width="145dp"
-            android:layout_height="145dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/empty"
+            android:id="@+id/add_warehouse_image_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
 
-            />
+            android:scaleType="centerCrop"
+            android:src="@drawable/empty" />
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/add_warehouse_take_photo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="takePhoto"
+        android:text="Take photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_warehouse_image" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_warehouse_name_layout"
@@ -94,7 +103,7 @@
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_image">
+        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
