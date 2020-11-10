@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import com.example.farmersmarket.object.Notification;
 
-import java.util.ArrayList;
-
 @Dao
 public interface NotificationDAO {
 

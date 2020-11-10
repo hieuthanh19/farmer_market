@@ -1,18 +1,15 @@
 package com.example.farmersmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 
-import com.example.farmersmarket.fragment.OrderListAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.farmersmarket.viewadapter.OrderListAdapter;
 import com.example.farmersmarket.object.Orders;
-import com.example.farmersmarket.object.ProductType;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Order extends AppCompatActivity {
 

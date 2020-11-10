@@ -1,5 +1,5 @@
 package com.example.farmersmarket.dao;
-import androidx.lifecycle.LiveData;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -8,7 +8,6 @@ import androidx.room.Update;
 
 import com.example.farmersmarket.object.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao

@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersMarket">
-        <activity android:name=".AddWarehouse"></activity>
+        <activity android:name=".AddWarehouse"/>
         <activity android:name=".Warehouse" />
+        <activity android:name=".Cart"/>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Order" />
-        <activity android:name=".App" />
+        <activity android:name=".App"/>
     </application>
 
 </manifest>

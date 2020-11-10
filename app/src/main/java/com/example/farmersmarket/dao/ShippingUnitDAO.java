@@ -8,8 +8,6 @@ import androidx.room.Update;
 
 import com.example.farmersmarket.object.ShippingUnit;
 
-import java.util.ArrayList;
-
 @Dao
 public interface ShippingUnitDAO {
 
