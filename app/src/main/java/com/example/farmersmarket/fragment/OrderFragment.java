@@ -1,14 +1,25 @@
 package com.example.farmersmarket.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.farmersmarket.OrderDetail;
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.viewadapter.CarAdapter;
+import com.example.farmersmarket.viewadapter.OrderListAdapter;
+
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +27,12 @@ import com.example.farmersmarket.R;
  * create an instance of this fragment.
  */
 public class OrderFragment extends Fragment {
+
+    RecyclerView recyclerView ;
+    OrderListAdapter orderListAdapter;
+    ArrayList<Orders> arrOrder;
+    Date dateOrder = null;
+    Button btnOrderView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +77,39 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        builAdapter(view);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        return view;
+    }
+
+
+    public void builAdapter(View view){
+        arrOrder = new ArrayList<Orders>();
+        arrOrder.add(new Orders( 1, 1, 1, dateOrder, dateOrder, "20 tran hung dao", 1200, "This is description", 1));
+        arrOrder.add(new Orders(2, 2, 2, dateOrder, dateOrder, "aaaaadao", 120210, "This is description", 1));
+        arrOrder.add(new Orders(3, 3, 3, dateOrder, dateOrder, "nvncbnng dao", 203210, "This is description", 1));
+
+
+        recyclerView = view.findViewById(R.id.rcOrder);
+        recyclerView.setHasFixedSize(true);
+        orderListAdapter = new OrderListAdapter(arrOrder,null);
+        recyclerView.setAdapter(orderListAdapter);
+
+        orderListAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+
+            @Override
+            public void onButtonClick(int position) {
+                Intent intent = new Intent(view.getContext(), OrderDetail.class);
+                startActivity(intent);
+            }
+
+        });
     }
 }
