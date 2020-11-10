@@ -34,4 +34,18 @@
     <string name="nav_bottom_account">Cá nhân</string>
     <string name="account_warehouse">Kho của tôi</string>
     <string name="btn_login">Đăng nhập</string>
+    <string name="title_suggestion">Gợi ý</string>
+    <string name="title_high_demand">Đang HOT!</string>
+    <string name="category_fruit">Fruit</string>
+    <string name="category_vegetable">Vegetable</string>
+    <string name="category_fish_and_seafood"><![CDATA[Fish & Seafood]]></string>
+    <string name="category_meat_and_poultry"><![CDATA[Meat & Poultry]]></string>
+    <string name="home_see_more">See more</string>
+    <string name="account_products">My Products</string>
+    <string name="warehouse_title">My Warehouse</string>
+    <string name="warehouse_empty">Look like you do not have any warehouse</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_delete">Delete</string>
+    <string name="login_error_phone">Phone number can\'t be empty</string>
+    <string name="login_error_password">Password can\'t be empty!</string>
 </resources>
