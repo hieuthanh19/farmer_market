@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +9,15 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.Warehouse;
+import com.example.farmersmarket.WarehouseDetail;
 import com.example.farmersmarket.object.StoreHouse;
 
 import java.util.List;
 
 public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdapter.ViewHolder> {
+
+
     private final List<StoreHouse> storeHouses;
 //    private Context mContext;
 
@@ -33,7 +38,7 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
     public WarehouseViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.warehouse_item, parent, false);
-        return new WarehouseViewAdapter.ViewHolder(view);
+        return new WarehouseViewAdapter.ViewHolder(view, this);
     }
 
     /**
@@ -61,31 +66,39 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
         return storeHouses.size();
     }
 
-    @Override
-    public long getItemId(int position) {
-        return ((StoreHouse) storeHouses.get(position)).storeHouseID;
-    }
 
     /**
      * ViewHolder class that represents each row of data in the RecyclerView.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
 
         public final TextView warehouseName;
         public final TextView warehouseAddress;
+        final WarehouseViewAdapter viewAdapter;
 
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view, WarehouseViewAdapter viewAdapter) {
             super(view);
 
             warehouseName = view.findViewById(R.id.warehouse_name);
             warehouseAddress = view.findViewById(R.id.warehouse_address);
+            this.viewAdapter = viewAdapter;
+            view.setOnClickListener(this);
         }
 
         void bindTo(StoreHouse storeHouse) {
             // Populate views with data
             warehouseName.setText(storeHouse.storeName);
             warehouseAddress.setText(storeHouse.address);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), WarehouseDetail.class);
+            int storeHouseID = storeHouses.get(getLayoutPosition()).storeHouseID;
+            intent.putExtra(Warehouse.WAREHOUSE_ID, storeHouseID);
+            v.getContext().startActivity(intent);
         }
     }
 }

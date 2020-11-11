@@ -29,6 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/warehouse_detail_title"
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,36 +59,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_app_bar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/warehouse_detail_product_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/app_margin"
+        android:text="@string/warehouse_detail_no_product"
+        android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/warehouse_detail_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/product_text_margin"
         android:background="@color/white"
-        android:paddingTop="@dimen/app_margin">
+        android:paddingTop="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/warehouse_detail_product_empty">
 
         <TextView
-            android:id="@+id/title_suggestion"
+            android:id="@+id/warehouse_detail_title_product"
             style="@style/heading_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/app_margin"
-            android:text="@string/title_suggestion"
+            android:text="@string/warehouse_detail_product_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/warehouse_detail_add_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_round_add_24"
+            android:layout_marginEnd="@dimen/app_margin"
+            app:tint="@color/green_600" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_vertical_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
             android:orientation="vertical"
+            android:layout_marginTop="@dimen/product_text_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_suggestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/warehouse_detail_add_product"
             tools:listitem="@layout/product_item_horizontal" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@id/warehouse_edit" />
 
     <TextView
-        android:id="@+id/warehouse_empty"
+        android:id="@+id/warehouse_detail_product_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/app_margin"

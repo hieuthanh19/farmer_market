@@ -32,4 +32,9 @@ public interface ProductDAO {
 
     @Query("select * from product where productTypeID = :productTypeID")
     List<Product> getProductByCategory(int productTypeID);
+
+    @Query("select * from product where storeHouseID = :storehouseID")
+    List<Product> getProductByStoreHouse(int storehouseID);
+
+
 }

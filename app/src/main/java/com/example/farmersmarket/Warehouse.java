@@ -16,6 +16,8 @@ import java.util.List;
 
 public class Warehouse extends AppCompatActivity {
 
+    public static String WAREHOUSE_ID = "warehouseID";
+
     TextView warehouseEmpty;
     RecyclerView recyclerView;
 
@@ -27,7 +29,7 @@ public class Warehouse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_warehouse);
 
-        warehouseEmpty = findViewById(R.id.warehouse_empty);
+        warehouseEmpty = findViewById(R.id.warehouse_detail_product_empty);
         recyclerView = findViewById(R.id.list_warehouse);
 
         appDatabase = AppDatabase.getAppDatabase(this);

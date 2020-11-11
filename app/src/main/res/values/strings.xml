@@ -59,4 +59,6 @@
     <string name="add_warehouse_permission_not_granted">Sorry! We don\'t have permission to open camera</string>
     <string name="add_warehouse_create_success">New warehouse created successfully</string>
     <string name="add_warehouse_title">Add Warehouse</string>
+    <string name="warehouse_detail_product_title">Products</string>
+    <string name="warehouse_detail_no_product">Look like you don\'t have any product in this warehouse</string>
 </resources>

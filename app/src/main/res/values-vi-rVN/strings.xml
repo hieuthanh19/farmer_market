@@ -60,4 +60,6 @@
     <string name="add_warehouse_permission_not_granted">Ứng dụng cần cấp quyền để mở camera</string>
     <string name="add_warehouse_create_success">Kho mới đã được tạo!</string>
     <string name="add_warehouse_title">Thêm kho</string>
+    <string name="warehouse_detail_product_title">Sản phẩm</string>
+    <string name="warehouse_detail_no_product">Có vẻ như bạn chưa tạo sản phẩm nào</string>
 </resources>
