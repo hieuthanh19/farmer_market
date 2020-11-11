@@ -47,6 +47,20 @@ public class Login extends AppCompatActivity {
 //        appDatabase.accountDAO().insertAccount(new Account(1, "0348204069", Utils.encryptPassword("admin"),
 //                "Admin", 1, "123/12 ABC Street",
 //                "123@gmail.com", "image url", 1));
+        //appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "My Store", "ABC/12 DEF street", 1.2, 1.3,
+//                "this is my store", 1));
+//        appDatabase.productTypeDAO().insertProductType(new ProductType("fruit", 1));
+//
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//                "This a a fruit", 1));
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//                "This a a fruit", 1));
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//                "This a a fruit", 1));
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//                "This a a fruit", 1));
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//                "This a a fruit", 1));
     }
 
 

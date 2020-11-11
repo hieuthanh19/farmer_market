@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.farmersmarket">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,6 +23,15 @@
         android:supportsRtl="true">
         <activity android:name=".CheckoutSuccess"></activity>
         <activity android:name=".Cart">
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FarmersMarket"
+        tools:replace="android:theme">
+        <activity android:name=".AddProduct"></activity>
+        <activity android:name=".WarehouseDetail" />
+        <activity android:name=".AddWarehouse" />
+        <activity android:name=".Warehouse" />
+        <activity android:name=".Cart" />
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +40,16 @@
         </activity>
         <activity android:name=".Order" />
         <activity android:name=".App" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
