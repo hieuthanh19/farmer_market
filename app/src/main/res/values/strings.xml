@@ -8,6 +8,7 @@
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Shopping Cart</string>
 
+    <!--    Order-->
     <string name="txtOrdeDetailAmount">TextView</string>
     <string name="txtOrderDetailPrice">TextView</string>
     <string name="txtOrderDtailProductTotal" />
@@ -26,13 +27,16 @@
     <string name="txtOrderDetailShippingTotalRS">TextView</string>
     <string name="txtOrderDetailTotalRS">TextView</string>
     <string name="txtOrderDtailProductTotalRS">TextView</string>
+
+    <!--    App-->
     <string name="nav_bottom_home">Home</string>
     <string name="nav_bottom_category">Category</string>
     <string name="nav_bottom_order">Order</string>
     <string name="nav_bottom_notification">Notification</string>
     <string name="nav_bottom_account">Account</string>
-    <string name="account_warehouse">My Warehouse</string>
     <string name="btn_login">Log in</string>
+
+    <!--    Home-->
     <string name="title_suggestion">Suggestion</string>
     <string name="title_high_demand">Hight demand!</string>
     <string name="category_fruit">Fruit</string>
@@ -40,13 +44,22 @@
     <string name="category_fish_and_seafood"><![CDATA[Fish & Seafood]]></string>
     <string name="category_meat_and_poultry"><![CDATA[Meat & Poultry]]></string>
     <string name="home_see_more">See more</string>
+
+    <!--    Account-->
+    <string name="account_warehouse">My Warehouse</string>
     <string name="account_products">My Products</string>
+
+    <!--    Warehouse-->
     <string name="warehouse_title">My Warehouse</string>
     <string name="warehouse_empty">Look like you do not have any warehouse</string>
     <string name="title_edit">Edit</string>
     <string name="title_delete">Delete</string>
+
+    <!--    Login-->
     <string name="login_error_phone">Phone number can\'t be empty</string>
     <string name="login_error_password">Password can\'t be empty!</string>
+
+    <!--    Checkout-->
     <string name="fragmentCheckoutTxtTitle">Check out</string>
     <string name="fragmentCheckouttxtShippingUnit">Shipping unit</string>
     <string name="fragmentCheckouttxtAddress">Address</string>
@@ -56,9 +69,13 @@
     <string name="fragmentCheckouttxtShippingCostResult">123</string>
     <string name="fragmentCheckouttxtTotalCost">Total Cost</string>
     <string name="fragmentCheckouttxtTotalCostResult">123</string>
+
+    <!--    Add Warehouse-->
     <string name="add_warehouse_permission_not_granted">Sorry! We don\'t have permission to open camera</string>
     <string name="add_warehouse_create_success">New warehouse created successfully</string>
     <string name="add_warehouse_title">Add Warehouse</string>
+
+    <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Products</string>
     <string name="warehouse_detail_no_product">Look like you don\'t have any product in this warehouse</string>
 </resources>
