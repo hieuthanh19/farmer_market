@@ -11,20 +11,32 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
+import com.example.farmersmarket.object.Account;
+import com.example.farmersmarket.object.AccountType;
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.object.Product;
+import com.example.farmersmarket.object.ProductType;
+import com.example.farmersmarket.object.ShippingUnit;
+import com.example.farmersmarket.object.StoreHouse;
 import com.example.farmersmarket.viewadapter.CarAdapter;
 import com.example.farmersmarket.viewadapter.OrderListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class Cart extends AppCompatActivity {
+    public AppDatabase appDatabase;
+
     RecyclerView recyclerView ;
     TextView txtEmpty;
     CarAdapter carAdapter;
-    ArrayList<Orders> arrCart;
+    List<OrderDetail> arrCart;
     Date c = null;
     Button btnCheckOut;
     ImageView imageView;
@@ -40,12 +52,24 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        appDatabase = AppDatabase.getAppDatabase(this);
+
+//       appDatabase.productTypeDAO().insertProductType(new ProductType("Fruit",1));
+//        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin",1));
+//        appDatabase.accountDAO().insertAccount(new Account(1, "0123123", "123", "123", 1, "Tran hung dao", "123@gmail.com", "123", 1));
+//        appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "An Giang store", "12 Tran Hung Dao", 12323, 45645654, "Nha kho o An Giang", 1));
+        //appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1233, 123, "An Giang", 1234, "Dragon fruit An Giang", 1));
+//        appDatabase.shippingUnitDAO().insertShippingUnit(new ShippingUnit(1, 1, "Express", "012312321", 133, "123", 1));
+//        appDatabase.ordersDAO().insertOrder(new Orders(1, 1, 1, null, null,
+//                "1233123", 123, "No description", 1));
+//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 1, 1, 123, "No description",1));
+//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 2, 1, 12, "No description",1));
+//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 3, 1, 76, "No description",1));
+
         //Find view
         findView();
         //Load data to array
-
-        arrCart = new ArrayList<Orders>();
-        arrCart.add(new Orders( 1, 1, 1, c, c, "20 tran hung dao", 1200, "This is description", 1));
+        arrCart = appDatabase.orderDetail().getAllOrderInCart();
         //Check array and show layout
         if (arrCart.size()!=0){
             txtEmpty.setVisibility(View.GONE);
@@ -66,8 +90,12 @@ public class Cart extends AppCompatActivity {
 
     //Remove item in recycler view
     public void removeItem(int position) {
+        int orderID = carAdapter.getOrderId(position);
+        int productID = carAdapter.getProductId(position);
+
         arrCart.remove(position);
         carAdapter.notifyItemRemoved(position);
+        appDatabase.orderDetail().deleteOrderCart(productID,orderID);
     }
 
     //Create adapter for recycler view
@@ -84,6 +112,7 @@ public class Cart extends AppCompatActivity {
             public void onDeleteClick(int position) {
                 removeItem(position);
             }
+
         });
     }
 
@@ -93,5 +122,9 @@ public class Cart extends AppCompatActivity {
         transaction.replace(R.id.fragment_frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void getDatabase(View view){
+
     }
 }

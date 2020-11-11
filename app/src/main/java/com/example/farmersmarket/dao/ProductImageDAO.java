@@ -29,4 +29,7 @@ public interface ProductImageDAO {
 
     @Query("select * from product_image where productID = :productID")
     List<ProductImage> getProductImageByProductID(int productID);
+
+    @Query("select URL from product_image where productID = :productID LIMIT 1")
+    String getOneProductImageByProductID(int productID);
 }

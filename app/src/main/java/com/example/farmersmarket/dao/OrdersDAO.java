@@ -37,4 +37,6 @@ public interface OrdersDAO {
 
     @Query("select * from orders where shippingID = :shippingID")
     Orders[] getOrdersOfShipping(int shippingID);
+
+
 }

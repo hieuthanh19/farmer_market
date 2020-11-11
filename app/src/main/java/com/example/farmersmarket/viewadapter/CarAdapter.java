@@ -13,17 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.database.AppDatabase;
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     private OnItemClickListener mlistner;
-    private final ArrayList<Orders> arrCart;
+    private final List<OrderDetail> arrCart;
     private final Context mContext;
+    public AppDatabase appDatabase;
 
-    public CarAdapter(ArrayList<Orders> cartList, Context mContext) {
+
+    public CarAdapter(List<OrderDetail> cartList, Context mContext) {
         this.arrCart = cartList;
         this.mContext = mContext;
     }
@@ -38,11 +43,21 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CarAdapter.ViewHolder holder, int position) {
-        Orders carts = arrCart.get(position);
-        holder.cart_product_name.setText(Integer.toString(carts.orderID));
-        Picasso.with(mContext).load("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Four_Super_Hornets.jpg/240px-Four_Super_Hornets.jpg").into(holder.cart_product_image);
-        holder.cart_provider.setText(Integer.toString(carts.storeHouseID));
-        holder.cart_price.setText(Double.toString(carts.total));
+        appDatabase = AppDatabase.getAppDatabase(mContext);
+        OrderDetail carts = arrCart.get(position);
+        String path = appDatabase.productImageDAO().getOneProductImageByProductID(carts.productID);
+        holder.cart_product_name.setText(appDatabase.orderDetail().getProductNameByProductID(carts.productID));
+        Picasso.with(mContext).load(path).into(holder.cart_product_image);
+        holder.cart_price.setText("$"+Double.toString(carts.totalPrice)+"/kg");
+        holder.cart_price_change.setText("$"+Double.toString(carts.totalPrice*carts.quantity)+"/kg");
+        holder.cart_amount.setNumber(Integer.toString(carts.quantity));
+        holder.cart_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
+            @Override
+            public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
+                holder.cart_price_change.setText("$"+Double.toString(carts.totalPrice*newValue)+"/kg");
+                appDatabase.orderDetail().updateQuantity(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()));
+            }
+        });
     }
 
     @Override
@@ -56,6 +71,14 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         void onDeleteClick(int position);
     }
 
+    public int getOrderId(int position){
+        return arrCart.get(position).ordersID;
+    }
+
+    public int getProductId(int position){
+        return arrCart.get(position).productID;
+    }
+
     public void setOnItemClickListener(OnItemClickListener listner) {
         mlistner = listner;
     }
@@ -64,7 +87,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         public ImageView imageDelete;
         public ImageView cart_product_image;
         public TextView cart_product_name;
-        public TextView cart_provider;
+        public TextView cart_price_change;
         public TextView cart_price;
         public ElegantNumberButton cart_amount;
 
@@ -73,7 +96,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
             imageDelete = view.findViewById(R.id.imageViewDelete);
             cart_product_image = view.findViewById(R.id.cart_product_image);
             cart_product_name = view.findViewById(R.id.cart_product_name);
-            cart_provider = view.findViewById(R.id.cart_provider);
+            cart_price_change =view.findViewById(R.id.cart_price_change);
             cart_price = view.findViewById(R.id.cart_price);
             cart_amount = view.findViewById(R.id.cart_amount);
 
