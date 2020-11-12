@@ -56,9 +56,9 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray_600"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_app_bar" />
+        app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+        style="@style/divider" />
 
 
     <androidx.core.widget.NestedScrollView

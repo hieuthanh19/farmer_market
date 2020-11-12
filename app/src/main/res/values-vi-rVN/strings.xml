@@ -9,6 +9,9 @@
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Xe hàng</string>
 
+    <!--    Product item-->
+    <string name="product_amount">%1$,.1fkg</string>
+    <string name="product_price">%1$,.0fVND/kg</string>
     <!--    Order-->
     <string name="txtOrdeDetailAmount">TextView</string>
     <string name="txtOrderDetailPrice">TextView</string>
@@ -89,4 +92,6 @@
     <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
     <string name="add_product_description">Description</string>
     <string name="product_add_to_cart">Add to Cart</string>
+    <string name="product_detail_amount">"Available: %1$,.1fkg"</string>
+    <string name="product_similar_title">Similar</string>
 </resources>

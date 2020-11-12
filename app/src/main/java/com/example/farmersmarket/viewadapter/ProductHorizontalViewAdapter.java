@@ -96,8 +96,8 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
             // Populate views with data
             productID.setText(String.valueOf(product.productID));
             productName.setText(product.name);
-            productAmount.setText(String.valueOf(product.amount));
-            productPrice.setText(String.format("%sVND/kg", product.price));
+            productAmount.setText(itemView.getResources().getString(R.string.product_amount, product.amount));
+            productPrice.setText(itemView.getResources().getString(R.string.product_price, product.price));
             // load images of product
             AppDatabase appDatabase = AppDatabase.getAppDatabase(itemView.getContext());
             List<ProductImage> productImageList =

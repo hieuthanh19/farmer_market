@@ -67,7 +67,7 @@ public class WarehouseDetail extends AppCompatActivity {
             // Get warehouse info and products of that warehouse
             WAREHOUSE_ID = warehouseID;
             StoreHouse storeHouse = appDatabase.storeHouseDAO().getStoreHouse(warehouseID);
-            productList = appDatabase.productDAO().getProductByStoreHouseDesc(storeHouse.storeHouseID);
+            productList = appDatabase.productDAO().getActiveProductByStoreHouseDesc(storeHouse.storeHouseID);
 
             // Update activity title
             title.setText(storeHouse.storeName);

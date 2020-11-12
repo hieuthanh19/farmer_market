@@ -21,8 +21,8 @@ public interface ProductDAO {
     @Delete
     void deleteProduct(Product product);
 
-    @Query("select * from product")
-    List<Product> getAllProduct();
+    @Query("select * from product where status = 1")
+    List<Product> getAllActiveProduct();
 
     @Query("select count(1) from product")
     int getProductCount();
@@ -30,14 +30,14 @@ public interface ProductDAO {
     @Query("select * from product where productID = :productID")
     Product getProduct(int productID);
 
-    @Query("select * from product where productTypeID = :productTypeID")
-    List<Product> getProductByCategory(int productTypeID);
+    @Query("select * from product where productTypeID = :productTypeID and status = 1")
+    List<Product> getActiveProductByCategory(int productTypeID);
 
-    @Query("select * from product where storeHouseID = :storehouseID order by productID desc")
-    List<Product> getProductByStoreHouseDesc(int storehouseID);
+    @Query("select * from product where storeHouseID = :storehouseID and status = 1 order by productID desc")
+    List<Product> getActiveProductByStoreHouseDesc(int storehouseID);
 
-    @Query("select * from product where storeHouseID = :storehouseID")
-    List<Product> getProductByStoreHouseAsc(int storehouseID);
+    @Query("select * from product where storeHouseID = :storehouseID and status = 1")
+    List<Product> getActiveProductByStoreHouseAsc(int storehouseID);
 
 
 }

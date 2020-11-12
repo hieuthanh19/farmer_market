@@ -27,6 +27,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="product_detail_price">
+        <item name="android:fontFamily">@font/sf_display_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
     <style name="heading_1">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
@@ -43,5 +49,13 @@
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/sf_display_medium</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:background">@color/gray_600</item>
+    </style>
+
+    <style name="search" parent="Widget.AppCompat.SearchView">
+
     </style>
 </resources>
