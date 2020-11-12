@@ -60,35 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_app_bar" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/add_warehouse_image"
+
+    <TextView
+        android:id="@+id/add_warehouse_name_title"
+        style="@style/heading_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_margin"
         android:layout_marginTop="@dimen/app_margin"
-        app:cardCornerRadius="@dimen/app_margin"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
-
-        <ImageView
-            android:id="@+id/add_warehouse_image_view"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-
-            android:scaleType="centerCrop"
-            android:src="@drawable/empty" />
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/add_warehouse_take_photo_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="takePhoto"
-        android:text="Take photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_warehouse_image" />
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:text="Name" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_warehouse_name_layout"
@@ -96,14 +78,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/app_margin"
-        android:layout_marginTop="@dimen/app_margin"
+        android:layout_marginTop="@dimen/product_text_margin"
         android:layout_marginEnd="@dimen/app_margin"
-        android:hint="Name"
         app:boxStrokeColor="@color/green_600"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_name_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -112,20 +93,30 @@
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/add_warehouse_address_title"
+        style="@style/heading_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginTop="@dimen/app_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_name_layout"
+        android:text="Address" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_warehouse_address_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/app_margin"
-        android:layout_marginTop="@dimen/app_margin"
+        android:layout_marginTop="@dimen/product_text_margin"
         android:layout_marginEnd="@dimen/app_margin"
-        android:hint="Address"
         app:boxStrokeColor="@color/green_600"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_name_layout">
+        app:layout_constraintTop_toBottomOf="@+id/add_warehouse_address_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

@@ -78,4 +78,13 @@
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Products</string>
     <string name="warehouse_detail_no_product">Look like you don\'t have any product in this warehouse</string>
+    <string name="add_product_title">Add Product</string>
+    <string name="add_product_name">Name</string>
+    <string name="add_product_price">Price (VND per kg)</string>
+    <string name="add_product_amount">Amount (kg)</string>
+    <string name="add_product_origin">Origin</string>
+    <string name="add_product_category">Category</string>
+    <string name="add_product_price_less_than_0">Price can\'t be less than 0VND</string>
+    <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
+    <string name="add_product_description">Description</string>
 </resources>

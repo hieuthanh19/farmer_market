@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface ProductDAO {
     @Insert
-    void insertProduct(Product product);
+    long insertProduct(Product product);
 
     @Update
     void updateProduct(Product product);
@@ -33,8 +33,11 @@ public interface ProductDAO {
     @Query("select * from product where productTypeID = :productTypeID")
     List<Product> getProductByCategory(int productTypeID);
 
+    @Query("select * from product where storeHouseID = :storehouseID order by productID desc")
+    List<Product> getProductByStoreHouseDesc(int storehouseID);
+
     @Query("select * from product where storeHouseID = :storehouseID")
-    List<Product> getProductByStoreHouse(int storehouseID);
+    List<Product> getProductByStoreHouseAsc(int storehouseID);
 
 
 }

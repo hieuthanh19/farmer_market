@@ -15,6 +15,9 @@ public interface ProductImageDAO {
     @Insert
     void insertProductImage(ProductImage productImage);
 
+    @Insert
+    void insertProductImages(List<ProductImage> productImageList);
+
     @Update
     void updateProductImage(ProductImage productImage);
 
