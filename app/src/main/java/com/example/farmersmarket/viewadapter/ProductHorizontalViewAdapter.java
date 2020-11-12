@@ -1,5 +1,8 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +11,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.farmersmarket.ProductDetail;
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Product;
+import com.example.farmersmarket.object.ProductImage;
 
 import java.util.List;
 
@@ -25,8 +32,8 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
     /**
      * Required method for creating the viewholder objects.
      *
-     * @param parent The ViewGroup into which the new View will be added
-     *               after it is bound to an adapter position.
+     * @param parent   The ViewGroup into which the new View will be added
+     *                 after it is bound to an adapter position.
      * @param viewType The view type of the new View.
      * @return The newly created ViewHolder.
      */
@@ -40,7 +47,7 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
     /**
      * Required method that binds the data to the viewholder.
      *
-     * @param holder The viewholder into which the data should be put.
+     * @param holder   The viewholder into which the data should be put.
      * @param position The adapter position.
      */
     @Override
@@ -65,14 +72,13 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
     /**
      * ViewHolder class that represents each row of data in the RecyclerView.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView productID;
         public final TextView productName;
         public final TextView productAmount;
         public final TextView productPrice;
         public final ImageView productImage;
-
 
         public ViewHolder(View view) {
             super(view);
@@ -82,6 +88,8 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
             productAmount = view.findViewById(R.id.product_amount);
             productPrice = view.findViewById(R.id.product_price);
             productImage = view.findViewById(R.id.product_image);
+
+            view.setOnClickListener(this);
         }
 
         void bindTo(Product product) {
@@ -90,6 +98,30 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
             productName.setText(product.name);
             productAmount.setText(String.valueOf(product.amount));
             productPrice.setText(String.format("%sVND/kg", product.price));
+            // load images of product
+            AppDatabase appDatabase = AppDatabase.getAppDatabase(itemView.getContext());
+            List<ProductImage> productImageList =
+                    appDatabase.productImageDAO().getProductImageByProductID(product.productID);
+            // if product have image -> load first image
+            if (productImageList.size() > 0)
+                Glide.with(itemView.getContext()).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(productImage);
+                // if not -> load empty image
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Glide.with(itemView.getContext()).load(R.drawable.empty).centerCrop().into(productImage);
+            }
+        }
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        @Override
+        public void onClick(View v) {
+            int productID = products.get(getLayoutPosition()).productID;
+            Intent intent = new Intent(v.getContext(), ProductDetail.class);
+            intent.putExtra(ProductDetail.PRODUCT_ID, productID);
+            v.getContext().startActivity(intent);
         }
     }
 }

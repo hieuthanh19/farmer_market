@@ -88,4 +88,5 @@
     <string name="add_product_price_less_than_0">Price can\'t be less than 0VND</string>
     <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
     <string name="add_product_description">Description</string>
+    <string name="product_add_to_cart">Add to Cart</string>
 </resources>

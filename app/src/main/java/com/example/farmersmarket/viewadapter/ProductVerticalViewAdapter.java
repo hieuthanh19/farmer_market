@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.farmersmarket.ProductDetail;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Product;
@@ -76,7 +78,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
     /**
      * ViewHolder class that represents each row of data in the RecyclerView.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView productID;
         public final TextView productName;
@@ -87,12 +89,13 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
 
         public ViewHolder(View view) {
             super(view);
-
             productID = view.findViewById(R.id.product_id);
             productName = view.findViewById(R.id.product_name);
             productAmount = view.findViewById(R.id.product_amount);
             productPrice = view.findViewById(R.id.product_price);
             productImage = view.findViewById(R.id.product_image);
+
+            view.setOnClickListener(this);
         }
 
         void bindTo(Product product) {
@@ -101,7 +104,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
             productName.setText(product.name);
             productAmount.setText(String.valueOf(product.amount));
             productPrice.setText(String.format("%sVND/kg", product.price));
-            // load first image of product's images
+            // load images of product
             AppDatabase appDatabase = AppDatabase.getAppDatabase(itemView.getContext());
             List<ProductImage> productImageList =
                     appDatabase.productImageDAO().getProductImageByProductID(product.productID);
@@ -112,6 +115,19 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
             else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 Glide.with(itemView.getContext()).load(R.drawable.empty).centerCrop().into(productImage);
             }
+        }
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        @Override
+        public void onClick(View v) {
+            int productID = products.get(getLayoutPosition()).productID;
+            Intent intent = new Intent(v.getContext(), ProductDetail.class);
+            intent.putExtra(ProductDetail.PRODUCT_ID, productID);
+            v.getContext().startActivity(intent);
         }
     }
 }

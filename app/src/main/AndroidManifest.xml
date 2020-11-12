@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersMarket"
         tools:replace="android:theme">
-        <activity android:name=".AddProduct"></activity>
+        <activity android:name=".ProductDetail"></activity>
+        <activity android:name=".AddProduct" />
         <activity android:name=".WarehouseDetail" />
         <activity android:name=".AddWarehouse" />
         <activity android:name=".Warehouse" />
