@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <queries>
         <intent>
@@ -13,32 +14,27 @@
         </intent>
     </queries>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".CheckoutSuccess"></activity>
-        <activity android:name=".Cart">
-        android:supportsRtl="true"
-        android:theme="@style/Theme.FarmersMarket"
-        tools:replace="android:theme">
-        <activity android:name=".AddProduct"></activity>
-        <activity android:name=".WarehouseDetail" />
-        <activity android:name=".AddWarehouse" />
-        <activity android:name=".Warehouse" />
-        <activity android:name=".Cart" />
-        <activity android:name=".Login">
+        <activity android:name=".Cart"></activity>
+        <activity android:name=".CheckoutSuccess" />
+        <activity android:name=".TestAddToCart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Order" />
+        <activity android:name=".OrderDetailAct" />
+        <activity android:name=".AddProduct" />
+        <activity android:name=".WarehouseDetail" />
+        <activity android:name=".AddWarehouse" />
+        <activity android:name=".Warehouse" />
+        <activity android:name=".Login" /> <!-- <activity android:name=".Order" /> -->
         <activity android:name=".App" />
 
         <provider

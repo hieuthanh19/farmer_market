@@ -6,7 +6,10 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
+
+import java.util.List;
 
 @Dao
 public interface OrdersDAO {
@@ -27,16 +30,32 @@ public interface OrdersDAO {
     int getOrdersCount();
 
     @Query("select * from orders where orderID = :orderID")
-    Orders getOrder(int orderID);
+    List<Orders> getOrder(int orderID);
 
-    @Query("select * from orders where accountID = :accountID")
-    Orders[] getOrdersOfAccount(int accountID);
+    @Query("select * from orders where orderID = :orderID and (status=1 or status =2)")
+    List<Orders> getOrderIsCheckout(int orderID);
 
-    @Query("select * from orders where storeHouseID = :storeHouseID")
-    Orders[] getOrdersOfStoreHouse(int storeHouseID);
+    @Query("select * from orders where accountID = :accountID and (status=1 or status =2)")
+    List<Orders> getOrdersOfAccount(int accountID);
 
-    @Query("select * from orders where shippingID = :shippingID")
-    Orders[] getOrdersOfShipping(int shippingID);
+    @Query("select * from orders where storeHouseID = :storeHouseID and (status=1 or status =2)")
+    List<Orders> getOrdersOfStoreHouse(int storeHouseID);
 
+    @Query("select * from orders where shippingID = :shippingID and (status=1 or status =2)")
+    List<Orders> getOrdersOfShipping(int shippingID);
 
+    @Query("select storeName from store_house where storeHouseID=:id")
+    String getStoreNameByStoreID(int id);
+
+    @Query("select transportFee from shipping_unit where shippingID=:id")
+    Double getFeeByShippingID(int id);
+
+    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
+    double getTotalCostOfOrderDetailByOrderID(int orderID);
+
+    @Query("update orders set total =:total, status=1 where orderID=:orderID")
+    void addToOrder(int orderID,double total);
+
+    @Query("select * from orders where status=0")
+    List<Orders> getCurrentOrder();
 }

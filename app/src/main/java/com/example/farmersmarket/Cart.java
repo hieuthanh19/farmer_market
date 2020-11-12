@@ -13,21 +13,10 @@ import android.widget.TextView;
 
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
-import com.example.farmersmarket.object.Account;
-import com.example.farmersmarket.object.AccountType;
 import com.example.farmersmarket.object.OrderDetail;
-import com.example.farmersmarket.object.Orders;
-import com.example.farmersmarket.object.Product;
-import com.example.farmersmarket.object.ProductType;
-import com.example.farmersmarket.object.ShippingUnit;
-import com.example.farmersmarket.object.StoreHouse;
 import com.example.farmersmarket.viewadapter.CarAdapter;
-import com.example.farmersmarket.viewadapter.OrderListAdapter;
-import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Cart extends AppCompatActivity {
@@ -69,7 +58,7 @@ public class Cart extends AppCompatActivity {
         //Find view
         findView();
         //Load data to array
-        arrCart = appDatabase.orderDetail().getAllOrderInCart();
+        arrCart = appDatabase.orderDetail().getAllCartInOrder();
         //Check array and show layout
         if (arrCart.size()!=0){
             txtEmpty.setVisibility(View.GONE);
@@ -93,6 +82,7 @@ public class Cart extends AppCompatActivity {
         int orderID = carAdapter.getOrderId(position);
         int productID = carAdapter.getProductId(position);
 
+        //Remove item and delete cart in db
         arrCart.remove(position);
         carAdapter.notifyItemRemoved(position);
         appDatabase.orderDetail().deleteOrderCart(productID,orderID);

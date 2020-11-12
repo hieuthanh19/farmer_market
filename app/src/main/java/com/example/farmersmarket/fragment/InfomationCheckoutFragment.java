@@ -32,6 +32,8 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
     double totalPriceProduct;
     List<OrderDetail> arrCart;
 
+    int orderID=1;
+
     TextView fragmentCheckouttxtShippingUnitResult;
     TextView fragmentCheckouttxtAddressResult;
     TextView fragmentCheckouttxtProductCostResult;
@@ -56,7 +58,7 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         appDatabase = AppDatabase.getAppDatabase(v.getContext());
         spu = appDatabase.shippingUnitDAO().getShippingUnit(1);
         ac = appDatabase.accountDAO().getAccount(1);
-        arrCart = appDatabase.orderDetail().getAllOrderDetailByOrderID(1);
+        arrCart = appDatabase.orderDetail().getAllOrderDetailByOrderID(orderID);
         totalPriceProduct = appDatabase.orderDetail().getTotalCostOfOrderDetailByOrderID(1);
 
         fragmentCheckouttxtShippingUnitResult.setText(spu.name);
@@ -78,6 +80,8 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CheckoutSuccess.class);
                 startActivity(intent);
+                appDatabase.ordersDAO().addToOrder(orderID,totalPriceProduct+spu.transportFee);
+                //appDatabase.orderDetail().setStatusOrderDetail(2);
             }
         });
 

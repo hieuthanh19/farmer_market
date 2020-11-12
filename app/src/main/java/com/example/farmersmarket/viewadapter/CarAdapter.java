@@ -25,7 +25,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     private OnItemClickListener mlistner;
     private final List<OrderDetail> arrCart;
     private final Context mContext;
-    public AppDatabase appDatabase;
+    private AppDatabase appDatabase;
 
 
     public CarAdapter(List<OrderDetail> cartList, Context mContext) {
@@ -46,16 +46,19 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         appDatabase = AppDatabase.getAppDatabase(mContext);
         OrderDetail carts = arrCart.get(position);
         String path = appDatabase.productImageDAO().getOneProductImageByProductID(carts.productID);
+        double price = appDatabase.orderDetail().getProductPriceByProductID(carts.productID);
+
         holder.cart_product_name.setText(appDatabase.orderDetail().getProductNameByProductID(carts.productID));
         Picasso.with(mContext).load(path).into(holder.cart_product_image);
-        holder.cart_price.setText("$"+Double.toString(carts.totalPrice)+"/kg");
-        holder.cart_price_change.setText("$"+Double.toString(carts.totalPrice*carts.quantity)+"/kg");
+        holder.cart_price.setText("$"+Double.toString(price)+"/kg");
+        holder.cart_price_change.setText("$"+Double.toString(price*carts.quantity)+"/kg");
         holder.cart_amount.setNumber(Integer.toString(carts.quantity));
         holder.cart_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                holder.cart_price_change.setText("$"+Double.toString(carts.totalPrice*newValue)+"/kg");
-                appDatabase.orderDetail().updateQuantity(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()));
+                holder.cart_price_change.setText("$"+Double.toString(price*newValue)+"/kg");
+                appDatabase.orderDetail().updateQuantityAndPrice(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
+
             }
         });
     }

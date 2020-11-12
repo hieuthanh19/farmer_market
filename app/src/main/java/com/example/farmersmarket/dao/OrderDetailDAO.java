@@ -26,7 +26,7 @@ public interface OrderDetailDAO {
     List<OrderDetail> getAllOrderDetail();
 
     @Query("select * from order_detail where status=1")
-    List<OrderDetail> getAllOrderInCart();
+    List<OrderDetail> getAllCartInOrder();
 
     @Query("select count(1) from order_detail")
     int getOrderDetailCount();
@@ -37,15 +37,25 @@ public interface OrderDetailDAO {
     @Query("select name from product where productID=:id")
     String getProductNameByProductID(int id);
 
+    @Query("select price from product where productID=:id")
+    double getProductPriceByProductID(int id);
+
     @Query("delete from order_detail WHERE ordersID = :orderID AND productID=:productId")
     void deleteOrderCart(int productId, int orderID);
 
-    @Query("update order_detail set quantity =:quantity where productID=:productId and ordersID=:orderID")
-    void updateQuantity(int productId, int orderID, int quantity);
+    @Query("update order_detail set quantity =:quantity, totalPrice=:totalPrice where productID=:productId and ordersID=:orderID")
+    void updateQuantityAndPrice(int productId, int orderID, int quantity,double totalPrice);
 
     @Query("select * from order_detail where ordersID = :orderID")
     List<OrderDetail> getAllOrderDetailByOrderID(int orderID);
 
-    @Query("select sum(totalPrice*quantity) from order_detail where ordersID = :orderID")
+    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
     double getTotalCostOfOrderDetailByOrderID(int orderID);
+
+    @Query("update order_detail set status =:status")
+    void setStatusOrderDetail(int status);
+
+    @Query("select * from order_detail where productID=:productID and ordersID=:ordersID")
+    List<OrderDetail> getOrderDetailByOrderIDAndProductID(int productID,int ordersID);
+
 }

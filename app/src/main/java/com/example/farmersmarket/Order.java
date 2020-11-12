@@ -3,40 +3,52 @@ package com.example.farmersmarket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.farmersmarket.database.AppDatabase;
+import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
 import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.viewadapter.OrderListAdapter;
 import com.example.farmersmarket.object.Orders;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order extends AppCompatActivity {
-
+    public AppDatabase appDatabase;
+    public int accountID=1;
     RecyclerView recyclerView ;
     OrderListAdapter orderListAdapter;
-    ArrayList<Orders> arrOrder;
+    List<Orders> arrOrder;
     Date dateOrder = null;
+    TextView txtEmpty;
+
+    public void findView(){
+        txtEmpty = findViewById(R.id.txtOrderEmpty);
+        recyclerView = this.findViewById(R.id.rc1);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+        appDatabase = AppDatabase.getAppDatabase(this);
+        arrOrder = appDatabase.ordersDAO().getOrdersOfAccount(accountID);
+        findView();
 
-        builAdapter();
+        if (arrOrder.size()!=0){
+            txtEmpty.setVisibility(View.GONE);
+            builAdapter();
+        }else{
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void builAdapter(){
-        arrOrder = new ArrayList<Orders>();
-        arrOrder.add(new Orders( 1, 1, 1, dateOrder, dateOrder, "20 tran hung dao", 1200, "This is description", 1));
-        arrOrder.add(new Orders(2, 2, 2, dateOrder, dateOrder, "aaaaadao", 120210, "This is description", 1));
-        arrOrder.add(new Orders(3, 3, 3, dateOrder, dateOrder, "nvncbnng dao", 203210, "This is description", 1));
-
-
-        recyclerView = this.findViewById(R.id.rc1);
         recyclerView.setHasFixedSize(true);
         orderListAdapter = new OrderListAdapter(arrOrder,null);
         recyclerView.setAdapter(orderListAdapter);
@@ -49,9 +61,10 @@ public class Order extends AppCompatActivity {
 
             @Override
             public void onButtonClick(int position) {
-
+                Intent intent = new Intent(getBaseContext(), OrderDetailAct.class);
+                intent.putExtra("ORDER_ID", arrOrder.get(position).orderID);
+                startActivity(intent);
             }
-
         });
     }
 }

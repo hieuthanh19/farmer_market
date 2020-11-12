@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,13 +15,14 @@ import com.example.farmersmarket.R;
 import com.example.farmersmarket.object.Orders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
     private OnItemClickListener mlistner;
-    private final ArrayList<Orders> arrOrder;
+    private final List<Orders> arrOrder;
     private final Context mContext;
 
-    public OrderListAdapter(ArrayList<Orders> orderList, Context mContext) {
+    public OrderListAdapter(List<Orders> orderList, Context mContext) {
         this.arrOrder = orderList;
         this.mContext = mContext;
     }
@@ -37,7 +39,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Orders orders = arrOrder.get(position);
         holder.order_product_name.setText(Integer.toString(orders.orderID));
-
+        holder.order_price.setText(Double.toString(orders.total));
+        holder.order_status.setText(getStatus(orders.status));
     }
 
     //Create event for item
@@ -55,13 +58,20 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView order_product_name;
         public Button order_button_view;
+        public ImageView product_image;
+        public TextView order_product_name;
+        public TextView order_price;
+        public TextView order_status;
 
         public ViewHolder(View view, final OrderListAdapter.OnItemClickListener listener) {
             super(view);
-            order_product_name = view.findViewById(R.id.order_product_name);
             order_button_view = view.findViewById(R.id.order_button_view);
+            product_image = view.findViewById(R.id.product_image);
+            order_product_name = view.findViewById(R.id.order_product_name);
+            order_price = view.findViewById(R.id.order_price);
+            order_status = view.findViewById(R.id.order_status);
+
             view.setOnClickListener((v) -> {
                 if (listener != null) {
                     int position = getAdapterPosition();
@@ -84,6 +94,19 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             });
         }
 
+    }
+
+    public String getStatus(int status){
+        String statusString="";
+        switch(status) {
+            case 1:
+                statusString =  "Đang giao";
+                break;
+            case 2:
+                statusString = "Đã giao";
+                break;
+        }
+        return statusString;
     }
 
 }
