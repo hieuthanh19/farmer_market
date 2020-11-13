@@ -56,4 +56,10 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    // Carousel
+    implementation 'com.synnapps:carouselview:0.1.5'
+
+    // RealtimeBlurView
+    implementation 'com.github.mmin18:realtimeblurview:1.2.1'
 }

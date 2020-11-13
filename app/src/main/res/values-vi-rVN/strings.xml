@@ -9,6 +9,9 @@
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Xe hàng</string>
 
+    <!--    Product item-->
+    <string name="product_amount">%1$,.1fkg</string>
+    <string name="product_price">%1$,.0f₫/kg</string>
     <!--    Order-->
     <string name="txtOrdeDetailAmount">TextView</string>
     <string name="txtOrderDetailPrice">TextView</string>
@@ -79,4 +82,16 @@
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Sản phẩm</string>
     <string name="warehouse_detail_no_product">Có vẻ như bạn chưa tạo sản phẩm nào</string>
+    <string name="add_product_title">Add Product</string>
+    <string name="add_product_name">Name</string>
+    <string name="add_product_price">Price per kg</string>
+    <string name="add_product_amount">Amount (kg)</string>
+    <string name="add_product_origin">Origin</string>
+    <string name="add_product_category">Category</string>
+    <string name="add_product_price_less_than_0">Price can\'t be less than 0VND</string>
+    <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
+    <string name="add_product_description">Description</string>
+    <string name="product_add_to_cart">Add to Cart</string>
+    <string name="product_detail_amount">"Available: %1$,.1fkg"</string>
+    <string name="product_similar_title">Similar</string>
 </resources>

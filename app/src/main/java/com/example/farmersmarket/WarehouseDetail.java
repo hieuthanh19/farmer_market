@@ -44,8 +44,8 @@ public class WarehouseDetail extends AppCompatActivity {
 
         appDatabase = AppDatabase.getAppDatabase(this);
 
-        search = findViewById(R.id.warehouse_detail_search);
-        title = findViewById(R.id.warehouse_detail_title);
+        search = findViewById(R.id.add_product_add);
+        title = findViewById(R.id.add_product_title);
         productEmptyMsg = findViewById(R.id.warehouse_detail_product_empty);
         productListView = findViewById(R.id.product_vertical_list);
         addProduct = findViewById(R.id.warehouse_detail_add_product);
@@ -67,7 +67,7 @@ public class WarehouseDetail extends AppCompatActivity {
             // Get warehouse info and products of that warehouse
             WAREHOUSE_ID = warehouseID;
             StoreHouse storeHouse = appDatabase.storeHouseDAO().getStoreHouse(warehouseID);
-            productList = appDatabase.productDAO().getProductByStoreHouse(storeHouse.storeHouseID);
+            productList = appDatabase.productDAO().getActiveProductByStoreHouseDesc(storeHouse.storeHouseID);
 
             // Update activity title
             title.setText(storeHouse.storeName);

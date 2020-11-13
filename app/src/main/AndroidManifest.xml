@@ -19,8 +19,19 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true">
-        <activity android:name=".Cart"></activity>
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FarmersMarket"
+        tools:replace="android:theme">
+        <activity android:name=".ProductDetail" />
+        <activity android:name=".AddProduct" />
+        <activity android:name=".WarehouseDetail" />
+        <activity android:name=".AddWarehouse" />
+        <activity android:name=".Warehouse" />
+        <activity android:name=".Cart" />
+        <activity android:name=".Login" />
+        <activity android:name=".Order" />
+        <activity android:name=".App"/>
+
         <activity android:name=".CheckoutSuccess" />
         <activity android:name=".TestAddToCart">
             <intent-filter>
@@ -30,12 +41,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".OrderDetailAct" />
-        <activity android:name=".AddProduct" />
-        <activity android:name=".WarehouseDetail" />
-        <activity android:name=".AddWarehouse" />
-        <activity android:name=".Warehouse" />
-        <activity android:name=".Login" /> <!-- <activity android:name=".Order" /> -->
-        <activity android:name=".App" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

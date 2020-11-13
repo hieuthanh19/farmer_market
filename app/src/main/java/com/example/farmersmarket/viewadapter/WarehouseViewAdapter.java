@@ -38,7 +38,7 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
     public WarehouseViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.warehouse_item, parent, false);
-        return new WarehouseViewAdapter.ViewHolder(view, this);
+        return new WarehouseViewAdapter.ViewHolder(view);
     }
 
     /**
@@ -75,15 +75,14 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
 
         public final TextView warehouseName;
         public final TextView warehouseAddress;
-        final WarehouseViewAdapter viewAdapter;
 
 
-        public ViewHolder(View view, WarehouseViewAdapter viewAdapter) {
+        public ViewHolder(View view) {
             super(view);
 
             warehouseName = view.findViewById(R.id.warehouse_name);
             warehouseAddress = view.findViewById(R.id.warehouse_address);
-            this.viewAdapter = viewAdapter;
+
             view.setOnClickListener(this);
         }
 

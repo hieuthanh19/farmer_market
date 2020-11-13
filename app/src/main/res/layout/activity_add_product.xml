@@ -1,8 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AddProduct">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginEnd="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/warehouse_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:onClick="back"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_round_chevron_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/add_product_title"
+            style="@style/heading_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_product_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/add_product_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addProduct"
+            android:src="@drawable/ic_baseline_check_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green_600" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+        style="@style/divider" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_name" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_name_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_price" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_price_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_amount" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_amount_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_origin" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_origin_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="Category" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:background="@drawable/product_background"
+                android:paddingStart="@dimen/product_text_margin"
+                android:paddingEnd="@dimen/product_text_margin">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/green_600" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_description" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_description_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:lines="4" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/heading_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/app_margin"
+                    android:layout_marginTop="@dimen/app_margin"
+                    android:text="Picture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/add_product_take_photo_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/app_margin"
+                    android:layout_marginEnd="@dimen/app_margin"
+                    android:onClick="takePhoto"
+                    android:src="@drawable/ic_outline_photo_camera_24"
+                    android:text="Take photo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/green_600" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/add_product_image_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/product_image" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

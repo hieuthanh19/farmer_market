@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/warehouse_detail_title"
+            android:id="@+id/add_product_title"
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/warehouse_detail_search"
+            android:id="@+id/add_product_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -53,9 +53,9 @@
 
     <View
         android:id="@+id/divider"
+        style="@style/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray_600"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_app_bar" />
 
@@ -66,9 +66,9 @@
         android:paddingTop="@dimen/app_margin"
         android:text="@string/warehouse_detail_no_product"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/divider"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/warehouse_detail_product_list"
@@ -95,22 +95,25 @@
             android:id="@+id/warehouse_detail_add_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_round_add_24"
             android:layout_marginEnd="@dimen/app_margin"
-            app:tint="@color/green_600" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/product_vertical_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/product_text_margin"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_round_add_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/warehouse_detail_add_product"
-            tools:listitem="@layout/product_item_horizontal" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green_600" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_vertical_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/product_text_margin"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginEnd="@dimen/app_margin"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/warehouse_detail_product_list"
+        tools:listitem="@layout/product_item_horizontal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

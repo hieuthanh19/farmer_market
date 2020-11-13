@@ -23,55 +23,37 @@ public class Login extends AppCompatActivity {
     private TextView loginError;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         appDatabase = AppDatabase.getAppDatabase(this);
-        if (isLoggedIn()) {
-            // Set account ID
-            App.ACCOUNT_ID = appDatabase.currentAccountDAO().getAllCurrentAccounts().get(0).accountID;
-            // open App activity
-            Intent intent = new Intent(this, App.class);
-            startActivity(intent);
-        } else {
-            setContentView(R.layout.activity_login);
+
+        setContentView(R.layout.activity_login);
             inputPhone = findViewById(R.id.input_phone);
             inputPassword = findViewById(R.id.input_password);
             loginError = findViewById(R.id.login_error);
-
-        }
 
 //        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin", 1));
 //        appDatabase.accountDAO().insertAccount(new Account(1, "0348204069", Utils.encryptPassword("admin"),
 //                "Admin", 1, "123/12 ABC Street",
 //                "123@gmail.com", "image url", 1));
-        //appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "My Store", "ABC/12 DEF street", 1.2, 1.3,
+//        appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "My Store", "ABC/12 DEF street", 1.2, 1.3,
 //                "this is my store", 1));
 //        appDatabase.productTypeDAO().insertProductType(new ProductType("fruit", 1));
 //
 //        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Durian", 1000, 10000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Banana", 1000, 10000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Coconut", 1000, 10000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "papaya", 1000, 10000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
     }
 
-
-    /**
-     * Check if user already logged in by query Current Account Table
-     *
-     * @return true if user already logged in, false if not
-     */
-    public boolean isLoggedIn() {
-        return appDatabase.currentAccountDAO().getCurrentAccountsCount() == 1;
-    }
 
     /**
      * Handle log in

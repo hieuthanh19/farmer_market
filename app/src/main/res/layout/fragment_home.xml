@@ -3,36 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
+
+    <!--    Top Action Bar Start-->
+    <!--Top Action Bar End-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="?actionBarSize"
         android:background="?colorPrimary"
+        android:elevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/app_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/app_margin"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_white_rectangle_background"
+            app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/home_cart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryBackground="@drawable/rounded_white_rectangle_background"
+            app:queryHint="Search" />
+
         <ImageButton
+            android:id="@+id/home_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/app_margin"
             android:background="?colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/description_shopping_cart"
             android:src="@drawable/ic_outline_shopping_cart_24"
             android:tint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,25 +61,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray_600"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <!--Banner & Category Start-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="373dp"
-                    android:layout_height="143dp"
-                    android:layout_margin="@dimen/app_margin"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/peticide"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/home_banner_carousel"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="@dimen/app_margin"
+                    android:layout_marginStart="@dimen/app_margin"
+                    android:layout_marginEnd="@dimen/app_margin"
+                    app:fillColor="@color/green_600"
 
+                    app:radius="@dimen/product_text_margin" />
+                <!--Category Start-->
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,9 +96,9 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:elevation="0dp"
-                            app:cardCornerRadius="@dimen/app_margin"
-                            android:layout_height="wrap_content">
+                            app:cardCornerRadius="@dimen/card_corner_radius">
 
                             <ImageView
                                 android:layout_width="75dp"
@@ -103,9 +125,9 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:elevation="0dp"
-                            app:cardCornerRadius="@dimen/app_margin"
-                            android:layout_height="wrap_content">
+                            app:cardCornerRadius="@dimen/card_corner_radius">
 
                             <ImageView
                                 android:layout_width="75dp"
@@ -131,9 +153,9 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:elevation="0dp"
-                            app:cardCornerRadius="@dimen/app_margin"
-                            android:layout_height="wrap_content">
+                            app:cardCornerRadius="@dimen/card_corner_radius">
 
                             <ImageView
                                 android:layout_width="75dp"
@@ -159,9 +181,9 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:elevation="0dp"
-                            app:cardCornerRadius="@dimen/app_margin"
-                            android:layout_height="wrap_content">
+                            app:cardCornerRadius="@dimen/card_corner_radius">
 
                             <ImageView
                                 android:layout_width="75dp"
@@ -177,21 +199,29 @@
                             android:textAlignment="center" />
                     </LinearLayout>
                 </GridLayout>
+                <!--                Category End-->
             </LinearLayout>
+            <!--            Banner and Category End-->
 
+            <View
+                style="@style/divider"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <!--            High Demand Start-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/product_text_margin"
                 android:background="@color/white"
-                android:paddingTop="@dimen/app_margin">
+                android:paddingStart="@dimen/app_margin"
+                android:paddingTop="@dimen/app_margin"
+                android:paddingEnd="0dp">
 
                 <TextView
                     android:id="@+id/title_high_demand"
                     style="@style/heading_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/app_margin"
                     android:drawableStart="@drawable/fire"
                     android:drawablePadding="@dimen/product_text_margin"
                     android:text="@string/title_high_demand"
@@ -211,26 +241,32 @@
                     android:id="@+id/product_horizontal_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/app_margin"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/title_high_demand"
                     tools:listitem="@layout/product_item_vertical" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <!--High Demand End-->
+            <View
+                style="@style/divider"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <!--Suggestion Start-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/product_text_margin"
-                android:background="@color/white"
-                android:paddingTop="@dimen/app_margin">
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                android:background="@color/white">
 
                 <TextView
                     android:id="@+id/warehouse_detail_title_product"
                     style="@style/heading_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/app_margin"
                     android:text="@string/title_suggestion"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -239,6 +275,7 @@
                     android:id="@+id/product_vertical_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/app_margin"
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -247,7 +284,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/warehouse_detail_title_product"
                     tools:listitem="@layout/product_item_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <!--Suggestion End-->
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
