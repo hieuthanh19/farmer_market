@@ -23,25 +23,16 @@ public class Login extends AppCompatActivity {
     private TextView loginError;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         appDatabase = AppDatabase.getAppDatabase(this);
-        if (isLoggedIn()) {
-            // Set account ID
-            App.ACCOUNT_ID = appDatabase.currentAccountDAO().getAllCurrentAccounts().get(0).accountID;
-            // open App activity
-            Intent intent = new Intent(this, App.class);
-            startActivity(intent);
-        } else {
-            setContentView(R.layout.activity_login);
+
+        setContentView(R.layout.activity_login);
             inputPhone = findViewById(R.id.input_phone);
             inputPassword = findViewById(R.id.input_password);
             loginError = findViewById(R.id.login_error);
-
-        }
 
 //        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin", 1));
 //        appDatabase.accountDAO().insertAccount(new Account(1, "0348204069", Utils.encryptPassword("admin"),
@@ -63,15 +54,6 @@ public class Login extends AppCompatActivity {
 //                "This a a fruit", 1));
     }
 
-
-    /**
-     * Check if user already logged in by query Current Account Table
-     *
-     * @return true if user already logged in, false if not
-     */
-    public boolean isLoggedIn() {
-        return appDatabase.currentAccountDAO().getCurrentAccountsCount() == 1;
-    }
 
     /**
      * Handle log in

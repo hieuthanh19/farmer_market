@@ -78,7 +78,7 @@
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginEnd="@dimen/app_margin"
                     app:fillColor="@color/green_600"
-                    app:indicatorMarginVertical="@dimen/app_margin"
+
                     app:radius="@dimen/product_text_margin" />
                 <!--Category Start-->
                 <GridLayout

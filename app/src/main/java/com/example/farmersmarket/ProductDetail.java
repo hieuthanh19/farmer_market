@@ -72,6 +72,7 @@ public class ProductDetail extends AppCompatActivity {
             suggestList = findViewById(R.id.product_detail_suggestion_list);
 
             populateDataIntoViews(productID);
+
         } else {
             Toast.makeText(this, "Error: Can't load product", Toast.LENGTH_SHORT).show();
         }

@@ -10,7 +10,7 @@
 
     <!--    Product item-->
     <string name="product_amount">%1$,.1fkg</string>
-    <string name="product_price">%1$,.0fVND/kg</string>
+    <string name="product_price">%1$,.0f₫/kg</string>
 
     <!--    Order-->
     <string name="txtOrdeDetailAmount">TextView</string>

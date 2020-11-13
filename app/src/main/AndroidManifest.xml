@@ -21,21 +21,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersMarket"
         tools:replace="android:theme">
-        <activity android:name=".ProductDetail"></activity>
+        <activity android:name=".ProductDetail" />
         <activity android:name=".AddProduct" />
         <activity android:name=".WarehouseDetail" />
         <activity android:name=".AddWarehouse" />
         <activity android:name=".Warehouse" />
         <activity android:name=".Cart" />
-        <activity android:name=".Login">
+        <activity android:name=".Login" />
+        <activity android:name=".Order" />
+        <activity android:name=".App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Order" />
-        <activity android:name=".App" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

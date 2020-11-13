@@ -1,5 +1,6 @@
 package com.example.farmersmarket;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,11 +8,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.AccountFragment;
 import com.example.farmersmarket.fragment.CategoryFragment;
 import com.example.farmersmarket.fragment.HomeFragment;
@@ -24,28 +25,46 @@ public class App extends AppCompatActivity {
 
     // Store current account's ID
     public static int ACCOUNT_ID;
-    //    public AppDatabase appDatabase;
+    private AppDatabase appDatabase;
 //    public List<Product> products;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app);
-        // load default fragment
-        loadFragment(new HomeFragment());
-        setStatusBarColor(R.id.home_page);
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener());
+        appDatabase = AppDatabase.getAppDatabase(this);
+        // check user log in
+        if (isLoggedIn()) {
+            setContentView(R.layout.activity_app);
+            // Set account ID
+            ACCOUNT_ID = appDatabase.currentAccountDAO().getAllCurrentAccounts().get(0).accountID;
+
+            // load default fragment
+            loadFragment(new HomeFragment());
+            setStatusBarColor(R.id.home_page);
+            BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+            bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener());
+        } else {
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
 
 //        RecyclerView recyclerViewProductVertical = findViewById(R.id.product_vertical_list);
 //        RecyclerView recyclerViewProductHorizontal = findViewById(R.id.product_horizontal_list);
+        }
+    }
 
+    /**
+     * Check if user already logged in by query Current Account Table
+     *
+     * @return true if user already logged in, false if not
+     */
+    public boolean isLoggedIn() {
+        return appDatabase.currentAccountDAO().getCurrentAccountsCount() == 1;
     }
 
 
     /**
      * Set on navigation item selected listener
+     *
      * @return true or false
      */
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener() {
@@ -80,6 +99,7 @@ public class App extends AppCompatActivity {
 
     /**
      * Load fragment into current activity
+     *
      * @param fragment fragment to display
      */
     private void loadFragment(Fragment fragment) {
