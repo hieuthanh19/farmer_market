@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.farmersmarket.App;
 import com.example.farmersmarket.CheckoutSuccess;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
@@ -58,14 +57,14 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         appDatabase = AppDatabase.getAppDatabase(v.getContext());
         spu = appDatabase.shippingUnitDAO().getShippingUnit(1);
         ac = appDatabase.accountDAO().getAccount(1);
-        arrCart = appDatabase.orderDetail().getAllOrderDetailByOrderID(orderID);
-        totalPriceProduct = appDatabase.orderDetail().getTotalCostOfOrderDetailByOrderID(1);
+        arrCart = appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(orderID);
+        totalPriceProduct = appDatabase.orderDetailDAO().getTotalCostOfOrderDetailByOrderID(1);
 
         fragmentCheckouttxtShippingUnitResult.setText(spu.name);
         fragmentCheckouttxtAddressResult.setText(ac.address);
-        fragmentCheckouttxtProductCostResult.setText(Double.toString(totalPriceProduct));
-        fragmentCheckouttxtShippingCostResult.setText(Double.toString(spu.transportFee));
-        fragmentCheckouttxtTotalCostResult.setText(Double.toString(totalPriceProduct+spu.transportFee));
+        fragmentCheckouttxtProductCostResult.setText(getString(R.string.product_price,totalPriceProduct));
+        fragmentCheckouttxtShippingCostResult.setText(getString(R.string.product_price,spu.transportFee));
+        fragmentCheckouttxtTotalCostResult.setText(getString(R.string.product_price,totalPriceProduct+spu.transportFee));
 
         imgClose = v.findViewById(R.id.imgClose);
         imgClose.setOnClickListener(new View.OnClickListener() {

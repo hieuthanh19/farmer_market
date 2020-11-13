@@ -50,7 +50,7 @@ public class Order extends AppCompatActivity {
 
     public void builAdapter(){
         recyclerView.setHasFixedSize(true);
-        orderListAdapter = new OrderListAdapter(arrOrder,null);
+        orderListAdapter = new OrderListAdapter(arrOrder,getApplicationContext());
         recyclerView.setAdapter(orderListAdapter);
 
         orderListAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {

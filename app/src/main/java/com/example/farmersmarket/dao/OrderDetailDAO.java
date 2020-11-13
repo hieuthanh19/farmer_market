@@ -31,15 +31,6 @@ public interface OrderDetailDAO {
     @Query("select count(1) from order_detail")
     int getOrderDetailCount();
 
-    @Query("select * from order_detail where ordersID = :ordersID")
-    OrderDetail getOrderDetail(int ordersID);
-
-    @Query("select name from product where productID=:id")
-    String getProductNameByProductID(int id);
-
-    @Query("select price from product where productID=:id")
-    double getProductPriceByProductID(int id);
-
     @Query("delete from order_detail WHERE ordersID = :orderID AND productID=:productId")
     void deleteOrderCart(int productId, int orderID);
 

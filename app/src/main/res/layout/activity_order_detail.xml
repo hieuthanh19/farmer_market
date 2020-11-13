@@ -27,7 +27,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,19 +38,21 @@
 
                     <TextView
                         android:id="@+id/txtOrderDtailOrderID"
-                        android:layout_width="30dp"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="ID"
-                        tools:text="ID" />
+                        android:text="Mã đơn hàng"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        tools:text="Mã đơn hàng" />
 
                     <TextView
                         android:id="@+id/txtOrderDtailOrderIDRS"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:paddingLeft="10dp"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textAlignment="textEnd"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -58,10 +62,11 @@
 
                     <TextView
                         android:id="@+id/txtOrderDtailOrderDate"
-                        android:layout_width="30dp"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Ngày đặt hàng"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         tools:text="Ngày đặt hàng" />
 
                     <TextView
@@ -69,8 +74,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:paddingLeft="10dp"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textAlignment="textEnd" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -80,10 +85,11 @@
 
                     <TextView
                         android:id="@+id/txtOrderDtailStatus"
-                        android:layout_width="30dp"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Trạng thái đơn hàng"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         tools:text="Trạng thái đơn hàng" />
 
                     <TextView
@@ -91,8 +97,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:paddingLeft="10dp"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textAlignment="textEnd"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -118,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Cung cấp bởi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     tools:text="Cung cấp bởi" />
 
                 <LinearLayout
@@ -193,10 +201,11 @@
 
                     <TextView
                         android:id="@+id/txtOrderDtailProductTotal"
-                        android:layout_width="60dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tổng số tiền sản phẩm"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         tools:text="Tổng số tiền sản phẩm" />
 
                     <TextView
@@ -205,7 +214,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="@string/txtOrderDtailProductTotalRS"
-                        android:textAlignment="textEnd" />
+                        android:textAlignment="textEnd"
+                        android:textColor="#F44336" />
 
                 </LinearLayout>
 
@@ -217,10 +227,11 @@
 
                     <TextView
                         android:id="@+id/txtOrderDetailShippingTotal"
-                        android:layout_width="60dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tổng số tiền vận chuyển"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         tools:text="Tổng số tiền vận chuyển" />
 
                     <TextView
@@ -229,7 +240,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="@string/txtOrderDetailShippingTotalRS"
-                        android:textAlignment="textEnd" />
+                        android:textAlignment="textEnd"
+                        android:textColor="#F44336" />
 
                 </LinearLayout>
 
@@ -241,10 +253,11 @@
 
                     <TextView
                         android:id="@+id/txtOrderDetailTotal"
-                        android:layout_width="60dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tổng cộng"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         tools:text="Tổng cộng" />
 
                     <TextView
@@ -253,7 +266,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="@string/txtOrderDetailTotalRS"
-                        android:textAlignment="textEnd" />
+                        android:textAlignment="textEnd"
+                        android:textColor="#F44336" />
 
                 </LinearLayout>
             </LinearLayout>

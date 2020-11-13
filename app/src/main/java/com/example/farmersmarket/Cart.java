@@ -58,7 +58,7 @@ public class Cart extends AppCompatActivity {
         //Find view
         findView();
         //Load data to array
-        arrCart = appDatabase.orderDetail().getAllCartInOrder();
+        arrCart = appDatabase.orderDetailDAO().getAllCartInOrder();
         //Check array and show layout
         if (arrCart.size()!=0){
             txtEmpty.setVisibility(View.GONE);
@@ -85,7 +85,7 @@ public class Cart extends AppCompatActivity {
         //Remove item and delete cart in db
         arrCart.remove(position);
         carAdapter.notifyItemRemoved(position);
-        appDatabase.orderDetail().deleteOrderCart(productID,orderID);
+        appDatabase.orderDetailDAO().deleteOrderCart(productID,orderID);
     }
 
     //Create adapter for recycler view

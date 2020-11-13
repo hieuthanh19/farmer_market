@@ -1,6 +1,8 @@
 package com.example.farmersmarket.viewadapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +13,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.database.AppDatabase;
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.object.ProductImage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
     private OnItemClickListener mlistner;
     private final List<Orders> arrOrder;
     private final Context mContext;
+    private AppDatabase appDatabase;
 
     public OrderListAdapter(List<Orders> orderList, Context mContext) {
         this.arrOrder = orderList;
@@ -38,8 +44,23 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Orders orders = arrOrder.get(position);
+        appDatabase = AppDatabase.getAppDatabase(mContext);
+
+        List<OrderDetail> arrOrder =
+                appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(orders.orderID);
+        //LOAD IMAGE
+        List<ProductImage> productImageList =
+                appDatabase.productImageDAO().getProductImageByProductID(arrOrder.get(0).productID);
+        // if product have image -> load first image
+        if (productImageList.size() > 0)
+            Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.product_image);
+            // if not -> load empty image
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Glide.with(mContext).load(R.drawable.empty).centerCrop().into(holder.product_image);
+        }
+
         holder.order_product_name.setText(Integer.toString(orders.orderID));
-        holder.order_price.setText(Double.toString(orders.total));
+        holder.order_price.setText(mContext.getString(R.string.product_price,orders.total));
         holder.order_status.setText(getStatus(orders.status));
     }
 

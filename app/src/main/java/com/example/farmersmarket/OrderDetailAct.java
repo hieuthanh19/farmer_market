@@ -2,7 +2,6 @@ package com.example.farmersmarket;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
 import com.example.farmersmarket.viewadapter.OrderDetailListAdapter;
 
-import java.sql.Date;
 import java.util.List;
 
 public class OrderDetailAct extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class OrderDetailAct extends AppCompatActivity {
 
         //Connect to db
         appDatabase = AppDatabase.getAppDatabase(this);
-        arrOrderDetail = appDatabase.orderDetail().getAllOrderDetailByOrderID(orderID);
+        arrOrderDetail = appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(orderID);
         arrOrder = appDatabase.ordersDAO().getOrder(orderID);
         finView();
 
@@ -55,9 +53,9 @@ public class OrderDetailAct extends AppCompatActivity {
         txtOrderDtailOrderIDRS.setText(Integer.toString(arrOrder.get(0).orderID));
         txtOrderDtailStatusRS.setText(getStatus(arrOrder.get(0).status));
         txtOrderDetailStoreName.setText(appDatabase.ordersDAO().getStoreNameByStoreID(arrOrder.get(0).orderID));
-        txtOrderDtailProductTotalRS.setText(Double.toString(appDatabase.ordersDAO().getTotalCostOfOrderDetailByOrderID(arrOrder.get(0).orderID)));
-        txtOrderDetailShippingTotalRS.setText(Double.toString(appDatabase.ordersDAO().getFeeByShippingID(arrOrder.get(0).shippingID)));
-        txtOrderDetailTotalRS.setText(Double.toString(arrOrder.get(0).total));
+        txtOrderDtailProductTotalRS.setText(getString(R.string.product_price,appDatabase.ordersDAO().getTotalCostOfOrderDetailByOrderID(arrOrder.get(0).orderID)));
+        txtOrderDetailShippingTotalRS.setText(getString(R.string.product_price,appDatabase.ordersDAO().getFeeByShippingID(arrOrder.get(0).shippingID)));
+        txtOrderDetailTotalRS.setText(getString(R.string.product_price,arrOrder.get(0).total));
 
         //Create recycler view
         builAdapter();

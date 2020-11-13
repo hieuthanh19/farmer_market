@@ -27,9 +27,9 @@
         <activity android:name=".WarehouseDetail" />
         <activity android:name=".AddWarehouse" />
         <activity android:name=".Warehouse" />
-        <activity android:name=".Cart" />
+<!--        <activity android:name=".Cart" />-->
         <activity android:name=".Login" />
-        <activity android:name=".Order" />
+<!--        <activity android:name=".Order" />-->
         <activity android:name=".App"/>
 
         <activity android:name=".CheckoutSuccess" />

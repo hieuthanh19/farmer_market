@@ -1,24 +1,23 @@
 package com.example.farmersmarket.viewadapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.bumptech.glide.Glide;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.OrderDetail;
-import com.example.farmersmarket.object.Orders;
-import com.squareup.picasso.Picasso;
+import com.example.farmersmarket.object.ProductImage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailListAdapter extends RecyclerView.Adapter<OrderDetailListAdapter.ViewHolder>{
@@ -44,9 +43,21 @@ public class OrderDetailListAdapter extends RecyclerView.Adapter<OrderDetailList
     public void onBindViewHolder(@NonNull OrderDetailListAdapter.ViewHolder holder, int position) {
         appDatabase = AppDatabase.getAppDatabase(mContext);
         OrderDetail orders = arrOrder.get(position);
-        holder.txtOrderDetailProductName.setText(appDatabase.orderDetail().getProductNameByProductID(orders.productID));
+
+        //LOAD IMAGE
+        List<ProductImage> productImageList =
+                appDatabase.productImageDAO().getProductImageByProductID(orders.productID);
+        // if product have image -> load first image
+        if (productImageList.size() > 0)
+            Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.imageViewOrderDetailProduct);
+            // if not -> load empty image
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Glide.with(mContext).load(R.drawable.empty).centerCrop().into(holder.imageViewOrderDetailProduct);
+        }
+
+        holder.txtOrderDetailProductName.setText(appDatabase.productDAO().getProduct(orders.productID).name);
         holder.txtOrdeDetailAmount.setText(Integer.toString(orders.quantity));
-        holder.txtOrderDetailPrice.setText(Double.toString(orders.totalPrice));
+        holder.txtOrderDetailPrice.setText(mContext.getString(R.string.product_price,orders.totalPrice));
     }
 
     @Override

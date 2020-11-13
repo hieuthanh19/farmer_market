@@ -1,7 +1,8 @@
 package com.example.farmersmarket.viewadapter;
 
 import android.content.Context;
-import android.media.Image;
+import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.OrderDetail;
-import com.example.farmersmarket.object.Orders;
-import com.squareup.picasso.Picasso;
+import com.example.farmersmarket.object.ProductImage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
@@ -45,19 +45,28 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull CarAdapter.ViewHolder holder, int position) {
         appDatabase = AppDatabase.getAppDatabase(mContext);
         OrderDetail carts = arrCart.get(position);
-        String path = appDatabase.productImageDAO().getOneProductImageByProductID(carts.productID);
-        double price = appDatabase.orderDetail().getProductPriceByProductID(carts.productID);
+        double price = appDatabase.productDAO().getProduct(carts.productID).price;
 
-        holder.cart_product_name.setText(appDatabase.orderDetail().getProductNameByProductID(carts.productID));
-        Picasso.with(mContext).load(path).into(holder.cart_product_image);
-        holder.cart_price.setText("$"+Double.toString(price)+"/kg");
-        holder.cart_price_change.setText("$"+Double.toString(price*carts.quantity)+"/kg");
+        //LOAD IMAGE
+        List<ProductImage> productImageList =
+                appDatabase.productImageDAO().getProductImageByProductID(carts.productID);
+        // if product have image -> load first image
+        if (productImageList.size() > 0)
+            Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.cart_product_image);
+            // if not -> load empty image
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Glide.with(mContext).load(R.drawable.empty).centerCrop().into(holder.cart_product_image);
+        }
+
+        holder.cart_product_name.setText(appDatabase.productDAO().getProduct(carts.productID).name);
+        holder.cart_price.setText(mContext.getString(R.string.product_price,price));
+        holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*carts.quantity));
         holder.cart_amount.setNumber(Integer.toString(carts.quantity));
         holder.cart_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                holder.cart_price_change.setText("$"+Double.toString(price*newValue)+"/kg");
-                appDatabase.orderDetail().updateQuantityAndPrice(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
+                holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*newValue));
+                appDatabase.orderDetailDAO().updateQuantityAndPrice(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
 
             }
         });
