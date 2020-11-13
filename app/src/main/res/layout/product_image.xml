@@ -21,14 +21,28 @@
             android:src="@drawable/empty" />
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/product_image_remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginTop="@dimen/product_text_margin"
         android:layout_marginEnd="@dimen/product_text_margin"
-        android:background="@drawable/round_background"
-        android:src="@drawable/ic_round_clear_24"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.mmin18.widget.RealtimeBlurView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:realtimeBlurRadius="@dimen/product_text_margin"
+            app:realtimeOverlayColor="@color/white_alpha_75" />
+
+        <ImageView
+            android:id="@+id/product_image_remove"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_round_clear_24" />
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
