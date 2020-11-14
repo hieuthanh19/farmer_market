@@ -33,7 +33,6 @@ public class OrderDetailAct extends AppCompatActivity {
     TextView txtOrderDetailTotalRS;
     ImageView imageViewOrderDetailStore;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

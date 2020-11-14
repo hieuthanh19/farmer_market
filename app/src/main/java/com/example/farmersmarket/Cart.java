@@ -86,6 +86,23 @@ public class Cart extends AppCompatActivity {
         arrCart.remove(position);
         carAdapter.notifyItemRemoved(position);
         appDatabase.orderDetailDAO().deleteOrderCart(productID,orderID);
+
+        if (arrCart.size()!=0){
+            txtEmpty.setVisibility(View.GONE);
+            builAdapter();
+            btnCheckOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
+                    infomationCheckoutFragment.show(getSupportFragmentManager(),
+                            "ModalBottomSheet");
+                }
+            });
+        }else{
+            txtEmpty.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+            btnCheckOut.setVisibility(View.INVISIBLE);
+        }
     }
 
     //Create adapter for recycler view
@@ -102,7 +119,6 @@ public class Cart extends AppCompatActivity {
             public void onDeleteClick(int position) {
                 removeItem(position);
             }
-
         });
     }
 

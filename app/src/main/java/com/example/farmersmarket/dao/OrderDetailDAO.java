@@ -40,10 +40,10 @@ public interface OrderDetailDAO {
     @Query("select * from order_detail where ordersID = :orderID")
     List<OrderDetail> getAllOrderDetailByOrderID(int orderID);
 
-    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
+    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID and status=1")
     double getTotalCostOfOrderDetailByOrderID(int orderID);
 
-    @Query("update order_detail set status =:status")
+    @Query("update order_detail set status =:status where status = 1")
     void setStatusOrderDetail(int status);
 
     @Query("select * from order_detail where productID=:productID and ordersID=:ordersID")

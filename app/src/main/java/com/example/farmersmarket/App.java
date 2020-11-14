@@ -37,6 +37,8 @@ public class App extends AppCompatActivity {
             setContentView(R.layout.activity_app);
             // Set account ID
             ACCOUNT_ID = appDatabase.currentAccountDAO().getAllCurrentAccounts().get(0).accountID;
+            Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
+
 
             // load default fragment
             loadFragment(new HomeFragment());

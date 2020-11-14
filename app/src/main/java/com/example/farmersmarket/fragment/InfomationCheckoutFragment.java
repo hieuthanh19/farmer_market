@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.farmersmarket.CheckoutSuccess;
+import com.example.farmersmarket.Order;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Account;
@@ -20,8 +21,11 @@ import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.ShippingUnit;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
     public AppDatabase appDatabase;
@@ -30,9 +34,7 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
     Account ac;
     double totalPriceProduct;
     List<OrderDetail> arrCart;
-
-    int orderID=1;
-
+    
     TextView fragmentCheckouttxtShippingUnitResult;
     TextView fragmentCheckouttxtAddressResult;
     TextView fragmentCheckouttxtProductCostResult;
@@ -52,13 +54,16 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         spu = new ShippingUnit();
         arrCart = new ArrayList<>();
 
+
         findView(v);
 
         appDatabase = AppDatabase.getAppDatabase(v.getContext());
+
+        Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
         spu = appDatabase.shippingUnitDAO().getShippingUnit(1);
         ac = appDatabase.accountDAO().getAccount(1);
-        arrCart = appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(orderID);
-        totalPriceProduct = appDatabase.orderDetailDAO().getTotalCostOfOrderDetailByOrderID(1);
+        arrCart = appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(Order.ORDER_ID);
+        totalPriceProduct = appDatabase.orderDetailDAO().getTotalCostOfOrderDetailByOrderID(Order.ORDER_ID);
 
         fragmentCheckouttxtShippingUnitResult.setText(spu.name);
         fragmentCheckouttxtAddressResult.setText(ac.address);
@@ -79,8 +84,9 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CheckoutSuccess.class);
                 startActivity(intent);
-                appDatabase.ordersDAO().addToOrder(orderID,totalPriceProduct+spu.transportFee);
-                //appDatabase.orderDetail().setStatusOrderDetail(2);
+                appDatabase.ordersDAO().checkOut(Order.ORDER_ID,totalPriceProduct+spu.transportFee);
+                appDatabase.ordersDAO().updateDate(getDateTime(),Order.ORDER_ID);
+                appDatabase.orderDetailDAO().setStatusOrderDetail(2);
             }
         });
 
@@ -94,5 +100,14 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         fragmentCheckouttxtShippingCostResult = v.findViewById(R.id.fragmentCheckouttxtShippingCostResult);
         fragmentCheckouttxtTotalCostResult = v.findViewById(R.id.fragmentCheckouttxtTotalCostResult);
         btnCheckOut = v.findViewById(R.id.btnCheckOut);
+    }
+
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+
     }
 }

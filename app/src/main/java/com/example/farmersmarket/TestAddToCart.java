@@ -19,7 +19,6 @@ public class TestAddToCart extends AppCompatActivity {
     Button goToCart;
     List<OrderDetail> arrCart;
     List<OrderDetail> arrCartByProductID;
-    List<Orders> arrOrder;
 
 
 
@@ -35,26 +34,31 @@ public class TestAddToCart extends AppCompatActivity {
         int accountID =1 ; //Bien thay doi
         int productID =3 ; //Bien thay doi
 
-        arrCart = appDatabase.orderDetailDAO().getAllCartInOrder();
+        if (appDatabase.ordersDAO().getCurrentOrder()==null){
+            String accountAdress = appDatabase.accountDAO().getAccount(accountID).address;
+            appDatabase.ordersDAO().insertOrder(new Orders(1, accountID, 1, null, null, accountAdress, 0, "No description", 1));
+            Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
+        }else{
+            Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
+        }
+
+        //arrCart = appDatabase.orderDetailDAO().getAllCartInOrder();
+        double productPrice;
+        productPrice = appDatabase.productDAO().getProduct(productID).price;
 
         addTocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (arrCart.size()!=0){
-                    double productPrice;
-                    productPrice = appDatabase.productDAO().getProduct(productID).price;
-                    int ordersID = arrCart.get(0).ordersID;
-                    arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID,ordersID);
+                if (appDatabase.ordersDAO().getCurrentOrder()!=null){
+                    arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID,Order.ORDER_ID);
                     if (!arrCartByProductID.isEmpty()){
                         int quantity = arrCartByProductID.get(0).quantity+1;
-                        appDatabase.orderDetailDAO().updateQuantityAndPrice(productID,ordersID,quantity,quantity*productPrice);
+                        appDatabase.orderDetailDAO().updateQuantityAndPrice(productID,Order.ORDER_ID,quantity,quantity*productPrice);
                     }else{
-                        appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(ordersID, productID, 1, productPrice, "", 1));
+                        appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1, productPrice, "", 1));
                     }
                 }else{
-                    appDatabase.ordersDAO().insertOrder(new Orders(1, accountID, 1, null, null, "1233123", 123, "No description", 0));
-                    //arrOrder = appDatabase.ordersDAO().getCurrentOrder();
-                    //appDatabase.orderDetail().insertOrderDetail(new OrderDetail(arrOrder.get(0).orderID, productID, 1, price, "", 1));
+                    appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1, productPrice, "", 1));
                 }
             }
         });

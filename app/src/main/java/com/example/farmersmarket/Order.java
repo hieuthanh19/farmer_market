@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order extends AppCompatActivity {
+    public static int ORDER_ID;
+
     public AppDatabase appDatabase;
     public int accountID=1;
     RecyclerView recyclerView ;

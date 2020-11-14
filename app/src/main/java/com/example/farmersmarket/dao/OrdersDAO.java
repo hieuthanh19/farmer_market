@@ -32,16 +32,16 @@ public interface OrdersDAO {
     @Query("select * from orders where orderID = :orderID")
     List<Orders> getOrder(int orderID);
 
-    @Query("select * from orders where orderID = :orderID and (status=1 or status =2)")
+    @Query("select * from orders where orderID = :orderID and (status=2 or status =3)")
     List<Orders> getOrderIsCheckout(int orderID);
 
-    @Query("select * from orders where accountID = :accountID and (status=1 or status =2)")
+    @Query("select * from orders where accountID = :accountID and (status=2 or status =3)")
     List<Orders> getOrdersOfAccount(int accountID);
 
-    @Query("select * from orders where storeHouseID = :storeHouseID and (status=1 or status =2)")
+    @Query("select * from orders where storeHouseID = :storeHouseID and (status=2 or status =3)")
     List<Orders> getOrdersOfStoreHouse(int storeHouseID);
 
-    @Query("select * from orders where shippingID = :shippingID and (status=1 or status =2)")
+    @Query("select * from orders where shippingID = :shippingID and (status=2 or status =3)")
     List<Orders> getOrdersOfShipping(int shippingID);
 
     @Query("select storeName from store_house where storeHouseID=:id")
@@ -53,9 +53,12 @@ public interface OrdersDAO {
     @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
     double getTotalCostOfOrderDetailByOrderID(int orderID);
 
-    @Query("update orders set total =:total, status=1 where orderID=:orderID")
-    void addToOrder(int orderID,double total);
+    @Query("update orders set total =:total, status=2 where orderID=:orderID")
+    void checkOut(int orderID,double total);
 
-    @Query("select * from orders where status=0")
-    List<Orders> getCurrentOrder();
+    @Query("select * from orders where status=1 limit 1")
+    Orders getCurrentOrder();
+
+    @Query("update orders set orderedDate =:orderDate where orderID=:orderID")
+    void updateDate(String orderDate, int orderID);
 }

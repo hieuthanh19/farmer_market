@@ -48,6 +48,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
         List<OrderDetail> arrOrder =
                 appDatabase.orderDetailDAO().getAllOrderDetailByOrderID(orders.orderID);
+
+
         //LOAD IMAGE
         List<ProductImage> productImageList =
                 appDatabase.productImageDAO().getProductImageByProductID(arrOrder.get(0).productID);
@@ -120,10 +122,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public String getStatus(int status){
         String statusString="";
         switch(status) {
-            case 1:
+            case 2:
                 statusString =  "Đang giao";
                 break;
-            case 2:
+            case 3:
                 statusString = "Đã giao";
                 break;
         }
