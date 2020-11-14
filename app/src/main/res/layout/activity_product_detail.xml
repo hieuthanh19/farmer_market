@@ -416,7 +416,6 @@
             android:id="@+id/product_detail_add_to_cart_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addToCart"
             android:text="@string/product_add_to_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

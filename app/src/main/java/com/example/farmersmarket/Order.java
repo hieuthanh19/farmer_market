@@ -60,7 +60,6 @@ public class Order extends AppCompatActivity {
             public void onItemClick(int position) {
 
             }
-
             @Override
             public void onButtonClick(int position) {
                 Intent intent = new Intent(getBaseContext(), OrderDetailAct.class);
@@ -68,5 +67,9 @@ public class Order extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void back(View view) {
+        onBackPressed();
     }
 }

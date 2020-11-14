@@ -28,7 +28,6 @@ public class Cart extends AppCompatActivity {
     List<OrderDetail> arrCart;
     Date c = null;
     Button btnCheckOut;
-    ImageView imageView;
 
     //Find view by ID
     public void findView(){
@@ -42,18 +41,6 @@ public class Cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         appDatabase = AppDatabase.getAppDatabase(this);
-
-//       appDatabase.productTypeDAO().insertProductType(new ProductType("Fruit",1));
-//        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin",1));
-//        appDatabase.accountDAO().insertAccount(new Account(1, "0123123", "123", "123", 1, "Tran hung dao", "123@gmail.com", "123", 1));
-//        appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(1, "An Giang store", "12 Tran Hung Dao", 12323, 45645654, "Nha kho o An Giang", 1));
-        //appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1233, 123, "An Giang", 1234, "Dragon fruit An Giang", 1));
-//        appDatabase.shippingUnitDAO().insertShippingUnit(new ShippingUnit(1, 1, "Express", "012312321", 133, "123", 1));
-//        appDatabase.ordersDAO().insertOrder(new Orders(1, 1, 1, null, null,
-//                "1233123", 123, "No description", 1));
-//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 1, 1, 123, "No description",1));
-//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 2, 1, 12, "No description",1));
-//        appDatabase.orderDetail().insertOrderDetail(new OrderDetail(1, 3, 1, 76, "No description",1));
 
         //Find view
         findView();
@@ -132,5 +119,9 @@ public class Cart extends AppCompatActivity {
 
     public void getDatabase(View view){
 
+    }
+
+    public void back(View view) {
+        onBackPressed();
     }
 }

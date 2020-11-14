@@ -60,5 +60,5 @@ public interface OrdersDAO {
     Orders getCurrentOrder();
 
     @Query("update orders set orderedDate =:orderDate where orderID=:orderID")
-    void updateDate(String orderDate, int orderID);
+    void updateDate(long orderDate, int orderID);
 }

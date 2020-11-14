@@ -1,15 +1,18 @@
 package com.example.farmersmarket.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.farmersmarket.Cart;
 import com.example.farmersmarket.R;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Product;
@@ -31,6 +34,7 @@ public class HomeFragment extends Fragment {
     public List<Product> products;
     CarouselView carouselView;
     int[] bannerImages = {R.drawable.peticide, R.drawable.autumn_sale, R.drawable.autumn_sale_70};
+    ImageButton home_cart;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +75,16 @@ public class HomeFragment extends Fragment {
         recyclerViewProductHorizontal.setAdapter(productHorizontalViewAdapter);
         ProductVerticalViewAdapter productVerticalViewAdapter = new ProductVerticalViewAdapter(products);
         recyclerViewProductVertical.setAdapter(productVerticalViewAdapter);
+
+        //Set Cart button event
+        home_cart = view.findViewById(R.id.home_cart);
+        home_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Cart.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

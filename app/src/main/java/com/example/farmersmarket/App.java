@@ -19,6 +19,7 @@ import com.example.farmersmarket.fragment.HomeFragment;
 import com.example.farmersmarket.fragment.NotificationFragment;
 import com.example.farmersmarket.fragment.OrderFragment;
 import com.example.farmersmarket.fragment.PageNotFoundFragment;
+import com.example.farmersmarket.object.Orders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class App extends AppCompatActivity {
@@ -37,8 +38,15 @@ public class App extends AppCompatActivity {
             setContentView(R.layout.activity_app);
             // Set account ID
             ACCOUNT_ID = appDatabase.currentAccountDAO().getAllCurrentAccounts().get(0).accountID;
-            Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
 
+            //Set Order ID
+            if (appDatabase.ordersDAO().getCurrentOrder()==null){
+                String accountAdress = appDatabase.accountDAO().getAccount(ACCOUNT_ID).address;
+                appDatabase.ordersDAO().insertOrder(new Orders(1, ACCOUNT_ID, 1, null, null, accountAdress, 0, "No description", 1));
+                Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
+            }else{
+                Order.ORDER_ID = appDatabase.ordersDAO().getCurrentOrder().orderID;
+            }
 
             // load default fragment
             loadFragment(new HomeFragment());

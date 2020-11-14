@@ -21,6 +21,7 @@ import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.ShippingUnit;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
     Account ac;
     double totalPriceProduct;
     List<OrderDetail> arrCart;
-    
+
     TextView fragmentCheckouttxtShippingUnitResult;
     TextView fragmentCheckouttxtAddressResult;
     TextView fragmentCheckouttxtProductCostResult;
@@ -85,7 +86,9 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
                 Intent intent = new Intent(getActivity(), CheckoutSuccess.class);
                 startActivity(intent);
                 appDatabase.ordersDAO().checkOut(Order.ORDER_ID,totalPriceProduct+spu.transportFee);
-                appDatabase.ordersDAO().updateDate(getDateTime(),Order.ORDER_ID);
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                long time = timestamp.getTime();
+                appDatabase.ordersDAO().updateDate(time,Order.ORDER_ID);
                 appDatabase.orderDetailDAO().setStatusOrderDetail(2);
             }
         });
@@ -102,9 +105,9 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         btnCheckOut = v.findViewById(R.id.btnCheckOut);
     }
 
+
     private String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
