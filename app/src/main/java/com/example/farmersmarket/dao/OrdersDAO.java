@@ -38,6 +38,9 @@ public interface OrdersDAO {
     @Query("select * from orders where accountID = :accountID and (status=2 or status =3)")
     List<Orders> getOrdersOfAccount(int accountID);
 
+    @Query("select * from orders where accountID = :accountID and (status=2 or status =3) order by orderID desc")
+    List<Orders> getOrdersOfAccountOrderByDESC(int accountID);
+
     @Query("select * from orders where storeHouseID = :storeHouseID and (status=2 or status =3)")
     List<Orders> getOrdersOfStoreHouse(int storeHouseID);
 

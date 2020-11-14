@@ -47,8 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="308dp"
         android:gravity="center|center_vertical"
-        android:text="Chưa có đơn hàng nào"
-        tools:text="Chưa có đơn hàng nào" />
+        android:text="@string/txtOrderEmpty" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc1"

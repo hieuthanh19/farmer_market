@@ -48,9 +48,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|center_vertical"
-        android:text="Giỏ hàng trống"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="Giỏ hàng trống" />
+        android:text="@string/txtEmpty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcCart"

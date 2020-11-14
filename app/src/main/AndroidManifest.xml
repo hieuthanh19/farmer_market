@@ -29,18 +29,16 @@
         <activity android:name=".Warehouse" />
         <activity android:name=".Cart" />
         <activity android:name=".Login" />
-        <activity android:name=".Order" />
-        <activity android:name=".App"/>
-
+<!--        <activity android:name=".Order" />-->
         <activity android:name=".CheckoutSuccess" />
-        <activity android:name=".TestAddToCart">
+        <activity android:name=".OrderDetailAct" />
+        <activity android:name=".App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OrderDetailAct" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

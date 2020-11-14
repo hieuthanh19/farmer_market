@@ -37,12 +37,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/order_product_name"
+                    android:text="@string/cart_product_name"
                     android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/imageViewDelete"
-                    android:layout_width="wrap_content"
+                    android:layout_width="22dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     app:srcCompat="@android:drawable/btn_dialog" />
@@ -52,7 +52,7 @@
                 android:id="@+id/cart_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/order_price"
+                android:text="@string/cart_price"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Tổng cộng"
+                    android:text="@string/cart_total_price_quantity"
                     android:textSize="18sp" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/cart_price_change"
                     android:textAlignment="textEnd"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -101,7 +101,7 @@
                     android:layout_height="match_parent"
                     android:gravity="right|center_vertical"
                     android:paddingRight="10dp"
-                    android:text="Tấn"
+                    android:text="@string/measure"
                     android:textSize="14sp" />
             </LinearLayout>
 

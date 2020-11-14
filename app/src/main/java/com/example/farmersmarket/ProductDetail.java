@@ -86,17 +86,15 @@ public class ProductDetail extends AppCompatActivity {
             product_detail_add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (appDatabase.ordersDAO().getCurrentOrder()!=null){
-                        arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID,Order.ORDER_ID);
-                        if (!arrCartByProductID.isEmpty()){
-                            int quantity = arrCartByProductID.get(0).quantity+1;
-                            appDatabase.orderDetailDAO().updateQuantityAndPrice(productID,Order.ORDER_ID,quantity,quantity*productPrice);
-                        }else{
-                            appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1, productPrice, "", 1));
-                        }
-                    }else{
+                    arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID, Order.ORDER_ID);
+                    if (!arrCartByProductID.isEmpty()) {
+                        int quantity = arrCartByProductID.get(0).quantity + 1;
+                        appDatabase.orderDetailDAO().updateQuantityAndPrice(productID, Order.ORDER_ID, quantity, quantity * productPrice);
+                    } else {
                         appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1, productPrice, "", 1));
                     }
+                    Toast.makeText(getBaseContext(),"Thêm sản phẩm vào giỏ hàng thành công",
+                            Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
@@ -146,7 +144,7 @@ public class ProductDetail extends AppCompatActivity {
 
         //Set image
         // if product have image -> load first image
-        if (account.image !=""||account.image!=null)
+        if (account.image != "" || account.image != null)
             Glide.with(getApplicationContext()).load(Uri.parse(account.image)).centerCrop().into(product_detail_user_avatar);
             // if not -> load empty image
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

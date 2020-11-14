@@ -83,7 +83,7 @@ public class OrderFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_order, container, false);
 
         appDatabase = AppDatabase.getAppDatabase(view.getContext());
-        arrOrder = appDatabase.ordersDAO().getOrdersOfAccount(App.ACCOUNT_ID);
+        arrOrder = appDatabase.ordersDAO().getOrdersOfAccountOrderByDESC(App.ACCOUNT_ID);
         findView(view);
 
         if (arrOrder.size()!=0){

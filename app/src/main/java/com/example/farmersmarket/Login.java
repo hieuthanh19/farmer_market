@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
         if (isFilled()) {
             // get account info using input phone number and password
             Account account = appDatabase.accountDAO().login(inputPhone.getEditText().getText().toString(),
-                    Utils.encryptPassword(inputPassword.getEditText().getText().toString()));
+                   inputPassword.getEditText().getText().toString());
             // check if account exist
             if (account != null) {
                 // account exist

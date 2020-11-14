@@ -16,7 +16,6 @@
             android:id="@+id/product_image"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-
             android:contentDescription="@string/order_product_image" />
 
         <LinearLayout
