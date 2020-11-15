@@ -32,15 +32,15 @@ public class Login extends AppCompatActivity {
 //        appDatabase.productTypeDAO().insertProductType(new ProductType("Fish & Seafood", 1));
 //        appDatabase.productTypeDAO().insertProductType(new ProductType("Meat & Poultry", 1));
 //
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Dragon fruit", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Durian", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Durian", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Banana", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Banana", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Coconut", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "Coconut", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
-//        appDatabase.productDAO().insertProduct(new Product(1, 1, "papaya", 1000, 10000, "Binh Thuan", 12000,
+//        appDatabase.productDAO().insertProduct(new Product(1, 1, "papaya", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
     }
 

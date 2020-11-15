@@ -29,14 +29,40 @@
                 app:radius="@dimen/product_text_margin" />
 
             <!--            Product Info Start-->
-            <TextView
-                android:id="@+id/product_detail_product_name"
-                style="@style/heading_1"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin"
                 android:layout_marginTop="@dimen/app_margin"
-                android:text="Product name" />
+                android:layout_marginEnd="@dimen/app_margin">
+
+                <TextView
+                    android:id="@+id/product_detail_product_name"
+                    style="@style/heading_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/app_margin"
+                    android:text="Product name"
+                    app:layout_constraintEnd_toStartOf="@+id/sale_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sale_tag"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sale_tag_background"
+                    android:fontFamily="@font/sf_display_regular"
+                    android:text="@string/sale_tag"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RatingBar
                 style="?android:ratingBarStyleSmall"
@@ -360,6 +386,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!--    Back Button-->
     <androidx.cardview.widget.CardView
         android:layout_width="36dp"
         android:layout_height="36dp"
@@ -386,8 +413,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
+    <!--Back Button-->
 
-
+    <!--    Cart Button-->
     <androidx.cardview.widget.CardView
         android:layout_width="36dp"
         android:layout_height="36dp"
@@ -414,7 +442,9 @@
             android:scaleType="centerInside"
             android:src="@drawable/ic_outline_shopping_cart_24" />
     </androidx.cardview.widget.CardView>
+    <!--Cart Button-->
 
+    <!--    Add To Cart Button-->
     <androidx.cardview.widget.CardView
         android:id="@+id/product_detail_add_to_cart_layout"
         android:layout_width="match_parent"
@@ -442,5 +472,5 @@
             android:onClick="addToCart"
             android:text="@string/product_add_to_cart" />
     </androidx.cardview.widget.CardView>
-
+    <!--Add To Cart Button-->
 </androidx.constraintlayout.widget.ConstraintLayout>

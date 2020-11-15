@@ -47,7 +47,7 @@ import com.example.farmersmarket.object.StoreHouse;
         ProductType.class,
         ShippingUnit.class,
         StoreHouse.class,
-}, version = 2, exportSchema = false)
+}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase appDatabase;
@@ -85,7 +85,9 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (appDatabase == null) {
                     appDatabase = Room.databaseBuilder(context, AppDatabase.class,
                             DATABASE_NAME)
-                            .fallbackToDestructiveMigration().allowMainThreadQueries().build();
+                            .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
+                            .build();
                 }
             }
         }

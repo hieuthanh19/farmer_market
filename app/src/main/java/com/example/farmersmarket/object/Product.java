@@ -3,12 +3,18 @@ package com.example.farmersmarket.object;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "product", foreignKeys = {
-        @ForeignKey(entity = StoreHouse.class, parentColumns = "storeHouseID", childColumns = "storeHouseID"),
-        @ForeignKey(entity = ProductType.class, parentColumns = "productTypeID", childColumns = "productTypeID")
-}
+@Entity(tableName = "product",
+        foreignKeys = {
+                @ForeignKey(entity = StoreHouse.class, parentColumns = "storeHouseID", childColumns = "storeHouseID"),
+                @ForeignKey(entity = ProductType.class, parentColumns = "productTypeID", childColumns = "productTypeID")
+        },
+        indices = {
+                @Index("storeHouseID"),
+                @Index("productTypeID")
+        }
 )
 public class Product {
     @PrimaryKey(autoGenerate = true)

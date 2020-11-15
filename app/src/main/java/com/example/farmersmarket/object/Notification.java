@@ -3,13 +3,15 @@ package com.example.farmersmarket.object;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import java.sql.Date;
 
-@Entity(tableName = "notification", foreignKeys = @ForeignKey(entity = Account.class,
-        parentColumns = "accountID", childColumns = "accountID"))
+@Entity(tableName = "notification",
+        foreignKeys = @ForeignKey(entity = Account.class, parentColumns = "accountID", childColumns = "accountID"),
+        indices = {@Index("accountID")})
 @TypeConverters(ConvertDate.class)
 public class Notification {
     @PrimaryKey(autoGenerate = true)

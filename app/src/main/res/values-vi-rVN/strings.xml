@@ -42,7 +42,7 @@
 
     <!--    Home-->
     <string name="title_suggestion">Gợi ý</string>
-    <string name="title_high_demand">Đang HOT!</string>
+    <string name="home_title_trending">Đang HOT!</string>
     <string name="category_fruit">Trái cây</string>
     <string name="category_vegetable">Rau củ</string>
     <string name="category_fish_and_seafood"><![CDATA[Cá & Hải sản]]></string>
@@ -107,4 +107,6 @@
     <string name="add_product_current_price">Giá hiện tại (VND/kg)</string>
     <string name="add_product_title_mode_edit">Sửa Sản Phẩm</string>
     <string name="product_price_strike_through"><s>%1$,.0f₫/kg</s></string>
+    <string name="sale_tag">%1$d%%</string>
+    <string name="home_title_sale">Special Offer!</string>
 </resources>

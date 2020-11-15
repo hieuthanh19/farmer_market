@@ -33,11 +33,17 @@ public interface ProductDAO {
     @Query("select * from product where productTypeID = :productTypeID and status = 1")
     List<Product> getActiveProductByCategory(int productTypeID);
 
+    @Query("select * from product where productTypeID = :productTypeID and status = 1 and productID != :productID")
+    List<Product> getActiveProductByCategoryExcludeThis(int productID, int productTypeID);
+
     @Query("select * from product where storeHouseID = :storehouseID and status = 1 order by productID desc")
     List<Product> getActiveProductByStoreHouseDesc(int storehouseID);
 
     @Query("select * from product where storeHouseID = :storehouseID and status = 1")
     List<Product> getActiveProductByStoreHouseAsc(int storehouseID);
+
+    @Query("select * from product where status = 1 and price - currentPrice > 0 order by price - currentPrice desc")
+    List<Product> getActiveProductSaleRateDesc();
 
 
 }

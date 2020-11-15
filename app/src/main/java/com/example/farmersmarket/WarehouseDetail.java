@@ -51,7 +51,7 @@ public class WarehouseDetail extends AppCompatActivity {
         search = findViewById(R.id.add_product_add);
         title = findViewById(R.id.add_product_title);
         productEmptyMsg = findViewById(R.id.warehouse_detail_product_empty);
-        productListView = findViewById(R.id.product_vertical_list);
+        productListView = findViewById(R.id.home_vertical_list_suggestion);
         addProduct = findViewById(R.id.warehouse_detail_add_product);
         productLayout = findViewById(R.id.warehouse_detail_product_list);
 

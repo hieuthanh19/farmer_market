@@ -2,6 +2,7 @@ package com.example.farmersmarket;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -38,6 +39,7 @@ public class ProductDetail extends AppCompatActivity {
     TextView productName;
     TextView productAmount;
     TextView productOriginalPrice;
+    TextView productSale;
     TextView productPrice;
     TextView username;
     TextView warehouseAddress;
@@ -60,6 +62,7 @@ public class ProductDetail extends AppCompatActivity {
             // get views
             carouselView = findViewById(R.id.product_detail_carousel);
             productName = findViewById(R.id.product_detail_product_name);
+            productSale = findViewById(R.id.sale_tag);
             productAmount = findViewById(R.id.product_detail_amount);
             productOriginalPrice = findViewById(R.id.product_detail_original_price);
             productPrice = findViewById(R.id.product_detail_price);
@@ -99,6 +102,24 @@ public class ProductDetail extends AppCompatActivity {
             carouselView.setImageListener(emptyImageListener());
         }
 
+        // If product is on sale
+        if (product.price > product.currentPrice) {
+            // display sale tag and find sale percentage
+            productSale.setVisibility(View.VISIBLE);
+            int salePercentage = (int) Math.ceil(((product.price - product.currentPrice) / product.price) * 100);
+            productSale.setText(getString(R.string.sale_tag, salePercentage));
+            // Set price color to text_sale
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                productPrice.setTextColor(getColor(R.color.text_sale));
+            }
+        } else {
+            // Hide sale tag & change price color to normal
+            productSale.setVisibility(View.INVISIBLE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                productPrice.setTextColor(getColor(R.color.green_600));
+            }
+        }
+
         productName.setText(product.name);
         productAmount.setText(getString(R.string.product_detail_amount, product.amount));
         if (product.price != product.currentPrice) {
@@ -118,7 +139,9 @@ public class ProductDetail extends AppCompatActivity {
         description.setText(product.description);
 
         // load list data
-        List<Product> similarProductList = appDatabase.productDAO().getActiveProductByCategory(product.productTypeID);
+        List<Product> similarProductList =
+                appDatabase.productDAO().getActiveProductByCategoryExcludeThis(product.productID,
+                        product.productTypeID);
         List<Product> suggestionProductList = appDatabase.productDAO().getAllActiveProduct();
 
         ProductHorizontalViewAdapter similarProductViewAdapter = new ProductHorizontalViewAdapter(similarProductList);

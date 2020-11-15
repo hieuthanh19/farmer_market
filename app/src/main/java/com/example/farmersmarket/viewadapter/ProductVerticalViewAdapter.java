@@ -80,19 +80,19 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
      */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public final TextView productID;
         public final TextView productName;
         public final TextView productAmount;
         public final TextView productPrice;
+        public final TextView productSale;
         public final ImageView productImage;
 
 
         public ViewHolder(View view) {
             super(view);
-            productID = view.findViewById(R.id.product_id);
             productName = view.findViewById(R.id.product_name);
             productAmount = view.findViewById(R.id.product_amount);
             productPrice = view.findViewById(R.id.product_price);
+            productSale = view.findViewById(R.id.sale_tag);
             productImage = view.findViewById(R.id.product_image);
 
             view.setOnClickListener(this);
@@ -100,7 +100,24 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
 
         void bindTo(Product product) {
             // Populate views with data
-            productID.setText(String.valueOf(product.productID));
+            // If product is on sale
+            if (product.price > product.currentPrice) {
+                // display sale tag and find sale percentage
+                productSale.setVisibility(View.VISIBLE);
+                int salePercentage = (int) Math.ceil(((product.price - product.currentPrice) / product.price) * 100);
+                productSale.setText(itemView.getContext().getString(R.string.sale_tag, salePercentage));
+                // Set price color to text_sale
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    productPrice.setTextColor(itemView.getContext().getColor(R.color.text_sale));
+                }
+            } else {
+                // Hide sale tag & change price color to normal
+                productSale.setVisibility(View.INVISIBLE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    productPrice.setTextColor(itemView.getContext().getColor(R.color.black));
+                }
+            }
+
             productName.setText(product.name);
             productAmount.setText(itemView.getResources().getString(R.string.product_amount, product.amount));
             productPrice.setText(itemView.getResources().getString(R.string.product_price, product.currentPrice));
@@ -116,6 +133,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
                 Glide.with(itemView.getContext()).load(R.drawable.empty).centerCrop().into(productImage);
             }
         }
+
 
         /**
          * Called when a view has been clicked.

@@ -3,9 +3,12 @@ package com.example.farmersmarket.object;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "account", foreignKeys = @ForeignKey(entity = AccountType.class, parentColumns = "typeID", childColumns = "typeID"))
+@Entity(tableName = "account",
+        foreignKeys = @ForeignKey(entity = AccountType.class, parentColumns = "typeID", childColumns = "typeID"),
+        indices = @Index("typeID"))
 public class Account {
     @PrimaryKey(autoGenerate = true)
     public int accountID;
@@ -20,7 +23,8 @@ public class Account {
     public int status;
 
     @Ignore
-    public Account(int typeID, String phone, String password, String name, int gender, String address, String email, String image, int status) {
+    public Account(int typeID, String phone, String password, String name, int gender, String address, String email,
+                   String image, int status) {
         this.typeID = typeID;
         this.phone = phone;
         this.password = password;

@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@id/warehouse_detail_product_empty">
 
         <TextView
-            android:id="@+id/warehouse_detail_title_product"
+            android:id="@+id/home_title_suggestion"
             style="@style/heading_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_vertical_list"
+        android:id="@+id/home_vertical_list_suggestion"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/product_text_margin"

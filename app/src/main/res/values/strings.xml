@@ -43,7 +43,7 @@
 
     <!--    Home-->
     <string name="title_suggestion">Suggestion</string>
-    <string name="title_high_demand">Hight demand!</string>
+    <string name="home_title_trending">Trending!</string>
     <string name="category_fruit">Fruit</string>
     <string name="category_vegetable">Vegetable</string>
     <string name="category_fish_and_seafood"><![CDATA[Fish & Seafood]]></string>
@@ -108,6 +108,8 @@
     <string name="add_warehouse_edit_success">Warehouse has been updated</string>
     <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
     <string name="add_product_title_mode_edit">Edit Product</string>
+    <string name="sale_tag">%1$d%%</string>
+    <string name="home_title_sale">Special Offer!</string>
 
 
 </resources>

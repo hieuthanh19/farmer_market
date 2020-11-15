@@ -27,8 +27,6 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    public AppDatabase appDatabase;
-    public List<Product> products;
     CarouselView carouselView;
     int[] bannerImages = {R.drawable.peticide, R.drawable.autumn_sale, R.drawable.autumn_sale_70};
 
@@ -57,24 +55,37 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
-        // get view
+        // get views
         carouselView = view.findViewById(R.id.home_banner_carousel);
-        RecyclerView recyclerViewProductVertical = view.findViewById(R.id.product_vertical_list);
-        RecyclerView recyclerViewProductHorizontal = view.findViewById(R.id.product_horizontal_list);
+        RecyclerView recyclerViewProductVertical = view.findViewById(R.id.home_vertical_list_suggestion);
+        RecyclerView recyclerViewProductHorizontalTrending = view.findViewById(R.id.product_horizontal_list_trending);
+        RecyclerView recyclerViewProductHorizontalSale = view.findViewById(R.id.product_horizontal_list_sale);
+
         // set up carousel banner
         carouselView.setPageCount(bannerImages.length);
         carouselView.setImageListener(imageListener());
+
         // get data from DB
-        appDatabase = AppDatabase.getAppDatabase(view.getContext());
-        products = appDatabase.productDAO().getAllActiveProduct();
-        ProductHorizontalViewAdapter productHorizontalViewAdapter = new ProductHorizontalViewAdapter(products);
-        recyclerViewProductHorizontal.setAdapter(productHorizontalViewAdapter);
+        AppDatabase appDatabase = AppDatabase.getAppDatabase(view.getContext());
+        List<Product> products = appDatabase.productDAO().getAllActiveProduct();
+        List<Product> saleProducts = appDatabase.productDAO().getActiveProductSaleRateDesc();
+
+        // Set data to lists
+        ProductHorizontalViewAdapter productHorizontalSaleViewAdapter = new ProductHorizontalViewAdapter(saleProducts);
+        recyclerViewProductHorizontalSale.setAdapter(productHorizontalSaleViewAdapter);
+        ProductHorizontalViewAdapter productHorizontalTrendingViewAdapter = new ProductHorizontalViewAdapter(products);
+        recyclerViewProductHorizontalTrending.setAdapter(productHorizontalTrendingViewAdapter);
         ProductVerticalViewAdapter productVerticalViewAdapter = new ProductVerticalViewAdapter(products);
         recyclerViewProductVertical.setAdapter(productVerticalViewAdapter);
 
         return view;
     }
 
+    /**
+     * ImageListener for Banner section
+     *
+     * @return a {@link ImageListener}
+     */
     private ImageListener imageListener() {
         return new ImageListener() {
             @Override

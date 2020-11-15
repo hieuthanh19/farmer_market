@@ -170,6 +170,7 @@ public class AddProduct extends AppCompatActivity {
                 intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
 
                 startActivity(intent);
+                finish();
             } else {
                 product.productTypeID = ((ProductType) spinner.getSelectedItem()).productTypeID;
                 product.name = nameInputLayout.getEditText().getText().toString();
@@ -196,6 +197,7 @@ public class AddProduct extends AppCompatActivity {
                 intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
 
                 startActivity(intent);
+                finish();
             }
         }
     }

@@ -25,6 +25,6 @@ public interface OrderDetailDAO {
     @Query("select count(1) from order_detail")
     int getOrderDetailCount();
 
-    @Query("select * from order_detail where ordersID = :ordersID")
-    OrderDetail getOrderDetail(int ordersID);
+    @Query("select * from order_detail where orderID = :orderID")
+    OrderDetail getOrderDetail(int orderID);
 }
