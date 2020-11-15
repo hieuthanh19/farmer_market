@@ -1,12 +1,15 @@
 package com.example.farmersmarket.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.farmersmarket.CategoryDetail;
 import com.example.farmersmarket.R;
 
 /**
@@ -18,7 +21,7 @@ public class CategoryFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    public static final String CATEGORY = "categoryID";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -41,7 +44,7 @@ public class CategoryFragment extends Fragment {
     public static CategoryFragment newInstance(String param1, String param2) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putString(CATEGORY, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +54,7 @@ public class CategoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam1 = getArguments().getString(CATEGORY);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -60,6 +63,43 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
+
+        //set action for Button "Fruit"
+        Button fruit = view.findViewById(R.id.fruit_btn);
+        fruit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),CategoryDetail.class);
+                intent.putExtra(CATEGORY,1);
+                startActivity(intent);
+            }
+        });
+
+        //set action for Button "Vegetable"
+        Button vegetable = view.findViewById(R.id.vegetable_btn);
+        fruit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),CategoryDetail.class);
+                intent.putExtra(CATEGORY,1);
+                startActivity(intent);
+            }
+        });
+
+        //set action for Button "Seafood"
+        Button seafood = view.findViewById(R.id.poultry_btn);
+        fruit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),CategoryDetail.class);
+                intent.putExtra(CATEGORY,1);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
+
+
 }

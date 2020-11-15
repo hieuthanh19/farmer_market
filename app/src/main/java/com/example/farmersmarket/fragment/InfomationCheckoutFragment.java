@@ -70,7 +70,7 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
         fragmentCheckouttxtAddressResult.setText(ac.address);
         fragmentCheckouttxtProductCostResult.setText(getString(R.string.product_price, totalPriceProduct));
         fragmentCheckouttxtShippingCostResult.setText(getString(R.string.product_price, spu.transportFee));
-        fragmentCheckouttxtTotalCostResult.setText(getString(R.string.product_price,
+        fragmentCheckouttxtTotalCostResult.setText(getString(R.string.cart_price_change,
                 totalPriceProduct + spu.transportFee));
 
         imgClose = v.findViewById(R.id.imgClose);

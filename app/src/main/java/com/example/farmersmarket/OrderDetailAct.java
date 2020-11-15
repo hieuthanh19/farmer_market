@@ -58,9 +58,9 @@ public class OrderDetailAct extends AppCompatActivity {
         txtOrderDtailStatusRS.setText(getStatus(arrOrder.get(0).status));
         txtOrderDtailOrderDateRS.setText((arrOrder.get(0).orderedDate).toString());
         System.out.println(ConvertDate.fromDate(arrOrder.get(0).orderedDate));
-        txtOrderDtailProductTotalRS.setText(getString(R.string.product_price,appDatabase.ordersDAO().getTotalCostOfOrderDetailByOrderID(arrOrder.get(0).orderID)));
+        txtOrderDtailProductTotalRS.setText(getString(R.string.cart_price_change,appDatabase.ordersDAO().getTotalCostOfOrderDetailByOrderID(arrOrder.get(0).orderID)));
         txtOrderDetailShippingTotalRS.setText(getString(R.string.product_price,appDatabase.ordersDAO().getFeeByShippingID(arrOrder.get(0).shippingID)));
-        txtOrderDetailTotalRS.setText(getString(R.string.product_price,arrOrder.get(0).total));
+        txtOrderDetailTotalRS.setText(getString(R.string.cart_price_change,arrOrder.get(0).total));
 
         //Create recycler view
         builAdapter();
@@ -87,9 +87,12 @@ public class OrderDetailAct extends AppCompatActivity {
         String statusString="";
         switch(status) {
             case 2:
-                statusString =  "Đang giao";
+                statusString =  "Chờ xác nhận";
                 break;
             case 3:
+                statusString = "Đang giao giao";
+                break;
+            case 4:
                 statusString = "Đã giao";
                 break;
         }

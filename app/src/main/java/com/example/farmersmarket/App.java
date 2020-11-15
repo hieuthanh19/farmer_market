@@ -18,6 +18,7 @@ import com.example.farmersmarket.fragment.NotificationFragment;
 import com.example.farmersmarket.fragment.OrderFragment;
 import com.example.farmersmarket.fragment.PageNotFoundFragment;
 import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.object.ShippingUnit;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class App extends AppCompatActivity {
