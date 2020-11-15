@@ -16,23 +16,23 @@
 
     <!--    Order detail-->
     <string name="txtOrderEmpty">Chưa có đơn hàng nào</string>
-    <string name="txtOrderDtailOrderID">Mã đơn hàng</string>
-    <string name="txtOrderDtailOrderDate">Ngày đặt hàng</string>
-    <string name="txtOrderDtailStatus">Trạng thái đơn hàng</string>
+    <string name="txtOrderDetailOrderID">Mã đơn hàng</string>
+    <string name="txtOrderDetailOrderDate">Ngày đặt hàng</string>
+    <string name="txtOrderDetailStatus">Trạng thái đơn hàng</string>
     <string name="txtProductList">Các sản phẩm</string>
-    <string name="txtOrderDtailProductTotal">Tổng số tiền sản phẩm</string>
+    <string name="txtOrderDetailProductTotal">Tổng số tiền sản phẩm</string>
     <string name="txtOrderDetailShippingTotal">Tổng số tiền vận chuyển</string>
     <string name="txtOrderDetailTotal">Tổng</string>
     <string name="txtOrderDetailProductName">Tên sản phẩm</string>
-    <string name="txtOrdeDetailAmount">Số lượng</string>
+    <string name="txtOrderDetailAmount">Số lượng</string>
     <string name="txtOrderDetailPrice">Giá tiền</string>
 
     <!--    Cart-->
     <string name="cart_product_name">Tên sản phẩm</string>
     <string name="cart_price">Tổng giá</string>
     <string name="cart_total_price_quantity">Tổng cộng</string>
-    <string name="cart_price_change">Giá thay đổi</string>
-    <string name="measure">Tấn</string>
+    <string name="cart_price_change">%1$s</string>
+    <string name="measure">kg</string>
     <string name="txtEmpty">Giỏ hàng trống</string>
 
     <!--    Checkout-->
@@ -56,10 +56,11 @@
     <string name="category_fish_and_seafood"><![CDATA[Cá & Hải sản]]></string>
     <string name="category_meat_and_poultry"><![CDATA[Thịt & Gia cầm]]></string>
     <string name="home_see_more">Xem thêm</string>
+    <string name="home_title_sale">Khuyến mãi đặc biệt!</string>
 
     <!--    Account-->
     <string name="account_warehouse">Kho của tôi</string>
-    <string name="account_products">My Products</string>
+    <string name="account_products">Sản phẩm của tôi</string>
 
     <!--    Warehouse-->
     <string name="warehouse_title">Kho hàng</string>
@@ -70,51 +71,68 @@
     <!--    Login-->
     <string name="login_error_phone">Số điện thoại không được để trống</string>
     <string name="login_error_password">Mật khẩu không được để trống</string>
+    <string name="login_phone_sign_up">Chưa có tài khoản? <span style="color:#53B175">Đăng kí ngay</span></string>
+    <string name="login_error_phone_not_found">Số điện thoại chưa đăng kí</string>
+
 
     <!--    Checkout-->
     <string name="fragmentCheckoutTxtTitle">Thanh toán</string>
-    <string name="fragmentCheckouttxtShippingUnit">Vận chuyển</string>
-    <string name="fragmentCheckouttxtAddress">Địa chỉ</string>
-    <string name="fragmentCheckouttxtProductCost">Tổng giá sản phẩm</string>
-    <string name="fragmentCheckouttxtProductCostResult">Tổng phí vận chuyển</string>
-    <string name="fragmentCheckouttxtShippingCost">Phí vận chuyển</string>
-    <string name="fragmentCheckouttxtShippingCostResult">123</string>
-    <string name="fragmentCheckouttxtTotalCost">Tổng số tiền</string>
-    <string name="fragmentCheckouttxtTotalCostResult">123</string>
+    <string name="fragmentCheckoutTxtShippingUnit">Vận chuyển</string>
+    <string name="fragmentCheckoutTxtAddress">Địa chỉ</string>
+    <string name="fragmentCheckoutTxtProductCost">Tổng giá sản phẩm</string>
+    <string name="fragmentCheckoutTxtProductCostResult">Tổng phí vận chuyển</string>
+    <string name="fragmentCheckoutTxtShippingCost">Phí vận chuyển</string>
+    <string name="fragmentCheckoutTxtShippingCostResult">123</string>
+    <string name="fragmentCheckoutTxtTotalCost">Tổng số tiền</string>
+    <string name="fragmentCheckoutTxtTotalCostResult">123</string>
+    <string name="fragmentCheckoutBtnCheckout">Thanh toán</string>
 
     <!--    Add Warehouse-->
     <string name="add_warehouse_permission_not_granted">Ứng dụng cần cấp quyền để mở camera</string>
     <string name="add_warehouse_create_success">Kho mới đã được tạo!</string>
     <string name="add_warehouse_title_mode_add">Thêm kho</string>
+    <string name="add_warehouse_edit_success">Kho hàng đã được cập nhật</string>
+    <string name="add_warehouse_title_mode_edit">Sửa kho</string>
+
 
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Sản phẩm</string>
     <string name="warehouse_detail_no_product">Có vẻ như bạn chưa tạo sản phẩm nào</string>
-    <string name="add_product_title_mode_add">Add Product</string>
-    <string name="add_product_name">Name</string>
-    <string name="add_product_original_price">Price per kg</string>
-    <string name="add_product_amount">Amount (kg)</string>
-    <string name="add_product_origin">Origin</string>
-    <string name="add_product_category">Category</string>
-    <string name="add_product_price_less_than_0">Price can\'t be less than 0VND</string>
-    <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
-    <string name="add_product_description">Description</string>
-    <string name="product_add_to_cart">Add to Cart</string>
-    <string name="product_detail_amount">"Available: %1$,.1fkg"</string>
-    <string name="product_similar_title">Similar</string>
-    <string name="login_phone_signup">Don\'t have an account? <span style="color:#53B175">Sign up</span></string>
-    <string name="login_error_phone_not_found">Phone number not exist!</string>
-    <string name="error_empty_field">Field can\'t be empty!</string>
-    <string name="dialog_title_delete">Delete %1$s?</string>
-    <string name="dialog_delete_message">This action cannot be undone</string>
-    <string name="dialog_option_cancel">Cancel</string>
-    <string name="dialog_option_delete">Delete</string>
-    <string name="toast_delete_success">%1$s has been deleted</string>
-    <string name="add_warehouse_edit_success">Warehouse has been updated</string>
-    <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
+    <!--    Add Product-->
+    <string name="add_product_title_mode_add">Thêm sản phẩm</string>
+    <string name="add_product_name">"Tên "</string>
+    <string name="add_product_original_price">Giá gốc (VND/kg)</string>
+    <string name="add_product_amount">Khối lượng (kg)</string>
+    <string name="add_product_origin">Xuất xứ</string>
+    <string name="add_product_category">Phân loại</string>
+    <string name="add_product_price_less_than_0">Giá không được nhỏ hơn 0₫</string>
+    <string name="add_product_amount_less_than_0">Khối lượng không được nhỏ hơn 0kg</string>
+    <string name="add_product_description">Mô tả sản phẩm</string>
     <string name="add_product_current_price">Giá hiện tại (VND/kg)</string>
     <string name="add_product_title_mode_edit">Sửa Sản Phẩm</string>
+
+    <!--    Product Detail-->
+    <string name="product_add_to_cart">"Thêm vào giỏ hàng "</string>
+    <string name="product_detail_amount">Hiện có: %1$,.1fkg</string>
+    <string name="product_similar_title">Sản phẩm tương tự</string>
+    <string name="error_empty_field">Không được để trống</string>
     <string name="product_price_strike_through"><s>%1$,.0f₫/kg</s></string>
+    <!--    Dialog-->
+    <string name="dialog_title_delete">Xóa %1$s?</string>
+    <string name="dialog_delete_message">Hành động này sẽ không thể hoàn tác</string>
+    <string name="dialog_option_cancel">Hủy</string>
+    <string name="dialog_option_delete">Xóa</string>
+    <!--    Toast-->
+    <string name="toast_delete_success">%1$s đã được xóa</string>
+    <!--    Miscellaneous-->
     <string name="sale_tag">%1$d%%</string>
-    <string name="home_title_sale">Special Offer!</string>
+    <string name="login_phone_title">Log in with your phone number</string>
+    <string name="login_phone_hint_phone">Phone number</string>
+    <string name="login_phone_next">Next</string>
+    <string name="login_phone_title_social_media">Or connect using social media</string>
+    <string name="login_phone_login_gg">Log in with Google</string>
+    <string name="login_phone_login_fb">Log in with Facebook</string>
+    <string name="order_detail_title">Chi tiết đơn hàng</string>
+
+
 </resources>

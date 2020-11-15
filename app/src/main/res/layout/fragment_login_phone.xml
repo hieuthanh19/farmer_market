@@ -23,7 +23,7 @@
         android:layout_marginStart="@dimen/app_margin"
         android:layout_marginTop="@dimen/app_margin"
         android:fontFamily="@font/sf_display_bold"
-        android:text="Log in with your phone number"
+        android:text="@string/login_phone_title"
         style="@style/heading_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_background" />
@@ -39,7 +39,7 @@
         android:layout_marginEnd="@dimen/app_margin"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
-        android:hint="Phone number"
+        android:hint="@string/login_phone_hint_phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/login_next"
         app:layout_constraintTop_toBottomOf="@+id/login_title">
@@ -62,7 +62,8 @@
         app:layout_constraintTop_toTopOf="@+id/login_phone_number"
         app:layout_constraintBottom_toBottomOf="@+id/login_phone_number"
         android:src="@drawable/ic_round_chevron_right_24"
-        app:tint="@color/green_600" />
+        app:tint="@color/green_600"
+        android:contentDescription="@string/login_phone_next" />
 
 
     <TextView
@@ -76,7 +77,7 @@
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_phone_number"
-        android:text="@string/login_phone_signup" />
+        android:text="@string/login_phone_sign_up" />
 
     <TextView
         app:layout_constraintTop_toBottomOf="@+id/login_signup"
@@ -85,7 +86,7 @@
         android:layout_marginTop="32dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_display_semibold"
-        android:text="Or connect using social media"
+        android:text="@string/login_phone_title_social_media"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,7 +101,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/login_sub_login" />
+        app:layout_constraintTop_toBottomOf="@+id/login_sub_login"
+        android:contentDescription="@string/login_phone_login_gg" />
 
     <ImageView
         android:layout_marginTop="@dimen/app_margin"
@@ -112,6 +114,7 @@
         android:src="@drawable/log_in_fb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_google" />
+        app:layout_constraintTop_toBottomOf="@+id/login_google"
+        android:contentDescription="@string/login_phone_login_fb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
 <resources>
+    <!--    Project-->
     <string name="app_name">Farmer\'s Market</string>
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Shopping Cart</string>
@@ -9,36 +10,37 @@
     <string name="product_price_strike_through">&lt;strike>%1$,.0f₫/kg&lt;/strike></string>
 
     <!--    Order-->
-    <string name="order_product_name">Tên sản phẩm</string>
-    <string name="order_price">Tổng giá</string>
-    <string name="order_status">Trạng thái</string>
-    <string name="order_button_view">Chi tiết</string>
+    <string name="order_product_name">Product name</string>
+    <string name="order_price">Total price</string>
+    <string name="order_status">Status</string>
+    <string name="order_button_view">Detail</string>
 
     <!--    Order detail-->
-    <string name="txtOrderEmpty">Chưa có đơn hàng nào</string>
-    <string name="txtOrderDtailOrderID">Mã đơn hàng</string>
-    <string name="txtOrderDtailOrderDate">Ngày đặt hàng</string>
-    <string name="txtOrderDtailStatus">Trạng thái đơn hàng</string>
-    <string name="txtProductList">Các sản phẩm</string>
-    <string name="txtOrderDtailProductTotal">Tổng số tiền sản phẩm</string>
-    <string name="txtOrderDetailShippingTotal">Tổng số tiền vận chuyển</string>
-    <string name="txtOrderDetailTotal">Tổng</string>
-    <string name="txtOrderDetailProductName">Tên sản phẩm</string>
-    <string name="txtOrdeDetailAmount">Số lượng</string>
-    <string name="txtOrderDetailPrice">Giá tiền</string>
+    <string name="txtOrderEmpty">You have no order</string>
+    <string name="txtOrderDetailOrderID">Order ID</string>
+    <string name="txtOrderDetailOrderDate">Order date</string>
+    <string name="txtOrderDetailStatus">Status</string>
+    <string name="txtProductList">Products</string>
+    <string name="txtOrderDetailProductTotal">Total product cost</string>
+    <string name="txtOrderDetailShippingTotal">Total shipping cost</string>
+    <string name="txtOrderDetailTotal">Total cost</string>
+    <string name="txtOrderDetailProductName">Product name</string>
+    <string name="txtOrderDetailAmount">Amount</string>
+    <string name="txtOrderDetailPrice">Price</string>
 
     <!--    Cart-->
-    <string name="cart_product_name">Tên sản phẩm</string>
-    <string name="cart_price">Tổng giá</string>
-    <string name="cart_total_price_quantity">Tổng cộng</string>
-    <string name="cart_price_change">Giá thay đổi</string>
-    <string name="measure">Tấn</string>
-    <string name="txtEmpty">Giỏ hàng trống</string>
+    <string name="cart_product_name">Product name</string>
+    <string name="cart_price">Total price</string>
+    <string name="cart_total_price_quantity">"Total "</string>
+    <string name="cart_price_change">%1$s</string>
+    <string name="measure">kg</string>
+    <string name="txtEmpty">Cart is empty</string>
+
 
     <!--    Checkout-->
-    <string name="txtCheckoutSuccess">Thanh toán thành công</string>
-    <string name="btnBackToHome">Trở về trang chủ</string>
-    <string name="txtCheckoutSuccess2">Đơn hàng đang trên đường vận chuyển</string>
+    <string name="txtCheckoutSuccess">Your Order has been accepted</string>
+    <string name="btnBackToHome">Back to Home</string>
+    <string name="txtCheckoutSuccess2">Your order is on delivering</string>
 
     <!--    App-->
     <string name="nav_bottom_home">Home</string>
@@ -46,7 +48,6 @@
     <string name="nav_bottom_order">Order</string>
     <string name="nav_bottom_notification">Notification</string>
     <string name="nav_bottom_account">Account</string>
-    <string name="btn_login">Log in</string>
 
     <!--    Home-->
     <string name="title_suggestion">Suggestion</string>
@@ -56,6 +57,7 @@
     <string name="category_fish_and_seafood"><![CDATA[Fish & Seafood]]></string>
     <string name="category_meat_and_poultry"><![CDATA[Meat & Poultry]]></string>
     <string name="home_see_more">See more</string>
+    <string name="home_title_sale">Special Offer!</string>
 
     <!--    Account-->
     <string name="account_warehouse">My Warehouse</string>
@@ -68,28 +70,36 @@
     <string name="title_delete">Delete</string>
 
     <!--    Login-->
+    <string name="btn_login">Log in</string>
+    <string name="login_phone_sign_up">Don\'t have an account? &lt;span style="color:#53B175">Sign up&lt;/span></string>
     <string name="login_error_phone">Phone number can\'t be empty</string>
     <string name="login_error_password">Password can\'t be empty!</string>
+    <string name="login_error_phone_not_found">Phone number not exist!</string>
 
     <!--    Checkout-->
     <string name="fragmentCheckoutTxtTitle">Check out</string>
-    <string name="fragmentCheckouttxtShippingUnit">Shipping unit</string>
-    <string name="fragmentCheckouttxtAddress">Address</string>
-    <string name="fragmentCheckouttxtProductCost">Total Product Cost</string>
-    <string name="fragmentCheckouttxtProductCostResult">Total Shipping Cost</string>
-    <string name="fragmentCheckouttxtShippingCost">Shipping Cost</string>
-    <string name="fragmentCheckouttxtShippingCostResult">123</string>
-    <string name="fragmentCheckouttxtTotalCost">Total Cost</string>
-    <string name="fragmentCheckouttxtTotalCostResult">123</string>
+    <string name="fragmentCheckoutTxtShippingUnit">Shipping unit</string>
+    <string name="fragmentCheckoutTxtAddress">Address</string>
+    <string name="fragmentCheckoutTxtProductCost">Total Product Cost</string>
+    <string name="fragmentCheckoutTxtProductCostResult">Total Shipping Cost</string>
+    <string name="fragmentCheckoutTxtShippingCost">Shipping Cost</string>
+    <string name="fragmentCheckoutTxtShippingCostResult">123</string>
+    <string name="fragmentCheckoutTxtTotalCost">Total Cost</string>
+    <string name="fragmentCheckoutTxtTotalCostResult">123</string>
+    <string name="fragmentCheckoutBtnCheckout">Check out</string>
 
     <!--    Add Warehouse-->
     <string name="add_warehouse_permission_not_granted">Sorry! We don\'t have permission to open camera</string>
     <string name="add_warehouse_create_success">New warehouse created successfully</string>
     <string name="add_warehouse_title_mode_add">Add Warehouse</string>
+    <string name="add_warehouse_edit_success">Warehouse has been updated</string>
+    <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
 
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Products</string>
     <string name="warehouse_detail_no_product">Look like you don\'t have any product in this warehouse</string>
+
+    <!--    Add Product-->
     <string name="add_product_title_mode_add">Add Product</string>
     <string name="add_product_name">Name</string>
     <string name="add_product_original_price">Original Price (VND per kg)</string>
@@ -98,25 +108,34 @@
     <string name="add_product_origin">Origin</string>
     <string name="add_product_category">Category</string>
     <string name="add_product_price_less_than_0">Price can\'t be less than 0VND</string>
-    <string name="add_product_amount_less_than_0">Amount can\'t be less than 0</string>
+    <string name="add_product_amount_less_than_0">Amount can\'t be less than 0kg</string>
     <string name="add_product_description">Description</string>
+    <string name="add_product_title_mode_edit">Edit Product</string>
+
+    <!--    Product Detail-->
     <string name="product_add_to_cart">Add to Cart</string>
     <string name="product_detail_amount">Available: %1$,.1f kg</string>
     <string name="product_similar_title">Similar</string>
 
-    <string name="login_phone_signup">Don\'t have an account? &lt;span style="color:#53B175">Sign up&lt;/span></string>
-    <string name="login_error_phone_not_found">Phone number not exist!</string>
+    <!--    Common Error-->
     <string name="error_empty_field">Field can\'t be empty!</string>
+    <!--    Dialog-->
     <string name="dialog_title_delete">Delete %1$s?</string>
     <string name="dialog_delete_message">This action cannot be undone</string>
     <string name="dialog_option_cancel">Cancel</string>
     <string name="dialog_option_delete">Delete</string>
+    <!--    Toast-->
     <string name="toast_delete_success">%1$s has been deleted</string>
-    <string name="add_warehouse_edit_success">Warehouse has been updated</string>
-    <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
-    <string name="add_product_title_mode_edit">Edit Product</string>
+
+    <!--    Miscellaneous-->
     <string name="sale_tag">%1$d%%</string>
-    <string name="home_title_sale">Special Offer!</string>
+    <string name="login_phone_title">Log in with your phone number</string>
+    <string name="login_phone_hint_phone">Phone number</string>
+    <string name="login_phone_next">Next</string>
+    <string name="login_phone_title_social_media">Or connect using social media</string>
+    <string name="login_phone_login_gg">Log in with Google</string>
+    <string name="login_phone_login_fb">Log in with Facebook</string>
+    <string name="order_detail_title">Chi tiết đơn hàng</string>
 
 
 </resources>

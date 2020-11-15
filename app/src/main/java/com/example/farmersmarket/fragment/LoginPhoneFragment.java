@@ -58,7 +58,7 @@ public class LoginPhoneFragment extends Fragment {
         ImageView loginNext = view.findViewById(R.id.login_next);
         signUp = view.findViewById(R.id.login_signup);
 
-        signUp.setText(Html.fromHtml(getString(R.string.login_phone_signup)));
+        signUp.setText(Html.fromHtml(getString(R.string.login_phone_sign_up)));
         // Set action listener
         loginNext.setOnClickListener(v -> login());
         inputPhone.getEditText().setOnEditorActionListener((v, actionId, event) -> {

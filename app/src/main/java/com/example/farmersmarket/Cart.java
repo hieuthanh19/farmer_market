@@ -1,15 +1,12 @@
 package com.example.farmersmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
@@ -47,18 +44,15 @@ public class Cart extends AppCompatActivity {
         //Load data to array
         arrCart = appDatabase.orderDetailDAO().getAllCartInOrder();
         //Check array and show layout
-        if (arrCart.size()!=0){
+        if (arrCart.size() != 0) {
             txtEmpty.setVisibility(View.GONE);
             builAdapter();
-            btnCheckOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
-                    infomationCheckoutFragment.show(getSupportFragmentManager(),
-                            "ModalBottomSheet");
-                }
+            btnCheckOut.setOnClickListener(view -> {
+                InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
+                infomationCheckoutFragment.show(getSupportFragmentManager(),
+                        "ModalBottomSheet");
             });
-        }else{
+        } else {
             recyclerView.setVisibility(View.INVISIBLE);
             btnCheckOut.setVisibility(View.INVISIBLE);
         }
@@ -74,18 +68,15 @@ public class Cart extends AppCompatActivity {
         carAdapter.notifyItemRemoved(position);
         appDatabase.orderDetailDAO().deleteOrderCart(productID,orderID);
 
-        if (arrCart.size()!=0){
+        if (arrCart.size() != 0) {
             txtEmpty.setVisibility(View.GONE);
             builAdapter();
-            btnCheckOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
-                    infomationCheckoutFragment.show(getSupportFragmentManager(),
-                            "ModalBottomSheet");
-                }
+            btnCheckOut.setOnClickListener(view -> {
+                InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
+                infomationCheckoutFragment.show(getSupportFragmentManager(),
+                        "ModalBottomSheet");
             });
-        }else{
+        } else {
             txtEmpty.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.INVISIBLE);
             btnCheckOut.setVisibility(View.INVISIBLE);
@@ -102,6 +93,7 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
             }
+
             @Override
             public void onDeleteClick(int position) {
                 removeItem(position);
@@ -109,15 +101,15 @@ public class Cart extends AppCompatActivity {
         });
     }
 
-    private void loadFragment(Fragment fragment) {
-        // load fragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_frame, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+//    private void loadFragment(Fragment fragment) {
+//        // load fragment
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_frame, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 
-    public void getDatabase(View view){
+    public void getDatabase(View view) {
 
     }
 

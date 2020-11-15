@@ -68,40 +68,33 @@ public class InfomationCheckoutFragment extends BottomSheetDialogFragment {
 
         fragmentCheckouttxtShippingUnitResult.setText(spu.name);
         fragmentCheckouttxtAddressResult.setText(ac.address);
-        fragmentCheckouttxtProductCostResult.setText(getString(R.string.product_price,totalPriceProduct));
-        fragmentCheckouttxtShippingCostResult.setText(getString(R.string.product_price,spu.transportFee));
-        fragmentCheckouttxtTotalCostResult.setText(getString(R.string.product_price,totalPriceProduct+spu.transportFee));
+        fragmentCheckouttxtProductCostResult.setText(getString(R.string.product_price, totalPriceProduct));
+        fragmentCheckouttxtShippingCostResult.setText(getString(R.string.product_price, spu.transportFee));
+        fragmentCheckouttxtTotalCostResult.setText(getString(R.string.product_price,
+                totalPriceProduct + spu.transportFee));
 
         imgClose = v.findViewById(R.id.imgClose);
-        imgClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        imgClose.setOnClickListener(view -> dismiss());
 
-        btnCheckOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CheckoutSuccess.class);
-                startActivity(intent);
-                appDatabase.ordersDAO().checkOut(Order.ORDER_ID,totalPriceProduct+spu.transportFee);
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                long time = timestamp.getTime();
-                appDatabase.ordersDAO().updateDate(time,Order.ORDER_ID);
-                appDatabase.orderDetailDAO().setStatusOrderDetail(2);
-            }
+        btnCheckOut.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), CheckoutSuccess.class);
+            startActivity(intent);
+            appDatabase.ordersDAO().checkOut(Order.ORDER_ID, totalPriceProduct + spu.transportFee);
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            long time = timestamp.getTime();
+            appDatabase.ordersDAO().updateDate(time, Order.ORDER_ID);
+            appDatabase.orderDetailDAO().setStatusOrderDetail(2);
         });
 
         return v;
     }
 
-    public void findView(View v){
-        fragmentCheckouttxtShippingUnitResult = v.findViewById(R.id.fragmentCheckouttxtShippingUnitResult);
-        fragmentCheckouttxtAddressResult = v.findViewById(R.id.fragmentCheckouttxtAddressResult);
-        fragmentCheckouttxtProductCostResult = v.findViewById(R.id.fragmentCheckouttxtProductCostResult);
-        fragmentCheckouttxtShippingCostResult = v.findViewById(R.id.fragmentCheckouttxtShippingCostResult);
-        fragmentCheckouttxtTotalCostResult = v.findViewById(R.id.fragmentCheckouttxtTotalCostResult);
+    public void findView(View v) {
+        fragmentCheckouttxtShippingUnitResult = v.findViewById(R.id.fragmentCheckoutTxtShippingUnitResult);
+        fragmentCheckouttxtAddressResult = v.findViewById(R.id.fragmentCheckoutTxtAddressResult);
+        fragmentCheckouttxtProductCostResult = v.findViewById(R.id.fragmentCheckoutTxtProductCostResult);
+        fragmentCheckouttxtShippingCostResult = v.findViewById(R.id.fragmentCheckoutTxtShippingCostResult);
+        fragmentCheckouttxtTotalCostResult = v.findViewById(R.id.fragmentCheckoutTxtTotalCostResult);
         btnCheckOut = v.findViewById(R.id.btnCheckOut);
     }
 
