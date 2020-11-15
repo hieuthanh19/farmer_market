@@ -1,21 +1,19 @@
 package com.example.farmersmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
 import com.example.farmersmarket.object.Orders;
 import com.example.farmersmarket.viewadapter.CarAdapter;
-import com.example.farmersmarket.viewadapter.OrderListAdapter;
-import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -90,7 +88,7 @@ public class Cart extends AppCompatActivity {
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_frame, fragment);
+        transaction.replace(R.id.app_fragment_frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

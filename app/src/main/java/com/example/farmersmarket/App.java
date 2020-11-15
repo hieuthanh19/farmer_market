@@ -46,6 +46,8 @@ public class App extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
+            finish();
+
 
 //        RecyclerView recyclerViewProductVertical = findViewById(R.id.product_vertical_list);
 //        RecyclerView recyclerViewProductHorizontal = findViewById(R.id.product_horizontal_list);
@@ -74,7 +76,6 @@ public class App extends AppCompatActivity {
                 setStatusBarColor(item.getItemId());
                 switch (item.getItemId()) {
                     case R.id.home_page:
-
                         loadFragment(new HomeFragment());
                         return true;
                     case R.id.category_page:
@@ -104,8 +105,10 @@ public class App extends AppCompatActivity {
      */
     private void loadFragment(Fragment fragment) {
         // load fragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_frame, fragment);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction().setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                        R.anim.slide_in_left, R.anim.slide_out_right);
+        transaction.replace(R.id.app_fragment_frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

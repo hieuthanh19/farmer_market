@@ -34,7 +34,7 @@
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_product_title"
+            android:text="@string/add_product_title_mode_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
             android:id="@+id/add_product_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addProduct"
+            android:onClick="done"
             android:src="@drawable/ic_baseline_check_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,10 +104,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin"
                 android:layout_marginTop="@dimen/app_margin"
-                android:text="@string/add_product_price" />
+                android:text="@string/add_product_original_price" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_product_price_layout"
+                android:id="@+id/add_product_original_price_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:layout_marginEnd="@dimen/app_margin"
+                app:boxStrokeColor="@color/green_600"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_warehouse_take_photo_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/heading_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/app_margin"
+                android:text="@string/add_product_current_price" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_product_current_price_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

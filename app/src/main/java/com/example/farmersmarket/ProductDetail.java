@@ -3,6 +3,7 @@ package com.example.farmersmarket;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class ProductDetail extends AppCompatActivity {
     CarouselView carouselView;
     TextView productName;
     TextView productAmount;
+    TextView productOriginalPrice;
     TextView productPrice;
     TextView username;
     TextView warehouseAddress;
@@ -59,6 +61,7 @@ public class ProductDetail extends AppCompatActivity {
             carouselView = findViewById(R.id.product_detail_carousel);
             productName = findViewById(R.id.product_detail_product_name);
             productAmount = findViewById(R.id.product_detail_amount);
+            productOriginalPrice = findViewById(R.id.product_detail_original_price);
             productPrice = findViewById(R.id.product_detail_price);
 
             username = findViewById(R.id.product_detail_user_name);
@@ -82,7 +85,7 @@ public class ProductDetail extends AppCompatActivity {
         // get data from DB
         appDatabase = AppDatabase.getAppDatabase(this);
         product = appDatabase.productDAO().getProduct(productID);
-        StoreHouse storeHouse = appDatabase.storeHouseDAO().getStoreHouse(product.storeHouseID);
+        StoreHouse storeHouse = appDatabase.storeHouseDAO().getActiveStoreHouse(product.storeHouseID);
         Account account = appDatabase.accountDAO().getAccount(storeHouse.accountID);
         ProductType type = appDatabase.productTypeDAO().getProductType(product.productTypeID);
 
@@ -98,7 +101,14 @@ public class ProductDetail extends AppCompatActivity {
 
         productName.setText(product.name);
         productAmount.setText(getString(R.string.product_detail_amount, product.amount));
-        productPrice.setText(getString(R.string.product_price, product.price));
+        if (product.price != product.currentPrice) {
+            productOriginalPrice.setVisibility(View.VISIBLE);
+            productOriginalPrice.setText(Html.fromHtml(getString(R.string.product_price_strike_through,
+                    product.price)));
+        } else {
+            productOriginalPrice.setVisibility(View.GONE);
+        }
+        productPrice.setText(getString(R.string.product_price, product.currentPrice));
 
         username.setText(account.name);
         warehouseAddress.setText(storeHouse.address);

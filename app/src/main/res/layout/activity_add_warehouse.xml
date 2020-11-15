@@ -31,10 +31,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/add_warehouse_title"
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_warehouse_title"
+            android:text="@string/add_warehouse_title_mode_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
             android:id="@+id/warehouse_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="createWarehouse"
+            android:onClick="done"
             android:src="@drawable/ic_baseline_check_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

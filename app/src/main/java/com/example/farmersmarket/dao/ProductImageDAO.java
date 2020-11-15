@@ -24,6 +24,9 @@ public interface ProductImageDAO {
     @Delete
     void deleteProductImage(ProductImage productImage);
 
+    @Delete
+    void deleteProductImages(List<ProductImage> productImages);
+
     @Query("select * from product_image")
     ProductImage[] getAllProductImage();
 

@@ -10,7 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/product_detail_add_to_cart_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -56,6 +56,14 @@
                 android:layout_marginStart="@dimen/app_margin"
                 android:layout_marginTop="@dimen/product_text_margin"
                 android:text="@string/product_detail_amount" />
+
+            <TextView
+                android:id="@+id/product_detail_original_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_margin"
+                android:layout_marginTop="@dimen/product_text_margin"
+                android:text="@string/product_price_strike_through" />
 
             <TextView
                 android:id="@+id/product_detail_price"
@@ -345,6 +353,10 @@
                     tools:listitem="@layout/product_item_horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--Suggestion End-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -381,10 +393,10 @@
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/app_margin"
         android:layout_marginEnd="@dimen/app_margin"
+        android:padding="6dp"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="50dp"
         app:cardElevation="0dp"
-        android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -403,25 +415,32 @@
             android:src="@drawable/ic_outline_shopping_cart_24" />
     </androidx.cardview.widget.CardView>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/product_detail_add_to_cart_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/app_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <com.github.mmin18.widget.RealtimeBlurView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:realtimeBlurRadius="@dimen/product_text_margin"
+            app:realtimeOverlayColor="@color/white_alpha_75" />
+
         <Button
             android:id="@+id/product_detail_add_to_cart_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/app_margin"
+            android:layout_marginEnd="@dimen/app_margin"
             android:onClick="addToCart"
-            android:text="@string/product_add_to_cart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/product_add_to_cart" />
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Product;
 import com.example.farmersmarket.object.StoreHouse;
-import com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter;
+import com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,10 @@ public class WarehouseDetail extends AppCompatActivity {
     public static int WAREHOUSE_ID = -1;
     private static final int IMAGE_VIEW_MODE_SEARCH = 1;
     private static final int IMAGE_VIEW_MODE_ADD = 2;
+    public static String PRODUCT_ID = "productID";
+    public static String PRODUCT_MODE = "productMode";
+    public static int MODE_ADD = 1;
+    public static int MODE_EDIT = 2;
 
     ImageView search;
     TextView title;
@@ -66,7 +70,7 @@ public class WarehouseDetail extends AppCompatActivity {
         if (warehouseID >= 0) {
             // Get warehouse info and products of that warehouse
             WAREHOUSE_ID = warehouseID;
-            StoreHouse storeHouse = appDatabase.storeHouseDAO().getStoreHouse(warehouseID);
+            StoreHouse storeHouse = appDatabase.storeHouseDAO().getActiveStoreHouse(warehouseID);
             productList = appDatabase.productDAO().getActiveProductByStoreHouseDesc(storeHouse.storeHouseID);
 
             // Update activity title
@@ -74,8 +78,9 @@ public class WarehouseDetail extends AppCompatActivity {
             // If warehouse has products
             if (productList.size() > 0) {
                 productEmptyMsg.setVisibility(View.GONE);
-                ProductVerticalViewAdapter productVerticalViewAdapter = new ProductVerticalViewAdapter(productList);
-                productListView.setAdapter(productVerticalViewAdapter);
+                ProductVerticalManageViewAdapter productVerticalManageViewAdapter =
+                        new ProductVerticalManageViewAdapter(productList);
+                productListView.setAdapter(productVerticalManageViewAdapter);
                 changeModeImageView(IMAGE_VIEW_MODE_SEARCH);
                 addProduct.setOnClickListener(addProductOnClickListener());
             } else {

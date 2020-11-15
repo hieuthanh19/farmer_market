@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.example.farmersmarket.object.Account;
 
+import java.util.List;
+
 @Dao
 public interface AccountDAO {
     @Insert
@@ -20,7 +22,7 @@ public interface AccountDAO {
     void deleteAccount(Account account);
 
     @Query("select * from account")
-    Account[] getAllAccounts();
+    List<Account> getAllAccounts();
 
     @Query("select count(1) from account")
     int getAccountsCount();
@@ -29,7 +31,10 @@ public interface AccountDAO {
     Account getAccount(int accountID);
 
     @Query("select * from account where phone = :phoneNumber and password = :password")
-    Account login(String phoneNumber, String password);
+    Account getAccountByPhoneAndPassword(String phoneNumber, String password);
+
+    @Query("select * from account where phone = :phoneNumber")
+    Account getAccountByPhone(String phoneNumber);
 
 
 }

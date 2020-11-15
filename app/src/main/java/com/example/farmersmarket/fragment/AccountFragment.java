@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmersmarket.Login;
@@ -80,6 +81,8 @@ public class AccountFragment extends Fragment {
                 // redirect log in activity
                 Intent intent = new Intent(view.getContext(), Login.class);
                 startActivity(intent);
+                // delete all previous activity from back stack
+                ActivityCompat.finishAffinity(getActivity());
             }
         });
         return view;

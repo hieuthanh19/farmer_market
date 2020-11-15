@@ -21,15 +21,15 @@ public interface StoreHouseDAO {
     @Delete
     void deleteStoreHouse(StoreHouse storeHouse);
 
-    @Query("select * from store_house")
-    StoreHouse[] getAllStoreHouse();
+    @Query("select * from store_house where status = 1")
+    StoreHouse[] getAllActiveStoreHouse();
 
     @Query("select count(1) from store_house")
     int getStoreHouseCount();
 
-    @Query("select * from store_house where storeHouseID = :storeHouseID")
-    StoreHouse getStoreHouse(int storeHouseID);
+    @Query("select * from store_house where storeHouseID = :storeHouseID and status = 1")
+    StoreHouse getActiveStoreHouse(int storeHouseID);
 
-    @Query("select * from store_house where accountID = :accountID")
-    List<StoreHouse> getStoreHouseByAccountID(int accountID);
+    @Query("select * from store_house where accountID = :accountID and status = 1")
+    List<StoreHouse> getActiveStoreHousesByAccountID(int accountID);
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.LoginPhoneFragment">
+
+    <ImageView
+        android:id="@+id/login_background"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/login_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginTop="@dimen/app_margin"
+        android:fontFamily="@font/sf_display_bold"
+        android:text="Log in with your phone number"
+        style="@style/heading_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_background" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_phone_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginTop="@dimen/product_text_margin"
+        android:layout_marginEnd="@dimen/app_margin"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        android:hint="Phone number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/login_next"
+        app:layout_constraintTop_toBottomOf="@+id/login_title">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/login_next"
+        android:layout_marginTop="@dimen/product_text_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login_phone_number"
+        app:layout_constraintBottom_toBottomOf="@+id/login_phone_number"
+        android:src="@drawable/ic_round_chevron_right_24"
+        app:tint="@color/green_600" />
+
+
+    <TextView
+        android:layout_marginTop="@dimen/app_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_margin"
+        android:id="@+id/login_signup"
+        android:fontFamily="@font/sf_display_semibold"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_phone_number"
+        android:text="@string/login_phone_signup" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/login_signup"
+        android:id="@+id/login_sub_login"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_display_semibold"
+        android:text="Or connect using social media"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/app_margin"
+        android:id="@+id/login_google"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:src="@drawable/log_in_gg"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginEnd="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/login_sub_login" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/app_margin"
+        android:id="@+id/login_facebook"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_marginEnd="@dimen/app_margin"
+        android:src="@drawable/log_in_fb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_google" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -103,7 +103,7 @@ public class ProductVerticalViewAdapter extends RecyclerView.Adapter<ProductVert
             productID.setText(String.valueOf(product.productID));
             productName.setText(product.name);
             productAmount.setText(itemView.getResources().getString(R.string.product_amount, product.amount));
-            productPrice.setText(itemView.getResources().getString(R.string.product_price, product.price));
+            productPrice.setText(itemView.getResources().getString(R.string.product_price, product.currentPrice));
             // load images of product
             AppDatabase appDatabase = AppDatabase.getAppDatabase(itemView.getContext());
             List<ProductImage> productImageList =

@@ -77,14 +77,14 @@
     <!--    Add Warehouse-->
     <string name="add_warehouse_permission_not_granted">Ứng dụng cần cấp quyền để mở camera</string>
     <string name="add_warehouse_create_success">Kho mới đã được tạo!</string>
-    <string name="add_warehouse_title">Thêm kho</string>
+    <string name="add_warehouse_title_mode_add">Thêm kho</string>
 
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Sản phẩm</string>
     <string name="warehouse_detail_no_product">Có vẻ như bạn chưa tạo sản phẩm nào</string>
-    <string name="add_product_title">Add Product</string>
+    <string name="add_product_title_mode_add">Add Product</string>
     <string name="add_product_name">Name</string>
-    <string name="add_product_price">Price per kg</string>
+    <string name="add_product_original_price">Price per kg</string>
     <string name="add_product_amount">Amount (kg)</string>
     <string name="add_product_origin">Origin</string>
     <string name="add_product_category">Category</string>
@@ -94,4 +94,17 @@
     <string name="product_add_to_cart">Add to Cart</string>
     <string name="product_detail_amount">"Available: %1$,.1fkg"</string>
     <string name="product_similar_title">Similar</string>
+    <string name="login_phone_signup">Don\'t have an account? <span style="color:#53B175">Sign up</span></string>
+    <string name="login_error_phone_not_found">Phone number not exist!</string>
+    <string name="error_empty_field">Field can\'t be empty!</string>
+    <string name="dialog_title_delete">Delete %1$s?</string>
+    <string name="dialog_delete_message">This action cannot be undone</string>
+    <string name="dialog_option_cancel">Cancel</string>
+    <string name="dialog_option_delete">Delete</string>
+    <string name="toast_delete_success">%1$s has been deleted</string>
+    <string name="add_warehouse_edit_success">Warehouse has been updated</string>
+    <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
+    <string name="add_product_current_price">Giá hiện tại (VND/kg)</string>
+    <string name="add_product_title_mode_edit">Sửa Sản Phẩm</string>
+    <string name="product_price_strike_through"><s>%1$,.0f₫/kg</s></string>
 </resources>

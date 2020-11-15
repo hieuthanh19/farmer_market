@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,14 +42,17 @@ public class AddProduct extends AppCompatActivity {
 
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int CAMERA_PERMISSION_REQUEST_CODE = 1;
+    private static int MODE;
+    private static Product product;
 
     List<ProductImage> productImageList = new ArrayList<>();
     List<ProductType> productTypes = new ArrayList<>();
     private Uri photoURI;
-
     AppDatabase appDatabase;
-    TextInputLayout nameInputlayout;
-    TextInputLayout priceInputLayout;
+
+    TextInputLayout nameInputLayout;
+    TextInputLayout originalPriceInputLayout;
+    TextInputLayout currentPriceInputLayout;
     TextInputLayout amountInputLayout;
     TextInputLayout originInputLayout;
     Spinner spinner;
@@ -60,55 +64,139 @@ public class AddProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        appDatabase = AppDatabase.getAppDatabase(this);
-        nameInputlayout = findViewById(R.id.add_product_name_layout);
-        priceInputLayout = findViewById(R.id.add_product_price_layout);
+        // Get mode from intent
+        Intent intent = getIntent();
+        MODE = intent.getIntExtra(WarehouseDetail.PRODUCT_MODE, -1);
+        int productID = intent.getIntExtra(WarehouseDetail.PRODUCT_ID, -1);
+
+        // Get views
+        TextView title = findViewById(R.id.add_product_title);
+        nameInputLayout = findViewById(R.id.add_product_name_layout);
+        originalPriceInputLayout = findViewById(R.id.add_product_original_price_layout);
+        currentPriceInputLayout = findViewById(R.id.add_product_current_price_layout);
         amountInputLayout = findViewById(R.id.add_product_amount_layout);
         originInputLayout = findViewById(R.id.add_product_origin_layout);
         spinner = findViewById(R.id.spinner);
         descriptionInputLayout = findViewById(R.id.add_product_description_layout);
 
+        appDatabase = AppDatabase.getAppDatabase(this);
+        // check mode
+        if (MODE == WarehouseDetail.MODE_EDIT) {
+            title.setText(R.string.add_product_title_mode_edit);
+            if (productID != -1) {
+                product = appDatabase.productDAO().getProduct(productID);
+            } else {
+                Toast.makeText(this, "Error: Cannot load product", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            title.setText(R.string.add_product_title_mode_add);
+        }
+        loadData();
+    }
+
+    /**
+     * Load data into views
+     */
+    private void loadData() {
         // Load data into spinner
         productTypes = appDatabase.productTypeDAO().getAllProductType();
         ArrayAdapter<ProductType> adapter = new ArrayAdapter<>(this, R.layout.category_item, productTypes);
         spinner.setAdapter(adapter);
+        // In Edit mode -> set data for fields
+        if (MODE == WarehouseDetail.MODE_EDIT) {
+            nameInputLayout.getEditText().setText(product.name);
+            originalPriceInputLayout.getEditText().setText(String.valueOf(product.price));
+            currentPriceInputLayout.getEditText().setText(String.valueOf(product.currentPrice));
+            amountInputLayout.getEditText().setText(String.valueOf(product.amount));
+            originInputLayout.getEditText().setText(product.origin);
+            // set category data
+            int position = -1;
+            for (int i = 0; i < productTypes.size(); i++) {
+                if (productTypes.get(i).productTypeID == product.productTypeID)
+                    position = i;
+            }
+            spinner.setSelection(position);
+            // get product images
+            productImageList = appDatabase.productImageDAO().getProductImageByProductID(product.productID);
+        }
 
         // Set up product image list
         productImageAdapter = new ProductImageAdapter(productImageList);
         RecyclerView recyclerView = findViewById(R.id.add_product_image_list);
         recyclerView.setAdapter(productImageAdapter);
+
     }
 
+    /**
+     * Do Back Action
+     *
+     * @param view
+     */
     public void back(View view) {
         onBackPressed();
     }
 
-    public void addProduct(View view) {
+    /**
+     * Actions when user is done
+     *
+     * @param view
+     */
+    public void done(View view) {
         if (isFilledAndCorrect()) {
-            // Create new product and insert to DB
-            int storehouseID = WarehouseDetail.WAREHOUSE_ID;
-            int typeID = productTypes.get(spinner.getSelectedItemPosition()).productTypeID;
-            String name = nameInputlayout.getEditText().getText().toString();
-            int amount = Integer.parseInt(amountInputLayout.getEditText().getText().toString());
-            double price = Double.parseDouble(priceInputLayout.getEditText().getText().toString());
-            String origin = originInputLayout.getEditText().getText().toString();
-            double currentPrice = price;
-            String description = descriptionInputLayout.getEditText().getText().toString();
-            int status = 1;
+            if (MODE == WarehouseDetail.MODE_ADD) {
+                // Create new product and insert to DB
+                int storehouseID = WarehouseDetail.WAREHOUSE_ID;
+                int typeID = ((ProductType) spinner.getSelectedItem()).productTypeID;
+                String name = nameInputLayout.getEditText().getText().toString();
+                double amount = Double.parseDouble(amountInputLayout.getEditText().getText().toString());
+                double price = Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString());
+                String origin = originInputLayout.getEditText().getText().toString();
+                double currentPrice = Double.parseDouble(currentPriceInputLayout.getEditText().getText().toString());
+                ;
+                String description = descriptionInputLayout.getEditText().getText().toString();
+                int status = 1;
 
-            int productID = (int) appDatabase.productDAO().insertProduct(new Product(storehouseID, typeID, name,
-                    amount, price, origin,
-                    currentPrice, description, status));
-            // insert product image to DB
-            for (int i = 0; i < productImageList.size(); i++) {
-                // update productID because default value is -1
-                productImageList.get(i).productID = productID;
+                int productID = (int) appDatabase.productDAO().insertProduct(new Product(storehouseID, typeID, name,
+                        amount, price, origin,
+                        currentPrice, description, status));
+                // insert product image to DB
+                for (int i = 0; i < productImageList.size(); i++) {
+                    // update productID because default value is -1
+                    productImageList.get(i).productID = productID;
+                }
+                appDatabase.productImageDAO().insertProductImages(productImageList);
+                Toast.makeText(this, "New product has been inserted successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, WarehouseDetail.class);
+                intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
+
+                startActivity(intent);
+            } else {
+                product.productTypeID = ((ProductType) spinner.getSelectedItem()).productTypeID;
+                product.name = nameInputLayout.getEditText().getText().toString();
+                product.amount = Double.parseDouble(amountInputLayout.getEditText().getText().toString());
+                product.price = Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString());
+                product.origin = originInputLayout.getEditText().getText().toString();
+                product.currentPrice = Double.parseDouble(currentPriceInputLayout.getEditText().getText().toString());
+                ;
+                product.description = descriptionInputLayout.getEditText().getText().toString();
+
+                // delete current images
+                appDatabase.productImageDAO().deleteProductImages(appDatabase.productImageDAO().getProductImageByProductID(product.productID));
+                // insert product image to DB
+                for (int i = 0; i < productImageList.size(); i++) {
+                    // update productID because default value is -1
+                    productImageList.get(i).productID = product.productID;
+                }
+                appDatabase.productImageDAO().insertProductImages(productImageList);
+
+                // update product
+                appDatabase.productDAO().updateProduct(product);
+                Toast.makeText(this, "Product has been updated successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, WarehouseDetail.class);
+                intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
+
+                startActivity(intent);
             }
-            appDatabase.productImageDAO().insertProductImages(productImageList);
-            Toast.makeText(this, "New product has been insert successfully!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, WarehouseDetail.class);
-            intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
-            startActivity(intent);
         }
     }
 
@@ -121,29 +209,29 @@ public class AddProduct extends AppCompatActivity {
         boolean isFilledAndCorrect = true;
 
         // check name input
-        if (nameInputlayout.getEditText().getText().toString().isEmpty()) {
-            nameInputlayout.setError(getText(R.string.warehouse_empty));
+        if (nameInputLayout.getEditText().getText().toString().isEmpty()) {
+            nameInputLayout.setError(getString(R.string.error_empty_field));
             isFilledAndCorrect = false;
         }
         // check price input
-        if (priceInputLayout.getEditText().getText().toString().isEmpty()) {
-            priceInputLayout.setError(getText(R.string.warehouse_empty));
+        if (originalPriceInputLayout.getEditText().getText().toString().isEmpty()) {
+            originalPriceInputLayout.setError(getText(R.string.error_empty_field));
             isFilledAndCorrect = false;
-        } else if (Integer.parseInt(priceInputLayout.getEditText().getText().toString()) < 0) {
-            priceInputLayout.setError(getString(R.string.add_product_price_less_than_0));
+        } else if (Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString()) < 0) {
+            originalPriceInputLayout.setError(getString(R.string.add_product_price_less_than_0));
             isFilledAndCorrect = false;
         }
         // check amount input
         if (amountInputLayout.getEditText().getText().toString().isEmpty()) {
-            amountInputLayout.setError(getText(R.string.warehouse_empty));
+            amountInputLayout.setError(getText(R.string.error_empty_field));
             isFilledAndCorrect = false;
-        } else if (Integer.parseInt(amountInputLayout.getEditText().getText().toString()) < 0) {
+        } else if (Double.parseDouble(amountInputLayout.getEditText().getText().toString()) < 0) {
             amountInputLayout.setError(getString(R.string.add_product_amount_less_than_0));
             isFilledAndCorrect = false;
         }
         // check origin input
         if (originInputLayout.getEditText().getText().toString().isEmpty()) {
-            originInputLayout.setError(getText(R.string.warehouse_empty));
+            originInputLayout.setError(getText(R.string.error_empty_field));
             isFilledAndCorrect = false;
         }
         return isFilledAndCorrect;

@@ -11,6 +11,7 @@
     <!--    Product item-->
     <string name="product_amount">%1$,.1fkg</string>
     <string name="product_price">%1$,.0f₫/kg</string>
+    <string name="product_price_strike_through">&lt;strike>%1$,.0f₫/kg&lt;/strike></string>
 
     <!--    Order-->
     <string name="txtOrdeDetailAmount">TextView</string>
@@ -77,14 +78,15 @@
     <!--    Add Warehouse-->
     <string name="add_warehouse_permission_not_granted">Sorry! We don\'t have permission to open camera</string>
     <string name="add_warehouse_create_success">New warehouse created successfully</string>
-    <string name="add_warehouse_title">Add Warehouse</string>
+    <string name="add_warehouse_title_mode_add">Add Warehouse</string>
 
     <!--    Warehouse Detail-->
     <string name="warehouse_detail_product_title">Products</string>
     <string name="warehouse_detail_no_product">Look like you don\'t have any product in this warehouse</string>
-    <string name="add_product_title">Add Product</string>
+    <string name="add_product_title_mode_add">Add Product</string>
     <string name="add_product_name">Name</string>
-    <string name="add_product_price">Price (VND per kg)</string>
+    <string name="add_product_original_price">Original Price (VND per kg)</string>
+    <string name="add_product_current_price">Current Price (VND per kg)</string>
     <string name="add_product_amount">Amount (kg)</string>
     <string name="add_product_origin">Origin</string>
     <string name="add_product_category">Category</string>
@@ -94,6 +96,18 @@
     <string name="product_add_to_cart">Add to Cart</string>
     <string name="product_detail_amount">Available: %1$,.1f kg</string>
     <string name="product_similar_title">Similar</string>
+
+    <string name="login_phone_signup">Don\'t have an account? &lt;span style="color:#53B175">Sign up&lt;/span></string>
+    <string name="login_error_phone_not_found">Phone number not exist!</string>
+    <string name="error_empty_field">Field can\'t be empty!</string>
+    <string name="dialog_title_delete">Delete %1$s?</string>
+    <string name="dialog_delete_message">This action cannot be undone</string>
+    <string name="dialog_option_cancel">Cancel</string>
+    <string name="dialog_option_delete">Delete</string>
+    <string name="toast_delete_success">%1$s has been deleted</string>
+    <string name="add_warehouse_edit_success">Warehouse has been updated</string>
+    <string name="add_warehouse_title_mode_edit">Edit Warehouse</string>
+    <string name="add_product_title_mode_edit">Edit Product</string>
 
 
 </resources>

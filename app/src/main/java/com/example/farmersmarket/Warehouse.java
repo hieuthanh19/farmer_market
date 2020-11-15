@@ -17,6 +17,9 @@ import java.util.List;
 public class Warehouse extends AppCompatActivity {
 
     public static String WAREHOUSE_ID = "warehouseID";
+    public static String WAREHOUSE_MODE = "warehouseMode";
+    public static int MODE_ADD = 1;
+    public static int MODE_EDIT = 2;
 
     TextView warehouseEmpty;
     RecyclerView recyclerView;
@@ -33,7 +36,7 @@ public class Warehouse extends AppCompatActivity {
         recyclerView = findViewById(R.id.list_warehouse);
 
         appDatabase = AppDatabase.getAppDatabase(this);
-        storeHouseList = appDatabase.storeHouseDAO().getStoreHouseByAccountID(App.ACCOUNT_ID);
+        storeHouseList = appDatabase.storeHouseDAO().getActiveStoreHousesByAccountID(App.ACCOUNT_ID);
         // check number of warehouse
         if (storeHouseList.size() > 0) {
             // hide empty message and load data
@@ -59,5 +62,6 @@ public class Warehouse extends AppCompatActivity {
     public void navigateToAddWarehouse(View view) {
         Intent intent = new Intent(this, AddWarehouse.class);
         startActivity(intent);
+        finish();
     }
 }
