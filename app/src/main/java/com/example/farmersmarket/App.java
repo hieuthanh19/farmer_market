@@ -3,11 +3,9 @@ package com.example.farmersmarket;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,6 +31,7 @@ public class App extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         appDatabase = AppDatabase.getAppDatabase(this);
+
         // check user log in
         if (isLoggedIn()) {
             setContentView(R.layout.activity_app);
@@ -80,30 +79,27 @@ public class App extends AppCompatActivity {
      * @return true or false
      */
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener() {
-        return new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                setStatusBarColor(item.getItemId());
-                switch (item.getItemId()) {
-                    case R.id.home_page:
-                        loadFragment(new HomeFragment());
-                        return true;
-                    case R.id.category_page:
-                        loadFragment(new CategoryFragment());
-                        return true;
-                    case R.id.order_page:
-                        loadFragment(new OrderFragment());
-                        return true;
-                    case R.id.notification_page:
-                        loadFragment(new NotificationFragment());
-                        return true;
-                    case R.id.account_page:
-                        loadFragment(new AccountFragment());
-                        return true;
-                    default:
-                        loadFragment(new PageNotFoundFragment());
-                        return false;
-                }
+        return item -> {
+            setStatusBarColor(item.getItemId());
+            switch (item.getItemId()) {
+                case R.id.home_page:
+                    loadFragment(new HomeFragment());
+                    return true;
+                case R.id.category_page:
+                    loadFragment(new CategoryFragment());
+                    return true;
+                case R.id.order_page:
+                    loadFragment(new OrderFragment());
+                    return true;
+                case R.id.notification_page:
+                    loadFragment(new NotificationFragment());
+                    return true;
+                case R.id.account_page:
+                    loadFragment(new AccountFragment());
+                    return true;
+                default:
+                    loadFragment(new PageNotFoundFragment());
+                    return false;
             }
         };
     }

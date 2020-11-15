@@ -126,6 +126,7 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
                     Intent intent = new Intent(v.getContext(), AddWarehouse.class);
                     intent.putExtra(Warehouse.WAREHOUSE_ID, storeHouseID);
                     intent.putExtra(Warehouse.WAREHOUSE_MODE, Warehouse.MODE_EDIT);
+
                     v.getContext().startActivity(intent);
                 }
             };

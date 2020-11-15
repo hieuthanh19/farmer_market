@@ -7,7 +7,7 @@
     tools:context=".fragment.HomeFragment">
 
     <!--    Top Action Bar Start-->
-    <!--Top Action Bar End-->
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_app_bar"
@@ -50,7 +50,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <!--Top Action Bar End-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -233,6 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/app_margin"
+                    android:visibility="invisible"
                     android:text="@string/home_see_more"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -280,6 +281,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/app_margin"
+                    android:visibility="invisible"
                     android:text="@string/home_see_more"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

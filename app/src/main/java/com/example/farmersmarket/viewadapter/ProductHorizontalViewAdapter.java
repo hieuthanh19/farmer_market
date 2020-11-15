@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -79,9 +80,12 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
         public final TextView productPrice;
         public final ImageView productImage;
         public final TextView productSale;
+        public final Context context;
 
         public ViewHolder(View view) {
             super(view);
+
+            context = view.getContext();
 
             productName = view.findViewById(R.id.product_name);
             productAmount = view.findViewById(R.id.product_amount);
@@ -102,28 +106,33 @@ public class ProductHorizontalViewAdapter extends RecyclerView.Adapter<ProductHo
                 productSale.setText(itemView.getContext().getString(R.string.sale_tag, salePercentage));
                 // Set price color to text_sale
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    productPrice.setTextColor(itemView.getContext().getColor(R.color.text_sale));
+                    productPrice.setTextColor(context.getColor(R.color.text_sale));
                 }
             } else {
                 // Hide sale tag & change price color to normal
                 productSale.setVisibility(View.INVISIBLE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    productPrice.setTextColor(itemView.getContext().getColor(R.color.black));
+                    productPrice.setTextColor(context.getColor(R.color.black));
                 }
             }
             productName.setText(product.name);
             productAmount.setText(itemView.getResources().getString(R.string.product_amount, product.amount));
             productPrice.setText(itemView.getResources().getString(R.string.product_price, product.currentPrice));
             // load images of product
-            AppDatabase appDatabase = AppDatabase.getAppDatabase(itemView.getContext());
+            AppDatabase appDatabase = AppDatabase.getAppDatabase(context);
             List<ProductImage> productImageList =
                     appDatabase.productImageDAO().getProductImageByProductID(product.productID);
             // if product have image -> load first image
             if (productImageList.size() > 0)
-                Glide.with(itemView.getContext()).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(productImage);
+                if (productImageList.get(0).URL.startsWith("@drawable")) {
+                    int resource = context.getResources().getIdentifier(productImageList.get(0).URL, "drawable",
+                            context.getPackageName());
+                    Glide.with(context).load(resource).centerCrop().into(productImage);
+                } else
+                    Glide.with(context).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(productImage);
                 // if not -> load empty image
             else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Glide.with(itemView.getContext()).load(R.drawable.empty).centerCrop().into(productImage);
+                Glide.with(context).load(R.drawable.empty).centerCrop().into(productImage);
             }
         }
 

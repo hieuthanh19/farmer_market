@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -91,14 +92,17 @@ public class ProductDetail extends AppCompatActivity {
             product_detail_add_to_cart_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID, Order.ORDER_ID);
+                    arrCartByProductID = appDatabase.orderDetailDAO().getOrderDetailByOrderIDAndProductID(productID,
+                            Order.ORDER_ID);
                     if (!arrCartByProductID.isEmpty()) {
                         int quantity = arrCartByProductID.get(0).quantity + 1;
-                        appDatabase.orderDetailDAO().updateQuantityAndPrice(productID, Order.ORDER_ID, quantity, quantity * productPrice);
+                        appDatabase.orderDetailDAO().updateQuantityAndPrice(productID, Order.ORDER_ID, quantity,
+                                quantity * productPrice);
                     } else {
-                        appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1, productPrice, "", 1));
+                        appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1,
+                                productPrice, "", 1));
                     }
-                    Toast.makeText(getBaseContext(),"Thêm sản phẩm vào giỏ hàng thành công",
+                    Toast.makeText(getBaseContext(), "Thêm sản phẩm vào giỏ hàng thành công",
                             Toast.LENGTH_SHORT).show();
                 }
             });
@@ -107,6 +111,11 @@ public class ProductDetail extends AppCompatActivity {
         }
     }
 
+    /**
+     * Populate data from DB into views
+     *
+     * @param productID product ID
+     */
     private void populateDataIntoViews(int productID) {
         // get data from DB
         appDatabase = AppDatabase.getAppDatabase(this);
@@ -174,26 +183,45 @@ public class ProductDetail extends AppCompatActivity {
         similarList.setAdapter(similarProductViewAdapter);
         suggestList.setAdapter(suggestionProductVerticalViewAdapter);
 
-        //Set image
-        // if product have image -> load first image
-        if (account.image != "" || account.image != null)
+        //Set account image
+        // if account have image -> load first image
+        if (!account.image.equals("")) {
+            Log.d("PRODUCT", "account has image");
+            Log.d("PRODUCT", "URL: " + account.image);
             Glide.with(getApplicationContext()).load(Uri.parse(account.image)).centerCrop().into(product_detail_user_avatar);
-            // if not -> load empty image
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        }
+        // if not -> load empty image
+        else {
             Glide.with(getApplicationContext()).load(R.drawable.empty).centerCrop().into(product_detail_user_avatar);
         }
 
     }
 
+    /**
+     * Load product images to carousel
+     *
+     * @return a {@link ImageListener}
+     */
     private ImageListener imageListener() {
         return new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
-                Glide.with(getApplicationContext()).load(Uri.parse(productImageList.get(position).URL)).centerCrop().into(imageView);
+                if (productImageList.get(position).URL.startsWith("@drawable")) {
+                    int resource =
+                            getApplicationContext().getResources().getIdentifier(productImageList.get(position).URL,
+                                    "drawable", getApplicationContext().getPackageName());
+                    Glide.with(getApplicationContext()).load(resource).centerCrop().into(imageView);
+                } else
+                    Glide.with(getApplicationContext()).load(Uri.parse(productImageList.get(position).URL)).centerCrop().into(imageView);
             }
         };
     }
 
+    /**
+     * Load empty image to carousel
+     *
+     * @return a {@link ImageListener}
+     */
     private ImageListener emptyImageListener() {
         return new ImageListener() {
             @Override
@@ -208,5 +236,8 @@ public class ProductDetail extends AppCompatActivity {
     }
 
     public void displayCart(View view) {
+        Intent intent = new Intent(this, Cart.class);
+        startActivity(intent);
     }
+
 }

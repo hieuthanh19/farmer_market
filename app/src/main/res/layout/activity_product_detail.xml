@@ -27,7 +27,6 @@
                 app:autoPlay="false"
                 app:fillColor="@color/green_600"
                 app:radius="@dimen/product_text_margin" />
-
             <!--            Product Info Start-->
             <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -142,22 +141,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/product_text_margin"
-                    android:drawableStart="@drawable/ic_baseline_star_24"
-                    android:drawableTint="@color/star"
                     android:text="rating"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_24"
+                    app:drawableTint="@color/star"
                     app:layout_constraintStart_toEndOf="@+id/product_detail_user_avatar"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_user_name" />
 
                 <TextView
                     android:id="@+id/product_detail_warehouse_address"
                     style="@style/sub_heading"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/product_text_margin"
-                    android:drawableStart="@drawable/home"
+                    android:layout_marginEnd="@dimen/app_margin"
                     android:drawablePadding="@dimen/product_text_margin"
                     android:text="Address"
+                    app:drawableStartCompat="@drawable/home"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/product_detail_user_avatar"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_warehouse_rating" />
 
@@ -240,13 +241,15 @@
 
                 <TextView
                     android:id="@+id/product_detail_origin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
+                    android:layout_marginEnd="@dimen/app_margin"
                     android:fontFamily="@font/sf_display_regular"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/product_detail_origin_title"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_category"
                     app:layout_goneMarginStart="@dimen/app_margin" />
@@ -261,19 +264,22 @@
                     android:text="Description"
                     android:textColor="@color/gray_300"
                     android:textSize="18sp"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_origin"
                     app:layout_goneMarginStart="@dimen/app_margin" />
 
                 <TextView
                     android:id="@+id/product_detail_description"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
+                    android:layout_marginEnd="@dimen/app_margin"
                     android:fontFamily="@font/sf_display_regular"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_description_title"
                     app:layout_goneMarginStart="@dimen/app_margin" />
@@ -327,6 +333,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/app_margin"
                     android:text="@string/home_see_more"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -469,7 +476,6 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/app_margin"
             android:layout_marginEnd="@dimen/app_margin"
-            android:onClick="addToCart"
             android:text="@string/product_add_to_cart" />
     </androidx.cardview.widget.CardView>
     <!--Add To Cart Button-->

@@ -74,21 +74,21 @@ public class AddWarehouse extends AppCompatActivity {
                 appDatabase.storeHouseDAO().insertStoreHouse(new StoreHouse(App.ACCOUNT_ID,
                         nameLayout.getEditText().getText().toString(),
                         addressLayout.getEditText().getText().toString(), 1, 1, "", 1));
-                Intent intent = new Intent(this, Warehouse.class);
                 Toast.makeText(this, getText(R.string.add_warehouse_create_success), Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-                // remove activity from backstack
+                Intent replyIntent = new Intent();
+                setResult(RESULT_OK, replyIntent);
+                Warehouse.recyclerView.getAdapter().notifyDataSetChanged();
                 finish();
             } else {
                 storeHouse.storeName = nameLayout.getEditText().getText().toString();
                 storeHouse.address = addressLayout.getEditText().getText().toString();
                 appDatabase.storeHouseDAO().updateStoreHouse(storeHouse);
                 // Return to Warehouse
-                Intent intent = new Intent(this, Warehouse.class);
+                Intent intent = new Intent();
                 Toast.makeText(this, getText(R.string.add_warehouse_edit_success), Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-                // remove activity from backstack
+                setResult(RESULT_OK, intent);
                 finish();
+
             }
         }
     }

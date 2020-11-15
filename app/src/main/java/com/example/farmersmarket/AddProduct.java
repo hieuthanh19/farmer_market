@@ -152,13 +152,11 @@ public class AddProduct extends AppCompatActivity {
                 double price = Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString());
                 String origin = originInputLayout.getEditText().getText().toString();
                 double currentPrice = Double.parseDouble(currentPriceInputLayout.getEditText().getText().toString());
-                ;
                 String description = descriptionInputLayout.getEditText().getText().toString();
                 int status = 1;
 
                 int productID = (int) appDatabase.productDAO().insertProduct(new Product(storehouseID, typeID, name,
-                        amount, price, origin,
-                        currentPrice, description, status));
+                        amount, price, origin, currentPrice, description, status));
                 // insert product image to DB
                 for (int i = 0; i < productImageList.size(); i++) {
                     // update productID because default value is -1
@@ -178,7 +176,6 @@ public class AddProduct extends AppCompatActivity {
                 product.price = Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString());
                 product.origin = originInputLayout.getEditText().getText().toString();
                 product.currentPrice = Double.parseDouble(currentPriceInputLayout.getEditText().getText().toString());
-                ;
                 product.description = descriptionInputLayout.getEditText().getText().toString();
 
                 // delete current images
@@ -221,6 +218,14 @@ public class AddProduct extends AppCompatActivity {
             isFilledAndCorrect = false;
         } else if (Double.parseDouble(originalPriceInputLayout.getEditText().getText().toString()) < 0) {
             originalPriceInputLayout.setError(getString(R.string.add_product_price_less_than_0));
+            isFilledAndCorrect = false;
+        }
+        // check current price input
+        if (currentPriceInputLayout.getEditText().getText().toString().isEmpty()) {
+            currentPriceInputLayout.setError(getText(R.string.error_empty_field));
+            isFilledAndCorrect = false;
+        } else if (Double.parseDouble(currentPriceInputLayout.getEditText().getText().toString()) < 0) {
+            currentPriceInputLayout.setError(getString(R.string.add_product_price_less_than_0));
             isFilledAndCorrect = false;
         }
         // check amount input

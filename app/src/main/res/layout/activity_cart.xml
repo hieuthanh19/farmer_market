@@ -34,13 +34,18 @@
             style="@style/heading_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giỏ hàng"
+            android:text="@string/cart_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        style="@style/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <TextView
         android:id="@+id/txtEmpty"
@@ -49,7 +54,7 @@
         android:layout_weight="1"
         android:gravity="center|center_vertical"
         android:text="@string/txtEmpty"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcCart"

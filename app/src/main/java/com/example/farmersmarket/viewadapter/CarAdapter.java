@@ -2,7 +2,6 @@ package com.example.farmersmarket.viewadapter;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ import com.example.farmersmarket.object.ProductImage;
 import java.util.List;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
-    private OnItemClickListener mlistner;
+    private OnItemClickListener mlistener;
     private final List<OrderDetail> arrCart;
     private final Context mContext;
     private AppDatabase appDatabase;
@@ -38,35 +37,42 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_cart_list, parent, false);
-        return new ViewHolder(view,mlistner);
+        return new ViewHolder(view, mlistener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CarAdapter.ViewHolder holder, int position) {
         appDatabase = AppDatabase.getAppDatabase(mContext);
         OrderDetail carts = arrCart.get(position);
-        double price = appDatabase.productDAO().getProduct(carts.productID).price;
+        double price = appDatabase.productDAO().getProduct(carts.productID).currentPrice;
 
         //LOAD IMAGE
         List<ProductImage> productImageList =
                 appDatabase.productImageDAO().getProductImageByProductID(carts.productID);
         // if product have image -> load first image
-        if (productImageList.size() > 0)
-            Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.cart_product_image);
-            // if not -> load empty image
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (productImageList.size() > 0) {
+            if (productImageList.get(0).URL.startsWith("@drawable")) {
+                int resource = mContext.getResources().getIdentifier(productImageList.get(0).URL, "drawable",
+                        mContext.getPackageName());
+                Glide.with(mContext).load(resource).centerCrop().into(holder.cart_product_image);
+            } else
+                Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.cart_product_image);
+        }
+        // if not -> load empty image
+        else {
             Glide.with(mContext).load(R.drawable.empty).centerCrop().into(holder.cart_product_image);
         }
 
         holder.cart_product_name.setText(appDatabase.productDAO().getProduct(carts.productID).name);
-        holder.cart_price.setText(mContext.getString(R.string.product_price,price));
-        holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*carts.quantity));
+        holder.cart_price.setText(mContext.getString(R.string.product_price, price));
+        holder.cart_price_change.setText(mContext.getString(R.string.product_price, price * carts.quantity));
         holder.cart_amount.setNumber(Integer.toString(carts.quantity));
         holder.cart_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*newValue));
-                appDatabase.orderDetailDAO().updateQuantityAndPrice(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
+                holder.cart_price_change.setText(mContext.getString(R.string.product_price, price * newValue));
+                appDatabase.orderDetailDAO().updateQuantityAndPrice(carts.productID, carts.orderID,
+                        Integer.parseInt(holder.cart_amount.getNumber()), price * newValue);
 
             }
         });
@@ -80,19 +86,20 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     //Create event for item
     public interface OnItemClickListener {
         void onItemClick(int position);
+
         void onDeleteClick(int position);
     }
 
-    public int getOrderId(int position){
-        return arrCart.get(position).ordersID;
+    public int getOrderId(int position) {
+        return arrCart.get(position).orderID;
     }
 
-    public int getProductId(int position){
+    public int getProductId(int position) {
         return arrCart.get(position).productID;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listner) {
-        mlistner = listner;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mlistener = listener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

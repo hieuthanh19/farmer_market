@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
 
 import java.util.List;
@@ -53,7 +52,7 @@ public interface OrdersDAO {
     @Query("select transportFee from shipping_unit where shippingID=:id")
     Double getFeeByShippingID(int id);
 
-    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
+    @Query("select sum(totalPrice) from order_detail where orderID = :orderID")
     double getTotalCostOfOrderDetailByOrderID(int orderID);
 
     @Query("update orders set total =:total, status=2 where orderID=:orderID")

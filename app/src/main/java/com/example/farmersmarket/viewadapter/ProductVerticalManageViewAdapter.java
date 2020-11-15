@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -85,6 +86,7 @@ public class ProductVerticalManageViewAdapter extends RecyclerView.Adapter<Produ
         public final TextView productEdit;
         public final TextView productDelete;
         public final ImageView productImage;
+        public Context context = itemView.getContext();
 
         public ViewHolder(View view) {
             super(view);
@@ -111,10 +113,15 @@ public class ProductVerticalManageViewAdapter extends RecyclerView.Adapter<Produ
                     appDatabase.productImageDAO().getProductImageByProductID(product.productID);
             // if product have image -> load first image
             if (productImageList.size() > 0)
-                Glide.with(itemView.getContext()).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(productImage);
+                if (productImageList.get(0).URL.startsWith("@drawable")) {
+                    int resource = context.getResources().getIdentifier(productImageList.get(0).URL, "drawable",
+                            context.getPackageName());
+                    Glide.with(itemView.getContext()).load(resource).centerCrop().into(productImage);
+                } else
+                    Glide.with(context).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(productImage);
                 // if not -> load empty image
             else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Glide.with(itemView.getContext()).load(R.drawable.empty).centerCrop().into(productImage);
+                Glide.with(context).load(R.drawable.empty).centerCrop().into(productImage);
             }
         }
 

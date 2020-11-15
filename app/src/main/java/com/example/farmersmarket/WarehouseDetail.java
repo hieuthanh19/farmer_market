@@ -120,7 +120,9 @@ public class WarehouseDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddProduct.class);
+                intent.putExtra(WarehouseDetail.PRODUCT_MODE, WarehouseDetail.MODE_ADD);
                 startActivity(intent);
+                finish();
             }
         };
     }
@@ -135,6 +137,8 @@ public class WarehouseDetail extends AppCompatActivity {
     }
 
     public void back(View view) {
-        onBackPressed();
+        Intent intent = new Intent(view.getContext(), Warehouse.class);
+        startActivity(intent);
+        finish();
     }
 }

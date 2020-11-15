@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -27,7 +26,6 @@ public class LoginConfirmFragment extends Fragment {
 
 
     private TextInputLayout inputPassword;
-    private TextView loginError;
 
     public LoginConfirmFragment() {
         // Required empty public constructor
@@ -57,7 +55,6 @@ public class LoginConfirmFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login_confirm, container, false);
 
         inputPassword = view.findViewById(R.id.login_confirm_password);
-        loginError = view.findViewById(R.id.login_error);
         ImageView back = view.findViewById(R.id.login_confirm_back);
         ImageView loginConfirm = view.findViewById(R.id.login_confirm_finish);
 
@@ -100,7 +97,7 @@ public class LoginConfirmFragment extends Fragment {
                     getActivity().finish();
                 } else {
                     // password not correct -> display error message
-                    loginError.setVisibility(View.VISIBLE);
+                    inputPassword.setError(getString(R.string.login_error_password_incorrect));
                 }
             }
         }

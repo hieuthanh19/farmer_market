@@ -20,9 +20,8 @@ public class ShippingUnit {
     public int status;
 
     @Ignore
-    public ShippingUnit(int shippingID, int accountID, String name, String phoneNumber, double transportFee,
+    public ShippingUnit(int accountID, String name, String phoneNumber, double transportFee,
                         String image, int status) {
-        this.shippingID = shippingID;
         this.accountID = accountID;
         this.name = name;
         this.phoneNumber = phoneNumber;

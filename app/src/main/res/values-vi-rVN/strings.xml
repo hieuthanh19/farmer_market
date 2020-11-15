@@ -126,13 +126,18 @@
     <string name="toast_delete_success">%1$s đã được xóa</string>
     <!--    Miscellaneous-->
     <string name="sale_tag">%1$d%%</string>
-    <string name="login_phone_title">Log in with your phone number</string>
-    <string name="login_phone_hint_phone">Phone number</string>
-    <string name="login_phone_next">Next</string>
-    <string name="login_phone_title_social_media">Or connect using social media</string>
-    <string name="login_phone_login_gg">Log in with Google</string>
-    <string name="login_phone_login_fb">Log in with Facebook</string>
+    <string name="login_phone_title">Đăng nhập bằng số điện thoại</string>
+    <string name="login_phone_hint_phone">Số điện thoại</string>
+    <string name="login_phone_next">Kế tiếp</string>
+    <string name="login_phone_title_social_media">Hoặc đăng nhập bằng mạng xã hội</string>
+    <string name="login_phone_login_gg">Đăng nhập bằng Google</string>
+    <string name="login_phone_login_fb">Đăng nhập bằng Facebook</string>
     <string name="order_detail_title">Chi tiết đơn hàng</string>
+    <string name="login_error_password_incorrect">Sai mật khẩu</string>
+    <string name="login_title_forgot_password">Quên mật khẩu?</string>
+    <string name="login_hint_password">Mật khẩu</string>
+    <string name="login_title_password">Nhập mật khẩu</string>
+    <string name="cart_title">Giỏ hàng</string>
 
 
 </resources>

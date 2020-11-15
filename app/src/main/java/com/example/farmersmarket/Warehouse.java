@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,16 +17,18 @@ import java.util.List;
 
 public class Warehouse extends AppCompatActivity {
 
+    public static int REQUEST_CODE = 1;
     public static String WAREHOUSE_ID = "warehouseID";
     public static String WAREHOUSE_MODE = "warehouseMode";
     public static int MODE_ADD = 1;
     public static int MODE_EDIT = 2;
 
     TextView warehouseEmpty;
-    RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
 
     AppDatabase appDatabase;
     List<StoreHouse> storeHouseList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +51,25 @@ public class Warehouse extends AppCompatActivity {
         }
     }
 
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            storeHouseList = appDatabase.storeHouseDAO().getActiveStoreHousesByAccountID(App.ACCOUNT_ID);
+            populateData();
+        }
+    }
+
     private void populateData() {
         WarehouseViewAdapter warehouseViewADapter = new WarehouseViewAdapter(storeHouseList);
         recyclerView.setAdapter(warehouseViewADapter);
-
     }
 
 
@@ -61,7 +79,7 @@ public class Warehouse extends AppCompatActivity {
 
     public void navigateToAddWarehouse(View view) {
         Intent intent = new Intent(this, AddWarehouse.class);
-        startActivity(intent);
-        finish();
+        intent.putExtra(Warehouse.WAREHOUSE_MODE, Warehouse.MODE_ADD);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 }

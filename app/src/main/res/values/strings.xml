@@ -135,7 +135,12 @@
     <string name="login_phone_title_social_media">Or connect using social media</string>
     <string name="login_phone_login_gg">Log in with Google</string>
     <string name="login_phone_login_fb">Log in with Facebook</string>
-    <string name="order_detail_title">Chi tiết đơn hàng</string>
+    <string name="order_detail_title">Order Detail</string>
+    <string name="login_error_password_incorrect">Incorrect password!</string>
+    <string name="login_title_forgot_password">Forgot password?</string>
+    <string name="login_hint_password">Password</string>
+    <string name="login_title_password">Enter your password</string>
+    <string name="cart_title">Cart</string>
 
 
 </resources>
