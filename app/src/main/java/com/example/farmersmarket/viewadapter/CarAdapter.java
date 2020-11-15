@@ -60,13 +60,13 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
         holder.cart_product_name.setText(appDatabase.productDAO().getProduct(carts.productID).name);
         holder.cart_price.setText(mContext.getString(R.string.product_price,price));
-        holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*carts.quantity));
+        holder.cart_price_change.setText(mContext.getString(R.string.cart_price_change,price*carts.quantity));
         holder.cart_amount.setNumber(Integer.toString(carts.quantity));
         holder.cart_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                holder.cart_price_change.setText(mContext.getString(R.string.product_price,price*newValue));
-                appDatabase.orderDetailDAO().updateQuantityAndPrice(carts.productID,carts.ordersID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
+                holder.cart_price_change.setText(mContext.getString(R.string.cart_price_change,price*newValue));
+                appDatabase.orderDetailDAO().updateQuantityAndPrice(carts.productID,carts.orderID, Integer.parseInt(holder.cart_amount.getNumber()),price*newValue);
 
             }
         });
@@ -84,7 +84,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     }
 
     public int getOrderId(int position){
-        return arrCart.get(position).ordersID;
+        return arrCart.get(position).orderID;
     }
 
     public int getProductId(int position){

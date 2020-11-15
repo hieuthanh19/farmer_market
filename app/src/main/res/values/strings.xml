@@ -14,6 +14,7 @@
     <string name="order_price">Total price</string>
     <string name="order_status">Status</string>
     <string name="order_button_view">Detail</string>
+    <string name="order_title">Order</string>
 
     <!--    Order detail-->
     <string name="txtOrderEmpty">You have no order</string>
@@ -32,10 +33,10 @@
     <string name="cart_product_name">Product name</string>
     <string name="cart_price">Total price</string>
     <string name="cart_total_price_quantity">"Total "</string>
-    <string name="cart_price_change">%1$s</string>
+    <string name="cart_price_change">%1$,.0f₫</string>
     <string name="measure">kg</string>
     <string name="txtEmpty">Cart is empty</string>
-
+    <string name="cart_title">Cart</string>
 
     <!--    Checkout-->
     <string name="txtCheckoutSuccess">Your Order has been accepted</string>
@@ -136,6 +137,5 @@
     <string name="login_phone_login_gg">Log in with Google</string>
     <string name="login_phone_login_fb">Log in with Facebook</string>
     <string name="order_detail_title">Chi tiết đơn hàng</string>
-
 
 </resources>

@@ -1,12 +1,21 @@
 package com.example.farmersmarket;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.LoginPhoneFragment;
+import com.example.farmersmarket.object.Account;
+import com.example.farmersmarket.object.AccountType;
+import com.example.farmersmarket.object.Product;
+import com.example.farmersmarket.object.ProductType;
+import com.example.farmersmarket.object.ShippingUnit;
+import com.example.farmersmarket.object.StoreHouse;
+import com.example.farmersmarket.object.Utils;
 
 public class Login extends AppCompatActivity {
 
@@ -17,8 +26,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loadFragment(new LoginPhoneFragment());
 
-//    AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
-//
+    AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
+
 //        appDatabase.accountTypeDAO().insertAccountType(new AccountType("admin", 1));
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            appDatabase.accountDAO().insertAccount(new Account(1, "0348204069", Utils.encryptPassword("admin"),
@@ -42,6 +51,9 @@ public class Login extends AppCompatActivity {
 //                "This a a fruit", 1));
 //        appDatabase.productDAO().insertProduct(new Product(1, 1, "papaya", 1000, 15000, "Binh Thuan", 12000,
 //                "This a a fruit", 1));
+
+//        appDatabase.shippingUnitDAO().insertShippingUnit(new ShippingUnit(1,1, "Fast", "02423331123", 123432,
+//        "", 1));
     }
 
 

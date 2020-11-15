@@ -53,7 +53,7 @@ public interface OrdersDAO {
     @Query("select transportFee from shipping_unit where shippingID=:id")
     Double getFeeByShippingID(int id);
 
-    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID")
+    @Query("select sum(totalPrice) from order_detail where orderID = :orderID")
     double getTotalCostOfOrderDetailByOrderID(int orderID);
 
     @Query("update orders set total =:total, status=2 where orderID=:orderID")

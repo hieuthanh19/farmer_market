@@ -13,6 +13,7 @@
     <string name="order_price">Tổng giá</string>
     <string name="order_status">Trạng thái</string>
     <string name="order_button_view">Chi tiết</string>
+    <string name="order_title">Đơn hàng</string>
 
     <!--    Order detail-->
     <string name="txtOrderEmpty">Chưa có đơn hàng nào</string>
@@ -31,9 +32,10 @@
     <string name="cart_product_name">Tên sản phẩm</string>
     <string name="cart_price">Tổng giá</string>
     <string name="cart_total_price_quantity">Tổng cộng</string>
-    <string name="cart_price_change">%1$s</string>
+    <string name="cart_price_change">%1$,.0f₫</string>
     <string name="measure">kg</string>
     <string name="txtEmpty">Giỏ hàng trống</string>
+    <string name="cart_title">Giỏ hàng</string>
 
     <!--    Checkout-->
     <string name="txtCheckoutSuccess">Thanh toán thành công</string>
