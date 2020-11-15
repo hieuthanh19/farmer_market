@@ -7,6 +7,9 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.farmersmarket.object.OrderDetail;
+import com.example.farmersmarket.object.Orders;
+
+import java.util.List;
 
 @Dao
 public interface OrderDetailDAO {
@@ -20,11 +23,30 @@ public interface OrderDetailDAO {
     void deleteOrderDetail(OrderDetail orderDetail);
 
     @Query("select * from order_detail")
-    OrderDetail[] getAllOrderDetail();
+    List<OrderDetail> getAllOrderDetail();
+
+    @Query("select * from order_detail where status=1")
+    List<OrderDetail> getAllCartInOrder();
 
     @Query("select count(1) from order_detail")
     int getOrderDetailCount();
 
-    @Query("select * from order_detail where orderID = :orderID")
-    OrderDetail getOrderDetail(int orderID);
+    @Query("delete from order_detail WHERE ordersID = :orderID AND productID=:productId")
+    void deleteOrderCart(int productId, int orderID);
+
+    @Query("update order_detail set quantity =:quantity, totalPrice=:totalPrice where productID=:productId and ordersID=:orderID")
+    void updateQuantityAndPrice(int productId, int orderID, int quantity,double totalPrice);
+
+    @Query("select * from order_detail where ordersID = :orderID")
+    List<OrderDetail> getAllOrderDetailByOrderID(int orderID);
+
+    @Query("select sum(totalPrice) from order_detail where ordersID = :orderID and status=1")
+    double getTotalCostOfOrderDetailByOrderID(int orderID);
+
+    @Query("update order_detail set status =:status where status = 1")
+    void setStatusOrderDetail(int status);
+
+    @Query("select * from order_detail where productID=:productID and ordersID=:ordersID")
+    List<OrderDetail> getOrderDetailByOrderIDAndProductID(int productID,int ordersID);
+
 }

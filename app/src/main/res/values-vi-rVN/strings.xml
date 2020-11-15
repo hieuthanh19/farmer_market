@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Chợ nông sản</string>
-    <string name="order_status">TextView</string>
-    <string name="order_price">TextView</string>
-    <string name="order_provider">TextView</string>
-    <string name="order_product_name">Sầu riêng</string>
-    <string name="order_button_view">Xem đơn hàng</string>
     <string name="order_product_image">TODO</string>
     <string name="description_shopping_cart">Xe hàng</string>
 
     <!--    Product item-->
     <string name="product_amount">%1$,.1fkg</string>
     <string name="product_price">%1$,.0f₫/kg</string>
+
     <!--    Order-->
-    <string name="txtOrdeDetailAmount">TextView</string>
-    <string name="txtOrderDetailPrice">TextView</string>
-    <string name="txtOrderDtailProductTotal" />
-    <string name="txtOrderDtailOrderID">TextView</string>
-    <string name="txtOrderDtailOrderDate" />
-    <string name="txtOrderDtailStatus" />
-    <string name="txtOrderDtailProvideInfo" />
-    <string name="txtOrderDetailStoreName" />
-    <string name="txtOrderDetailProvide" />
-    <string name="txtOrderDetailProductName" />
-    <string name="txtOrderDetailParacel" />
-    <string name="btnOrderDetailViewStore" />
-    <string name="txtOrderDetailStoreStar" />
-    <string name="txtOrderDetailShippingTotal">TextView</string>
-    <string name="txtOrderDetailTotal" />
-    <string name="txtOrderDetailShippingTotalRS">TextView</string>
-    <string name="txtOrderDetailTotalRS">TextView</string>
-    <string name="txtOrderDtailProductTotalRS">TextView</string>
+    <string name="order_product_name">Tên sản phẩm</string>
+    <string name="order_price">Tổng giá</string>
+    <string name="order_status">Trạng thái</string>
+    <string name="order_button_view">Chi tiết</string>
+
+    <!--    Order detail-->
+    <string name="txtOrderEmpty">Chưa có đơn hàng nào</string>
+    <string name="txtOrderDtailOrderID">Mã đơn hàng</string>
+    <string name="txtOrderDtailOrderDate">Ngày đặt hàng</string>
+    <string name="txtOrderDtailStatus">Trạng thái đơn hàng</string>
+    <string name="txtProductList">Các sản phẩm</string>
+    <string name="txtOrderDtailProductTotal">Tổng số tiền sản phẩm</string>
+    <string name="txtOrderDetailShippingTotal">Tổng số tiền vận chuyển</string>
+    <string name="txtOrderDetailTotal">Tổng</string>
+    <string name="txtOrderDetailProductName">Tên sản phẩm</string>
+    <string name="txtOrdeDetailAmount">Số lượng</string>
+    <string name="txtOrderDetailPrice">Giá tiền</string>
+
+    <!--    Cart-->
+    <string name="cart_product_name">Tên sản phẩm</string>
+    <string name="cart_price">Tổng giá</string>
+    <string name="cart_total_price_quantity">Tổng cộng</string>
+    <string name="cart_price_change">Giá thay đổi</string>
+    <string name="measure">Tấn</string>
+    <string name="txtEmpty">Giỏ hàng trống</string>
+
+    <!--    Checkout-->
+    <string name="txtCheckoutSuccess">Thanh toán thành công</string>
+    <string name="btnBackToHome">Trở về trang chủ</string>
+    <string name="txtCheckoutSuccess2">Đơn hàng đang trên đường vận chuyển</string>
 
     <!--    App-->
     <string name="nav_bottom_home">Trang chủ</string>

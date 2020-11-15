@@ -1,31 +1,33 @@
 package com.example.farmersmarket;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
-import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.viewadapter.CarAdapter;
 
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Cart extends AppCompatActivity {
+    public AppDatabase appDatabase;
+
     RecyclerView recyclerView ;
     TextView txtEmpty;
     CarAdapter carAdapter;
-    ArrayList<Orders> arrCart;
+    List<OrderDetail> arrCart;
     Date c = null;
     Button btnCheckOut;
-    ImageView imageView;
 
     //Find view by ID
     public void findView(){
@@ -38,12 +40,12 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        appDatabase = AppDatabase.getAppDatabase(this);
+
         //Find view
         findView();
         //Load data to array
-
-        arrCart = new ArrayList<Orders>();
-        arrCart.add(new Orders( 1, 1, 1, c, c, "20 tran hung dao", 1200, "This is description", 1));
+        arrCart = appDatabase.orderDetailDAO().getAllCartInOrder();
         //Check array and show layout
         if (arrCart.size()!=0){
             txtEmpty.setVisibility(View.GONE);
@@ -64,8 +66,30 @@ public class Cart extends AppCompatActivity {
 
     //Remove item in recycler view
     public void removeItem(int position) {
+        int orderID = carAdapter.getOrderId(position);
+        int productID = carAdapter.getProductId(position);
+
+        //Remove item and delete cart in db
         arrCart.remove(position);
         carAdapter.notifyItemRemoved(position);
+        appDatabase.orderDetailDAO().deleteOrderCart(productID,orderID);
+
+        if (arrCart.size()!=0){
+            txtEmpty.setVisibility(View.GONE);
+            builAdapter();
+            btnCheckOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    InfomationCheckoutFragment infomationCheckoutFragment = new InfomationCheckoutFragment();
+                    infomationCheckoutFragment.show(getSupportFragmentManager(),
+                            "ModalBottomSheet");
+                }
+            });
+        }else{
+            txtEmpty.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+            btnCheckOut.setVisibility(View.INVISIBLE);
+        }
     }
 
     //Create adapter for recycler view
@@ -88,8 +112,16 @@ public class Cart extends AppCompatActivity {
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.app_fragment_frame, fragment);
+        transaction.replace(R.id.fragment_frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void getDatabase(View view){
+
+    }
+
+    public void back(View view) {
+        onBackPressed();
     }
 }

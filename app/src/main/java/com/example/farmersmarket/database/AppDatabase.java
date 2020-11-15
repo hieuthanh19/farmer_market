@@ -65,7 +65,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract NotificationDAO notificationDAO();
 
-    public abstract OrderDetailDAO orderDetail();
+    public abstract OrderDetailDAO orderDetailDAO();
 
     public abstract OrdersDAO ordersDAO();
 

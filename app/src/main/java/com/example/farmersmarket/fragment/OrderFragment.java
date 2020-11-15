@@ -2,21 +2,26 @@ package com.example.farmersmarket.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.farmersmarket.OrderDetail;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.farmersmarket.App;
+import com.example.farmersmarket.OrderDetailAct;
 import com.example.farmersmarket.R;
+import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.object.Orders;
 import com.example.farmersmarket.viewadapter.OrderListAdapter;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,11 +30,12 @@ import java.util.ArrayList;
  */
 public class OrderFragment extends Fragment {
 
+    public AppDatabase appDatabase;
     RecyclerView recyclerView ;
     OrderListAdapter orderListAdapter;
-    ArrayList<Orders> arrOrder;
+    List<Orders> arrOrder;
     Date dateOrder = null;
-    Button btnOrderView;
+    TextView txtEmpty;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +82,16 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_order, container, false);
 
-        builAdapter(view);
+        appDatabase = AppDatabase.getAppDatabase(view.getContext());
+        arrOrder = appDatabase.ordersDAO().getOrdersOfAccountOrderByDESC(App.ACCOUNT_ID);
+        findView(view);
+
+        if (arrOrder.size()!=0){
+            txtEmpty.setVisibility(View.GONE);
+            builAdapter(view);
+        }else{
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
 
         // Inflate the layout for this fragment
         return view;
@@ -84,15 +99,8 @@ public class OrderFragment extends Fragment {
 
 
     public void builAdapter(View view){
-        arrOrder = new ArrayList<Orders>();
-        arrOrder.add(new Orders( 1, 1, 1, dateOrder, dateOrder, "20 tran hung dao", 1200, "This is description", 1));
-        arrOrder.add(new Orders(2, 2, 2, dateOrder, dateOrder, "aaaaadao", 120210, "This is description", 1));
-        arrOrder.add(new Orders(3, 3, 3, dateOrder, dateOrder, "nvncbnng dao", 203210, "This is description", 1));
-
-
-        recyclerView = view.findViewById(R.id.rcOrder);
         recyclerView.setHasFixedSize(true);
-        orderListAdapter = new OrderListAdapter(arrOrder,null);
+        orderListAdapter = new OrderListAdapter(arrOrder,view.getContext());
         recyclerView.setAdapter(orderListAdapter);
 
         orderListAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {
@@ -103,10 +111,17 @@ public class OrderFragment extends Fragment {
 
             @Override
             public void onButtonClick(int position) {
-                Intent intent = new Intent(view.getContext(), OrderDetail.class);
+                Intent intent = new Intent(getActivity(), OrderDetailAct.class);
+                intent.putExtra("ORDER_ID", arrOrder.get(position).orderID);
                 startActivity(intent);
             }
-
         });
     }
+
+    public void findView(View view){
+        txtEmpty = view.findViewById(R.id.txtOrderEmpty);
+        recyclerView = view.findViewById(R.id.rc1);
+    }
+
+
 }
