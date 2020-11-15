@@ -1,15 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.CategoryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/heading_3"
-        android:text="Category Fragment" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/app_margin">
+
+        <TextView
+            android:id="@+id/category_name"
+            style="@style/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin"
+            android:drawablePadding="@dimen/app_margin"
+            android:text="Category"
+            android:textColor="@color/black"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--Start: Fruit-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_height="140dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category_image_fruit_layout"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/category_image_fruit"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mixed_fruits_with_apple_banana_orange_other_74190_938"
+            />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/category_name_fruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="Fruit"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/category_image_fruit_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_des_fruit"
+            android:layout_width="260dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="64dp"
+
+            android:text="Exlore the fruits grown by Vietnamese
+                          farmers"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/category_image_fruit_layout"
+            app:layout_constraintTop_toEndOf="@+id/category_image_fruit_layout" />
+
+        <Button
+            android:id="@+id/fruit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="Explore Now"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category_image_fruit_layout"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray_600"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+    <!--End: Fruit-->
+
+    <!--Start: Vegetable-->
+    <!--End: Vegetable-->
+
+    <!--Start: Fish & Seafood-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_height="140dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category_image_vegetable_layout"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/category_image_vegetable"
+                android:layout_width="110dp"
+                android:layout_height="115dp"
+                android:layout_marginTop="28dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/vegetables"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <TextView
+            android:id="@+id/category_name_vegetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Vegetable"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/category_image_vegetable_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_des_vegetable"
+            android:layout_width="260dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="52dp"
+
+            android:text="Discover Vietnamese famous fresh
+                          vegetables"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/category_image_vegetable_layout"
+            app:layout_constraintTop_toEndOf="@+id/category_image_vegetable_layout" />
+
+        <Button
+            android:id="@+id/vegetable_btn"
+            android:layout_width="130dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="0dp"
+            android:text="Explore Now"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category_image_vegetable_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray_600"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginStart="@dimen/app_margin">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category_image_seafood_layout"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/category_image_seafood"
+                android:layout_width="110dp"
+                android:layout_height="115dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fish_seafood"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/category_name_seafood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Fish and Seafood"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/category_image_seafood_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_des_seafood"
+            android:layout_width="260dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="52dp"
+
+            android:text="Experience fresh seafood from the
+                         Mekong River and the East Sea"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/category_image_seafood_layout"
+            app:layout_constraintTop_toEndOf="@+id/category_name_seafood" />
+
+        <Button
+            android:id="@+id/seafood_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="0dp"
+            android:text="Explore Now"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category_image_seafood_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray_600"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+    <!--End: Fish & Seafood-->
+
+    <!--Start: Poultry-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/app_margin"
+        android:layout_height="150dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category_image_poultry_layout"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/category_image_poultry"
+                android:layout_width="110dp"
+                android:layout_height="115dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/meatpoultryproducts_lead"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/category_name_poultry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Meat and Poultry"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/category_image_poultry_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_des_poultry"
+            android:layout_width="260dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="60dp"
+
+            android:text="Enjoy the deliciuos from the meats
+                         sweatness from the bones taste"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/category_image_poultry_layout"
+            app:layout_constraintTop_toEndOf="@+id/category_image_poultry_layout" />
+
+
+        <Button
+            android:id="@+id/poultry_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="Explore Now"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/category_image_poultry_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--End: Poultry-->
+</LinearLayout>
