@@ -48,10 +48,16 @@ public class OrderDetailListAdapter extends RecyclerView.Adapter<OrderDetailList
         List<ProductImage> productImageList =
                 appDatabase.productImageDAO().getProductImageByProductID(orders.productID);
         // if product have image -> load first image
-        if (productImageList.size() > 0)
-            Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.imageViewOrderDetailProduct);
-            // if not -> load empty image
-        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (productImageList.size() > 0) {
+            if (productImageList.get(0).URL.startsWith("@drawable")) {
+                int resource = mContext.getResources().getIdentifier(productImageList.get(0).URL, "drawable",
+                        mContext.getPackageName());
+                Glide.with(mContext).load(resource).centerCrop().into(holder.imageViewOrderDetailProduct);
+            } else
+                Glide.with(mContext).load(Uri.parse(productImageList.get(0).URL)).centerCrop().into(holder.imageViewOrderDetailProduct);
+        }
+        // if not -> load empty image
+        else {
             Glide.with(mContext).load(R.drawable.empty).centerCrop().into(holder.imageViewOrderDetailProduct);
         }
 

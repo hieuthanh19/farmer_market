@@ -33,6 +33,8 @@
         <activity android:name=".Cart" />
         <activity android:name=".Login" />
         <activity android:name=".Order" />
+        <activity android:name=".OrderDetailAct" />
+        <activity android:name=".CheckoutSuccess" />
         <activity android:name=".App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

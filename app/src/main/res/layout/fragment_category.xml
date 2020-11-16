@@ -82,7 +82,6 @@
             android:layout_width="260dp"
             android:layout_height="35dp"
             android:layout_marginStart="12dp"
-            android:layout_marginBottom="64dp"
 
             android:text="Exlore the fruits grown by Vietnamese
                           farmers"
@@ -91,7 +90,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/category_image_fruit_layout"
-            app:layout_constraintTop_toEndOf="@+id/category_image_fruit_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/category_name_fruit"
+            app:layout_constraintVertical_bias="0.232" />
 
         <Button
             android:id="@+id/fruit_btn"
@@ -152,7 +152,7 @@
             android:id="@+id/category_name_vegetable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="@dimen/app_margin"
             android:layout_marginTop="20dp"
             android:text="Vegetable"
 
@@ -166,25 +166,24 @@
             android:layout_width="260dp"
             android:layout_height="35dp"
             android:layout_marginStart="12dp"
-            android:layout_marginBottom="52dp"
-
+            android:layout_marginBottom="30dp"
+android:layout_marginTop="@dimen/product_text_margin"
             android:text="Discover Vietnamese famous fresh
                           vegetables"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/category_image_vegetable_layout"
-            app:layout_constraintTop_toEndOf="@+id/category_image_vegetable_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/category_name_vegetable"
+          />
 
         <Button
             android:id="@+id/vegetable_btn"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="46dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginStart="@dimen/app_margin"
+            android:layout_marginBottom="56dp"
             android:text="Explore Now"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_des_vegetable"
             app:layout_constraintStart_toEndOf="@+id/category_image_vegetable_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -242,7 +241,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="52dp"
-
+android:layout_marginTop="@dimen/product_text_margin"
             android:text="Experience fresh seafood from the
                          Mekong River and the East Sea"
             android:textStyle="bold"
@@ -250,7 +249,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/category_image_seafood_layout"
-            app:layout_constraintTop_toEndOf="@+id/category_name_seafood" />
+            app:layout_constraintTop_toBottomOf="@+id/category_name_seafood" />
 
         <Button
             android:id="@+id/seafood_btn"
@@ -322,11 +321,12 @@
             android:text="Enjoy the deliciuos from the meats
                          sweatness from the bones taste"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_marginTop="@dimen/product_text_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/category_image_poultry_layout"
-            app:layout_constraintTop_toEndOf="@+id/category_image_poultry_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/category_name_poultry" />
 
 
         <Button

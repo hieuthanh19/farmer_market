@@ -137,8 +137,9 @@ public class WarehouseDetail extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent intent = new Intent(view.getContext(), Warehouse.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(view.getContext(), Warehouse.class);
+//        startActivity(intent);
+//        finish();
+        onBackPressed();
     }
 }

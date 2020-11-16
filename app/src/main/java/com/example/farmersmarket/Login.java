@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.farmersmarket.fragment.LoginPhoneFragment;
-//import com.example.farmersmarket.database.AppDatabase;
+import com.example.farmersmarket.database.AppDatabase;
 //import com.example.farmersmarket.object.Account;
 //import com.example.farmersmarket.object.AccountType;
 //import com.example.farmersmarket.object.Product;
@@ -26,8 +26,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loadFragment(new LoginPhoneFragment());
 
-//        AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
-//
+        AppDatabase appDatabase = AppDatabase.getAppDatabase(this);
+
 //        appDatabase.accountTypeDAO().insertAccountType(new AccountType("Admin", 1));
 //
 //        appDatabase.productTypeDAO().insertProductType(new ProductType("Fruit", 1));

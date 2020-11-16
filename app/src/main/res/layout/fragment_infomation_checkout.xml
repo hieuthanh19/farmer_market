@@ -33,7 +33,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:textAlignment="textEnd"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            android:src="@drawable/ic_round_clear_24" />
 
     </LinearLayout>
 
