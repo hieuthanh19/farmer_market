@@ -6,7 +6,7 @@
 
     <!--    Product item-->
     <string name="product_amount">%1$,.1fkg</string>
-    <string name="product_price">%1$,.0f₫/kg</string>
+    <string name="product_price">%1$,.0fVND/kg</string>
     <string name="product_price_strike_through">&lt;strike>%1$,.0f₫/kg&lt;/strike></string>
 
     <!--    Order-->
@@ -141,5 +141,18 @@
     <string name="login_title_forgot_password">Forgot password?</string>
     <string name="login_hint_password">Password</string>
     <string name="login_title_password">Enter your password</string>
+    <string name="toast_add_to_cart">Added to Cart</string>
+    <string name="add_warehouse_name_title">Name</string>
+    <string name="add_warehouse_title_address">Address</string>
+    <string name="add_product_title_category">Category</string>
+    <string name="add_product_title_picutre">Picture</string>
+    <string name="product_detail_title">Product Detail</string>
+    <string name="product_detail_account_view_warehouse_btn">View Warehouse</string>
+    <string name="home_search_hint">Search</string>
+    <string name="account_logout_btn">Log out</string>
+    <string name="account_setting">Setting</string>
+    <string name="account_shipping_unit">Shipping Unit</string>
+    <string name="account_my_profile">My Profile</string>
+    <string name="cart_checkout_btn">Check out</string>
 
 </resources>

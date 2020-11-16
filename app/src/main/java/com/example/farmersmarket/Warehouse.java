@@ -68,7 +68,7 @@ public class Warehouse extends AppCompatActivity {
     }
 
     private void populateData() {
-        WarehouseViewAdapter warehouseViewADapter = new WarehouseViewAdapter(storeHouseList);
+        WarehouseViewAdapter warehouseViewADapter = new WarehouseViewAdapter(storeHouseList, this);
         recyclerView.setAdapter(warehouseViewADapter);
     }
 

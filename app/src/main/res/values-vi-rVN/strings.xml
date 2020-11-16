@@ -73,7 +73,7 @@
     <!--    Login-->
     <string name="login_error_phone">Số điện thoại không được để trống</string>
     <string name="login_error_password">Mật khẩu không được để trống</string>
-    <string name="login_phone_sign_up">Chưa có tài khoản? <span style="color:#53B175">Đăng kí ngay</span></string>
+    <string name="login_phone_sign_up">Chưa có tài khoản? &lt;span style=\"color:#53B175\">Đăng kí ngay&lt;/span></string>
     <string name="login_error_phone_not_found">Số điện thoại chưa đăng kí</string>
 
 
@@ -139,5 +139,18 @@
     <string name="login_title_forgot_password">Quên mật khẩu?</string>
     <string name="login_hint_password">Mật khẩu</string>
     <string name="login_title_password">Nhập mật khẩu</string>
+    <string name="toast_add_to_cart">Thêm sản phẩm vào giỏ hàng thành công</string>
+    <string name="add_warehouse_name_title">Tên</string>
+    <string name="add_warehouse_title_address">Địa chỉ</string>
+    <string name="add_product_title_category">Danh mục</string>
+    <string name="add_product_title_picutre">Hình</string>
+    <string name="product_detail_title">Thông tin chi tiết</string>
+    <string name="product_detail_account_view_warehouse_btn">Xem kho</string>
+    <string name="home_search_hint">Tìm kiếm</string>
+    <string name="account_logout_btn">Đăng xuất</string>
+    <string name="account_setting">Cài đặt</string>
+    <string name="account_shipping_unit">Đơn vị vận chuyển</string>
+    <string name="account_my_profile">Hồ sơ</string>
+    <string name="cart_checkout_btn">Thanh toán</string>
 
 </resources>

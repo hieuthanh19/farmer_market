@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,12 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
 
         void bindTo(ProductImage productImage) {
             // Populate views with data
-            Glide.with(itemView.getContext()).load(productImage.URL).centerCrop().into(productImageImage);
+            if (productImage.URL.startsWith("@drawable")) {
+                int resource = itemView.getContext().getResources().getIdentifier(productImage.URL, "drawable",
+                        itemView.getContext().getPackageName());
+                Glide.with(itemView.getContext()).load(resource).centerCrop().into(productImageImage);
+            } else
+                Glide.with(itemView.getContext()).load(Uri.parse(productImage.URL)).centerCrop().into(productImageImage);
         }
     }
 }

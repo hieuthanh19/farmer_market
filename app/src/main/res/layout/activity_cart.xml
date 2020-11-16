@@ -74,6 +74,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Thanh toán" />
+        android:text="@string/cart_checkout_btn" />
 
 </LinearLayout>

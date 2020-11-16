@@ -77,17 +77,16 @@ public class AddWarehouse extends AppCompatActivity {
                 Toast.makeText(this, getText(R.string.add_warehouse_create_success), Toast.LENGTH_SHORT).show();
                 Intent replyIntent = new Intent();
                 setResult(RESULT_OK, replyIntent);
-                Warehouse.recyclerView.getAdapter().notifyDataSetChanged();
                 finish();
             } else {
                 storeHouse.storeName = nameLayout.getEditText().getText().toString();
                 storeHouse.address = addressLayout.getEditText().getText().toString();
                 appDatabase.storeHouseDAO().updateStoreHouse(storeHouse);
                 // Return to Warehouse
-                Intent intent = new Intent();
+                Intent intent = new Intent(this, Warehouse.class);
                 Toast.makeText(this, getText(R.string.add_warehouse_edit_success), Toast.LENGTH_SHORT).show();
-                setResult(RESULT_OK, intent);
                 finish();
+                startActivity(intent);
 
             }
         }

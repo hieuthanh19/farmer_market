@@ -1,5 +1,6 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,11 +29,11 @@ import java.util.List;
 
 public class ProductVerticalManageViewAdapter extends RecyclerView.Adapter<ProductVerticalManageViewAdapter.ViewHolder> {
     private final List<Product> products;
-//    private Context mContext;
+    private Context mContext;
 
-    public ProductVerticalManageViewAdapter(List<Product> products) {
+    public ProductVerticalManageViewAdapter(Context context, List<Product> products) {
         this.products = products;
-//        this.mContext = context;
+        this.mContext = context;
     }
 
     /**
@@ -151,7 +152,7 @@ public class ProductVerticalManageViewAdapter extends RecyclerView.Adapter<Produ
                     Intent intent = new Intent(v.getContext(), AddProduct.class);
                     intent.putExtra(WarehouseDetail.PRODUCT_ID, productID);
                     intent.putExtra(WarehouseDetail.PRODUCT_MODE, WarehouseDetail.MODE_EDIT);
-                    v.getContext().startActivity(intent);
+                    ((Activity) mContext).startActivityForResult(intent, WarehouseDetail.REQUEST_CODE);
                 }
             };
         }

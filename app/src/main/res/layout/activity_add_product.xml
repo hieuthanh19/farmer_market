@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/app_margin"
                 android:layout_marginTop="@dimen/app_margin"
-                android:text="Category" />
+                android:text="@string/add_product_title_category" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -273,7 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
-                    android:text="Picture"
+                    android:text="@string/add_product_title_picutre"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -285,7 +285,7 @@
                     android:layout_marginEnd="@dimen/app_margin"
                     android:onClick="takePhoto"
                     android:src="@drawable/ic_outline_photo_camera_24"
-                    android:text="Take photo"
+                    android:contentDescription="Take photo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/green_600" />

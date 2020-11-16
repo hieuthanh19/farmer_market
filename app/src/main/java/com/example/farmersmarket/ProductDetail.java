@@ -102,7 +102,7 @@ public class ProductDetail extends AppCompatActivity {
                         appDatabase.orderDetailDAO().insertOrderDetail(new OrderDetail(Order.ORDER_ID, productID, 1,
                                 productPrice, "", 1));
                     }
-                    Toast.makeText(getBaseContext(), "Thêm sản phẩm vào giỏ hàng thành công",
+                    Toast.makeText(getBaseContext(), getString(R.string.toast_add_to_cart),
                             Toast.LENGTH_SHORT).show();
                 }
             });

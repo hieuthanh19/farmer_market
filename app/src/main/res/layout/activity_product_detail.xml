@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/product_text_margin"
-                    android:text="View Warehouse"
+                    android:text="@string/product_detail_account_view_warehouse_btn"
                     app:layout_constraintStart_toEndOf="@+id/product_detail_user_avatar"
                     app:layout_constraintTop_toBottomOf="@+id/product_detail_warehouse_address" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
-                    android:text="Product Detail"
+                    android:text="@string/product_detail_title"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -232,7 +232,7 @@
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
                     android:fontFamily="@font/sf_display_regular"
-                    android:text="Origin"
+                    android:text="@string/add_product_origin"
                     android:textColor="@color/gray_300"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -256,12 +256,12 @@
 
                 <TextView
                     android:id="@+id/product_detail_description_title"
-                    android:layout_width="@dimen/product_detail_detail_title_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/app_margin"
                     android:layout_marginTop="@dimen/app_margin"
                     android:fontFamily="@font/sf_display_regular"
-                    android:text="Description"
+                    android:text="@string/add_product_description"
                     android:textColor="@color/gray_300"
                     android:textSize="18sp"
 

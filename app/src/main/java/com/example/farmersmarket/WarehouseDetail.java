@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class WarehouseDetail extends AppCompatActivity {
 
+    public static int REQUEST_CODE = 1;
     public static int WAREHOUSE_ID = -1;
     private static final int IMAGE_VIEW_MODE_SEARCH = 1;
     private static final int IMAGE_VIEW_MODE_ADD = 2;
@@ -61,6 +63,22 @@ public class WarehouseDetail extends AppCompatActivity {
     }
 
     /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE) {
+            loadWarehouseDetail(WAREHOUSE_ID);
+        }
+    }
+
+    /**
      * Load warehouse detail
      *
      * @param warehouseID warehouseID
@@ -79,7 +97,7 @@ public class WarehouseDetail extends AppCompatActivity {
             if (productList.size() > 0) {
                 productEmptyMsg.setVisibility(View.GONE);
                 ProductVerticalManageViewAdapter productVerticalManageViewAdapter =
-                        new ProductVerticalManageViewAdapter(productList);
+                        new ProductVerticalManageViewAdapter(this, productList);
                 productListView.setAdapter(productVerticalManageViewAdapter);
                 changeModeImageView(IMAGE_VIEW_MODE_SEARCH);
                 addProduct.setOnClickListener(addProductOnClickListener());
@@ -121,8 +139,7 @@ public class WarehouseDetail extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddProduct.class);
                 intent.putExtra(WarehouseDetail.PRODUCT_MODE, WarehouseDetail.MODE_ADD);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent, REQUEST_CODE);
             }
         };
     }

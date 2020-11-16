@@ -1,5 +1,7 @@
 package com.example.farmersmarket.viewadapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -24,11 +26,11 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
 
 
     private final List<StoreHouse> storeHouses;
-//    private Context mContext;
+    private Context mContext;
 
-    public WarehouseViewAdapter(List<StoreHouse> storeHouses) {
+    public WarehouseViewAdapter(List<StoreHouse> storeHouses, Context context) {
         this.storeHouses = storeHouses;
-//        this.mContext = context;
+        this.mContext = context;
     }
 
     /**
@@ -123,11 +125,10 @@ public class WarehouseViewAdapter extends RecyclerView.Adapter<WarehouseViewAdap
             return new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddWarehouse.class);
+                    Intent intent = new Intent(mContext, AddWarehouse.class);
                     intent.putExtra(Warehouse.WAREHOUSE_ID, storeHouseID);
                     intent.putExtra(Warehouse.WAREHOUSE_MODE, Warehouse.MODE_EDIT);
-
-                    v.getContext().startActivity(intent);
+                    ((Activity) mContext).startActivityForResult(intent, Warehouse.REQUEST_CODE);
                 }
             };
         }

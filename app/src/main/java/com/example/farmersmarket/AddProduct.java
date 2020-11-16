@@ -164,10 +164,9 @@ public class AddProduct extends AppCompatActivity {
                 }
                 appDatabase.productImageDAO().insertProductImages(productImageList);
                 Toast.makeText(this, "New product has been inserted successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, WarehouseDetail.class);
+                Intent intent = new Intent();
                 intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
-
-                startActivity(intent);
+                setResult(RESULT_OK);
                 finish();
             } else {
                 product.productTypeID = ((ProductType) spinner.getSelectedItem()).productTypeID;
@@ -192,9 +191,8 @@ public class AddProduct extends AppCompatActivity {
                 Toast.makeText(this, "Product has been updated successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, WarehouseDetail.class);
                 intent.putExtra(Warehouse.WAREHOUSE_ID, WarehouseDetail.WAREHOUSE_ID);
-
-                startActivity(intent);
                 finish();
+                startActivity(intent);
             }
         }
     }
