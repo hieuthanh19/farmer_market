@@ -1,0 +1,683 @@
+@startuml
+
+title __FARMER'S_MARKET.APP's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.AddProduct {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.AddWarehouse {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.App {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.BuildConfig {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Cart {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryPoultryDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategorySeafoodDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryVegetableDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CheckoutSuccess {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Login {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Order {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.OrderDetailAct {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.ProductDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Setting {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Warehouse {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.WarehouseDetail {
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.AccountDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.AccountDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.AccountTypeDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.AccountTypeDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.CurrentAccountDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.CurrentAccountDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.FeedbackProductDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.FeedbackProductDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.FeedbackShippingDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.FeedbackShippingDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.NotificationDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.NotificationDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.OrderDetailDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.OrderDetailDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.OrdersDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.OrdersDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.ProductDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductImageDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.ProductImageDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductTypeDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.ProductTypeDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ShippingUnitDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.ShippingUnitDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.StoreHouseDAO {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      class com.example.farmersmarket.dao.StoreHouseDAO_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace database {
+      abstract class com.example.farmersmarket.database.AppDatabase {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace database {
+      class com.example.farmersmarket.database.AppDatabase_Impl {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.AccountFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.CategoryFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.HomeFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.InfomationCheckoutFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.LoginConfirmFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.LoginPhoneFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.NotificationFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.OrderFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.PageNotFoundFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Account {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.AccountType {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ConvertDate {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.CurrentAccount {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.FeedbackProduct {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.FeedbackShipping {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Notification {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.OrderDetail {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Orders {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Product {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ProductImage {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ProductType {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ShippingUnit {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.StoreHouse {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Utils {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.CarAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderDetailListAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderListAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductImageAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.WarehouseViewAdapter {
+      }
+    }
+  }
+  
+
+  com.example.farmersmarket.AddProduct -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.AddProduct o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.AddProduct o-- com.example.farmersmarket.viewadapter.ProductImageAdapter : productImageAdapter
+  com.example.farmersmarket.AddWarehouse -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.AddWarehouse o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.App -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.App o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Cart -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Cart o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Cart o-- com.example.farmersmarket.viewadapter.CarAdapter : carAdapter
+  com.example.farmersmarket.CategoryDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategoryPoultryDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategorySeafoodDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategoryVegetableDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CheckoutSuccess -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Login -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Order -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Order o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Order o-- com.example.farmersmarket.viewadapter.OrderListAdapter : orderListAdapter
+  com.example.farmersmarket.OrderDetailAct -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.OrderDetailAct o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.OrderDetailAct o-- com.example.farmersmarket.viewadapter.OrderDetailListAdapter : orderAdapter
+  com.example.farmersmarket.ProductDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.ProductDetail o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.ProductDetail o-- com.example.farmersmarket.object.Product : product
+  com.example.farmersmarket.Setting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Warehouse -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Warehouse o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.WarehouseDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.WarehouseDetail o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.WarehouseDetail o-- com.example.farmersmarket.object.StoreHouse : storeHouse
+  com.example.farmersmarket.dao.AccountDAO_Impl .up.|> com.example.farmersmarket.dao.AccountDAO
+  com.example.farmersmarket.dao.AccountTypeDAO_Impl .up.|> com.example.farmersmarket.dao.AccountTypeDAO
+  com.example.farmersmarket.dao.CurrentAccountDAO_Impl .up.|> com.example.farmersmarket.dao.CurrentAccountDAO
+  com.example.farmersmarket.dao.FeedbackProductDAO_Impl .up.|> com.example.farmersmarket.dao.FeedbackProductDAO
+  com.example.farmersmarket.dao.FeedbackShippingDAO_Impl .up.|> com.example.farmersmarket.dao.FeedbackShippingDAO
+  com.example.farmersmarket.dao.NotificationDAO_Impl .up.|> com.example.farmersmarket.dao.NotificationDAO
+  com.example.farmersmarket.dao.OrderDetailDAO_Impl .up.|> com.example.farmersmarket.dao.OrderDetailDAO
+  com.example.farmersmarket.dao.OrdersDAO_Impl .up.|> com.example.farmersmarket.dao.OrdersDAO
+  com.example.farmersmarket.dao.ProductDAO_Impl .up.|> com.example.farmersmarket.dao.ProductDAO
+  com.example.farmersmarket.dao.ProductImageDAO_Impl .up.|> com.example.farmersmarket.dao.ProductImageDAO
+  com.example.farmersmarket.dao.ProductTypeDAO_Impl .up.|> com.example.farmersmarket.dao.ProductTypeDAO
+  com.example.farmersmarket.dao.ShippingUnitDAO_Impl .up.|> com.example.farmersmarket.dao.ShippingUnitDAO
+  com.example.farmersmarket.dao.StoreHouseDAO_Impl .up.|> com.example.farmersmarket.dao.StoreHouseDAO
+  com.example.farmersmarket.database.AppDatabase -up-|> androidx.room.RoomDatabase
+  com.example.farmersmarket.database.AppDatabase_Impl -up-|> com.example.farmersmarket.database.AppDatabase
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.AccountDAO : _accountDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.AccountTypeDAO : _accountTypeDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.CurrentAccountDAO : _currentAccountDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.FeedbackProductDAO : _feedbackProductDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.FeedbackShippingDAO : _feedbackShippingDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.NotificationDAO : _notificationDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.OrderDetailDAO : _orderDetailDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.OrdersDAO : _ordersDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.ProductDAO : _productDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.ProductImageDAO : _productImageDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.ProductTypeDAO : _productTypeDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.ShippingUnitDAO : _shippingUnitDAO
+  com.example.farmersmarket.database.AppDatabase_Impl o-- com.example.farmersmarket.dao.StoreHouseDAO : _storeHouseDAO
+  com.example.farmersmarket.fragment.AccountFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.AccountFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.CategoryFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.HomeFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment -up-|> com.google.android.material.bottomsheet.BottomSheetDialogFragment
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.object.Account : ac
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.object.ShippingUnit : spu
+  com.example.farmersmarket.fragment.LoginConfirmFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.LoginPhoneFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.NotificationFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.OrderFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.OrderFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.OrderFragment o-- com.example.farmersmarket.viewadapter.OrderListAdapter : orderListAdapter
+  com.example.farmersmarket.fragment.PageNotFoundFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.viewadapter.CarAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.CarAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.CarAdapter o-- com.example.farmersmarket.viewadapter.CarAdapter.OnItemClickListener : mlistener
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.OrderListAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.OrderListAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.OrderListAdapter o-- com.example.farmersmarket.viewadapter.OrderListAdapter.OnItemClickListener : mlistner
+  com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductImageAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.WarehouseViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

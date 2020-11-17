@@ -1,0 +1,1024 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "3e79be4c6827a04cf07d02d546e27d82",
+    "entities": [
+      {
+        "tableName": "account",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`accountID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `typeID` INTEGER NOT NULL, `phone` TEXT, `password` TEXT, `name` TEXT, `gender` INTEGER NOT NULL, `address` TEXT, `email` TEXT, `image` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`typeID`) REFERENCES `account_type`(`typeID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeID",
+            "columnName": "typeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phone",
+            "columnName": "phone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "accountID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_account_typeID",
+            "unique": false,
+            "columnNames": [
+              "typeID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_account_typeID` ON `${TABLE_NAME}` (`typeID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account_type",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "typeID"
+            ],
+            "referencedColumns": [
+              "typeID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "account_type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`typeID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `typeName` TEXT, `status` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "typeID",
+            "columnName": "typeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeName",
+            "columnName": "typeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "typeID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "current_account",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`accountID` INTEGER NOT NULL, PRIMARY KEY(`accountID`), FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "accountID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_current_account_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_current_account_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "feedback_product",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`productID` INTEGER NOT NULL, `accountID` INTEGER NOT NULL, `rating` REAL NOT NULL, `time` INTEGER, `description` TEXT, `status` INTEGER NOT NULL, PRIMARY KEY(`productID`, `accountID`), FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`productID`) REFERENCES `product`(`productID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "productID",
+            "columnName": "productID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "productID",
+            "accountID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_feedback_product_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_feedback_product_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          },
+          {
+            "name": "index_feedback_product_productID",
+            "unique": false,
+            "columnNames": [
+              "productID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_feedback_product_productID` ON `${TABLE_NAME}` (`productID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          },
+          {
+            "table": "product",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "productID"
+            ],
+            "referencedColumns": [
+              "productID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "feedback_shipping",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`accountID` INTEGER NOT NULL, `shippingID` INTEGER NOT NULL, `rating` REAL NOT NULL, `time` INTEGER, `description` TEXT, `status` INTEGER NOT NULL, PRIMARY KEY(`accountID`, `shippingID`), FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`shippingID`) REFERENCES `shipping_unit`(`shippingID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shippingID",
+            "columnName": "shippingID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "accountID",
+            "shippingID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_feedback_shipping_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_feedback_shipping_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          },
+          {
+            "name": "index_feedback_shipping_shippingID",
+            "unique": false,
+            "columnNames": [
+              "shippingID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_feedback_shipping_shippingID` ON `${TABLE_NAME}` (`shippingID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          },
+          {
+            "table": "shipping_unit",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "shippingID"
+            ],
+            "referencedColumns": [
+              "shippingID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "notification",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`notificationID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `accountID` INTEGER NOT NULL, `title` TEXT, `content` TEXT, `createdDate` INTEGER, `status` INTEGER NOT NULL, FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "notificationID",
+            "columnName": "notificationID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdDate",
+            "columnName": "createdDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "notificationID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_notification_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_notification_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "order_detail",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`orderID` INTEGER NOT NULL, `productID` INTEGER NOT NULL, `quantity` INTEGER NOT NULL, `totalPrice` REAL NOT NULL, `description` TEXT, `status` INTEGER NOT NULL, PRIMARY KEY(`orderID`, `productID`), FOREIGN KEY(`productID`) REFERENCES `product`(`productID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`orderID`) REFERENCES `orders`(`orderID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "orderID",
+            "columnName": "orderID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productID",
+            "columnName": "productID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalPrice",
+            "columnName": "totalPrice",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "orderID",
+            "productID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_order_detail_orderID",
+            "unique": false,
+            "columnNames": [
+              "orderID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_detail_orderID` ON `${TABLE_NAME}` (`orderID`)"
+          },
+          {
+            "name": "index_order_detail_productID",
+            "unique": false,
+            "columnNames": [
+              "productID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_order_detail_productID` ON `${TABLE_NAME}` (`productID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "product",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "productID"
+            ],
+            "referencedColumns": [
+              "productID"
+            ]
+          },
+          {
+            "table": "orders",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "orderID"
+            ],
+            "referencedColumns": [
+              "orderID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "orders",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`orderID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `storeHouseID` INTEGER NOT NULL, `accountID` INTEGER NOT NULL, `shippingID` INTEGER NOT NULL, `orderedDate` INTEGER, `deliveredDate` INTEGER, `address` TEXT, `total` REAL NOT NULL, `description` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`shippingID`) REFERENCES `shipping_unit`(`shippingID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`storeHouseID`) REFERENCES `store_house`(`storeHouseID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "orderID",
+            "columnName": "orderID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "storeHouseID",
+            "columnName": "storeHouseID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shippingID",
+            "columnName": "shippingID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "orderedDate",
+            "columnName": "orderedDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deliveredDate",
+            "columnName": "deliveredDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "total",
+            "columnName": "total",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "orderID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_orders_shippingID",
+            "unique": false,
+            "columnNames": [
+              "shippingID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_orders_shippingID` ON `${TABLE_NAME}` (`shippingID`)"
+          },
+          {
+            "name": "index_orders_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_orders_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          },
+          {
+            "name": "index_orders_storeHouseID",
+            "unique": false,
+            "columnNames": [
+              "storeHouseID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_orders_storeHouseID` ON `${TABLE_NAME}` (`storeHouseID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          },
+          {
+            "table": "shipping_unit",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "shippingID"
+            ],
+            "referencedColumns": [
+              "shippingID"
+            ]
+          },
+          {
+            "table": "store_house",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "storeHouseID"
+            ],
+            "referencedColumns": [
+              "storeHouseID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "product",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`productID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `storeHouseID` INTEGER NOT NULL, `productTypeID` INTEGER NOT NULL, `name` TEXT, `amount` REAL NOT NULL, `price` REAL NOT NULL, `origin` TEXT, `currentPrice` REAL NOT NULL, `description` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`storeHouseID`) REFERENCES `store_house`(`storeHouseID`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`productTypeID`) REFERENCES `product_type`(`productTypeID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "productID",
+            "columnName": "productID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "storeHouseID",
+            "columnName": "storeHouseID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productTypeID",
+            "columnName": "productTypeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "origin",
+            "columnName": "origin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currentPrice",
+            "columnName": "currentPrice",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "productID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_product_storeHouseID",
+            "unique": false,
+            "columnNames": [
+              "storeHouseID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_storeHouseID` ON `${TABLE_NAME}` (`storeHouseID`)"
+          },
+          {
+            "name": "index_product_productTypeID",
+            "unique": false,
+            "columnNames": [
+              "productTypeID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_productTypeID` ON `${TABLE_NAME}` (`productTypeID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "store_house",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "storeHouseID"
+            ],
+            "referencedColumns": [
+              "storeHouseID"
+            ]
+          },
+          {
+            "table": "product_type",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "productTypeID"
+            ],
+            "referencedColumns": [
+              "productTypeID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "product_image",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`imageID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `productID` INTEGER NOT NULL, `URL` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`productID`) REFERENCES `product`(`productID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "imageID",
+            "columnName": "imageID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productID",
+            "columnName": "productID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "URL",
+            "columnName": "URL",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "imageID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_product_image_productID",
+            "unique": false,
+            "columnNames": [
+              "productID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_product_image_productID` ON `${TABLE_NAME}` (`productID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "product",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "productID"
+            ],
+            "referencedColumns": [
+              "productID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "product_type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`productTypeID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `productTypeName` TEXT, `status` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "productTypeID",
+            "columnName": "productTypeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productTypeName",
+            "columnName": "productTypeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "productTypeID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "shipping_unit",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shippingID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `accountID` INTEGER NOT NULL, `name` TEXT, `phoneNumber` TEXT, `transportFee` REAL NOT NULL, `image` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "shippingID",
+            "columnName": "shippingID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phoneNumber",
+            "columnName": "phoneNumber",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "transportFee",
+            "columnName": "transportFee",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "shippingID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_shipping_unit_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_shipping_unit_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "store_house",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`storeHouseID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `accountID` INTEGER NOT NULL, `storeName` TEXT, `address` TEXT, `longitude` REAL NOT NULL, `latitude` REAL NOT NULL, `description` TEXT, `status` INTEGER NOT NULL, FOREIGN KEY(`accountID`) REFERENCES `account`(`accountID`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "storeHouseID",
+            "columnName": "storeHouseID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accountID",
+            "columnName": "accountID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "storeName",
+            "columnName": "storeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "storeHouseID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_store_house_accountID",
+            "unique": false,
+            "columnNames": [
+              "accountID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_store_house_accountID` ON `${TABLE_NAME}` (`accountID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "account",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "accountID"
+            ],
+            "referencedColumns": [
+              "accountID"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3e79be4c6827a04cf07d02d546e27d82')"
+    ]
+  }
+}
