@@ -1,0 +1,183 @@
+@startuml
+
+title __FRAGMENT's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.AccountFragment {
+          - logoutBtn : Button
+          - warehouse : TextView
+          + AccountFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.CategoryFragment {
+          {static} + CATEGORY : String
+          {static} - ARG_PARAM2 : String
+          - mParam1 : String
+          - mParam2 : String
+          + CategoryFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.HomeFragment {
+          ~ bannerImages : int[]
+          ~ carouselView : CarouselView
+          ~ home_cart : ImageButton
+          + HomeFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+          - imageListener()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.InfomationCheckoutFragment {
+          ~ arrCart : List<OrderDetail>
+          ~ btnCheckOut : Button
+          ~ fragmentCheckouttxtAddressResult : TextView
+          ~ fragmentCheckouttxtProductCostResult : TextView
+          ~ fragmentCheckouttxtShippingCostResult : TextView
+          ~ fragmentCheckouttxtShippingUnitResult : TextView
+          ~ fragmentCheckouttxtTotalCostResult : TextView
+          ~ imgClose : ImageView
+          ~ totalPriceProduct : double
+          + findView()
+          + onCreate()
+          + onCreateView()
+          - getDateTime()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.LoginConfirmFragment {
+          - inputPassword : TextInputLayout
+          + LoginConfirmFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+          - isFilled()
+          - login()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.LoginPhoneFragment {
+          {static} + tempAccount : Account
+          - inputPhone : TextInputLayout
+          - signUp : TextView
+          + LoginPhoneFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+          - isFilled()
+          - loadFragment()
+          - login()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.NotificationFragment {
+          {static} - ARG_PARAM1 : String
+          {static} - ARG_PARAM2 : String
+          - mParam1 : String
+          - mParam2 : String
+          + NotificationFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.OrderFragment {
+          ~ arrOrder : List<Orders>
+          ~ dateOrder : Date
+          ~ recyclerView : RecyclerView
+          ~ txtEmpty : TextView
+          {static} - ARG_PARAM1 : String
+          {static} - ARG_PARAM2 : String
+          - mParam1 : String
+          - mParam2 : String
+          + OrderFragment()
+          + builAdapter()
+          + findView()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace fragment {
+      class com.example.farmersmarket.fragment.PageNotFoundFragment {
+          {static} - ARG_PARAM1 : String
+          {static} - ARG_PARAM2 : String
+          - mParam1 : String
+          - mParam2 : String
+          + PageNotFoundFragment()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  com.example.farmersmarket.fragment.AccountFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.AccountFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.CategoryFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.HomeFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment -up-|> com.google.android.material.bottomsheet.BottomSheetDialogFragment
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.object.Account : ac
+  com.example.farmersmarket.fragment.InfomationCheckoutFragment o-- com.example.farmersmarket.object.ShippingUnit : spu
+  com.example.farmersmarket.fragment.LoginConfirmFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.LoginPhoneFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.NotificationFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.OrderFragment -up-|> androidx.fragment.app.Fragment
+  com.example.farmersmarket.fragment.OrderFragment o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.fragment.OrderFragment o-- com.example.farmersmarket.viewadapter.OrderListAdapter : orderListAdapter
+  com.example.farmersmarket.fragment.PageNotFoundFragment -up-|> androidx.fragment.app.Fragment
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

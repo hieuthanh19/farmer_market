@@ -1,0 +1,308 @@
+@startuml
+
+title __VIEWADAPTER's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.CarAdapter {
+          - arrCart : List<OrderDetail>
+          - mContext : Context
+          + CarAdapter()
+          + getItemCount()
+          + getOrderId()
+          + getProductId()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+          + setOnItemClickListener()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      interface com.example.farmersmarket.viewadapter.CarAdapter.OnItemClickListener {
+          {abstract} + onDeleteClick()
+          {abstract} + onItemClick()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.CarAdapter.ViewHolder {
+          + cart_amount : ElegantNumberButton
+          + cart_price : TextView
+          + cart_price_change : TextView
+          + cart_product_image : ImageView
+          + cart_product_name : TextView
+          + imageDelete : ImageView
+          + ViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderDetailListAdapter {
+          - arrOrder : List<OrderDetail>
+          - mContext : Context
+          + OrderDetailListAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderDetailListAdapter.ViewHolder {
+          + imageViewOrderDetailProduct : ImageView
+          + txtOrdeDetailAmount : TextView
+          + txtOrderDetailPrice : TextView
+          + txtOrderDetailProductName : TextView
+          + ViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderListAdapter {
+          - arrOrder : List<Orders>
+          - mContext : Context
+          + OrderListAdapter()
+          + getItemCount()
+          + getStatus()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+          + setOnItemClickListener()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      interface com.example.farmersmarket.viewadapter.OrderListAdapter.OnItemClickListener {
+          {abstract} + onButtonClick()
+          {abstract} + onItemClick()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.OrderListAdapter.ViewHolder {
+          + order_button_view : Button
+          + order_price : TextView
+          + order_product_name : TextView
+          + order_status : TextView
+          + product_image : ImageView
+          + ViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter {
+          - products : List<Product>
+          + ProductHorizontalViewAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter.ViewHolder {
+          + context : Context
+          + productAmount : TextView
+          + productImage : ImageView
+          + productName : TextView
+          + productPrice : TextView
+          + productSale : TextView
+          + ViewHolder()
+          + onClick()
+          ~ bindTo()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductImageAdapter {
+          + productImages : List<ProductImage>
+          + ProductImageAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductImageAdapter.ViewHolder {
+          ~ productImageImage : ImageView
+          ~ removeImage : ImageView
+          + ViewHolder()
+          ~ bindTo()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter {
+          - mContext : Context
+          - products : List<Product>
+          + ProductVerticalManageViewAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter.ViewHolder {
+          + context : Context
+          + productAmount : TextView
+          + productDelete : TextView
+          + productEdit : TextView
+          + productImage : ImageView
+          + productName : TextView
+          + productPrice : TextView
+          + ViewHolder()
+          + onClick()
+          ~ bindTo()
+          - onClickDelete()
+          - onClickEdit()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter {
+          - products : List<Product>
+          + ProductVerticalViewAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter.ViewHolder {
+          + context : Context
+          + productAmount : TextView
+          + productImage : ImageView
+          + productName : TextView
+          + productPrice : TextView
+          + productSale : TextView
+          + ViewHolder()
+          + onClick()
+          ~ bindTo()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.WarehouseViewAdapter {
+          - mContext : Context
+          - storeHouses : List<StoreHouse>
+          + WarehouseViewAdapter()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace viewadapter {
+      class com.example.farmersmarket.viewadapter.WarehouseViewAdapter.ViewHolder {
+          + warehouseAddress : TextView
+          + warehouseDelete : TextView
+          + warehouseEdit : TextView
+          + warehouseName : TextView
+          + ViewHolder()
+          + onClick()
+          ~ bindTo()
+          - onClickDelete()
+          - onClickEdit()
+      }
+    }
+  }
+  
+
+  com.example.farmersmarket.viewadapter.CarAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.CarAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.CarAdapter o-- com.example.farmersmarket.viewadapter.CarAdapter.OnItemClickListener : mlistener
+  com.example.farmersmarket.viewadapter.CarAdapter +-down- com.example.farmersmarket.viewadapter.CarAdapter.OnItemClickListener
+  com.example.farmersmarket.viewadapter.CarAdapter +-down- com.example.farmersmarket.viewadapter.CarAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.CarAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter +-down- com.example.farmersmarket.viewadapter.OrderDetailListAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.OrderDetailListAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.OrderListAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.OrderListAdapter o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.viewadapter.OrderListAdapter o-- com.example.farmersmarket.viewadapter.OrderListAdapter.OnItemClickListener : mlistner
+  com.example.farmersmarket.viewadapter.OrderListAdapter +-down- com.example.farmersmarket.viewadapter.OrderListAdapter.OnItemClickListener
+  com.example.farmersmarket.viewadapter.OrderListAdapter +-down- com.example.farmersmarket.viewadapter.OrderListAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.OrderListAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter +-down- com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter.ViewHolder .up.|> android.view.View.OnClickListener
+  com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductImageAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductImageAdapter +-down- com.example.farmersmarket.viewadapter.ProductImageAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductImageAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter +-down- com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter.ViewHolder .up.|> android.view.View.OnClickListener
+  com.example.farmersmarket.viewadapter.ProductVerticalManageViewAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter +-down- com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter.ViewHolder .up.|> android.view.View.OnClickListener
+  com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.farmersmarket.viewadapter.WarehouseViewAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.farmersmarket.viewadapter.WarehouseViewAdapter +-down- com.example.farmersmarket.viewadapter.WarehouseViewAdapter.ViewHolder
+  com.example.farmersmarket.viewadapter.WarehouseViewAdapter.ViewHolder .up.|> android.view.View.OnClickListener
+  com.example.farmersmarket.viewadapter.WarehouseViewAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

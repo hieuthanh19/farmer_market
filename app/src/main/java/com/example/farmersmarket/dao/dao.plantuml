@@ -1,0 +1,228 @@
+@startuml
+
+title __DAO's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.AccountDAO {
+          {abstract} + deleteAccount()
+          {abstract} + getAccount()
+          {abstract} + getAccountByPhone()
+          {abstract} + getAccountByPhoneAndPassword()
+          {abstract} + getAccountsCount()
+          {abstract} + getAllAccounts()
+          {abstract} + insertAccount()
+          {abstract} + updateAccount()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.AccountTypeDAO {
+          {abstract} + deleteAccountType()
+          {abstract} + getAccountType()
+          {abstract} + getAccountTypeCount()
+          {abstract} + getAllAccountTypes()
+          {abstract} + insertAccountType()
+          {abstract} + updateAccountType()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.CurrentAccountDAO {
+          {abstract} + deleteCurrentAccount()
+          {abstract} + getAllCurrentAccounts()
+          {abstract} + getCurrentAccount()
+          {abstract} + getCurrentAccountsCount()
+          {abstract} + insertCurrentAccount()
+          {abstract} + updateCurrentAccount()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.FeedbackProductDAO {
+          {abstract} + deleteFeedbackProduct()
+          {abstract} + getAllFeedbackProduct()
+          {abstract} + getFeedbackProductByAccountID()
+          {abstract} + getFeedbackProductByProductID()
+          {abstract} + getFeedbackProductCount()
+          {abstract} + insertFeedbackProduct()
+          {abstract} + updateFeedbackProduct()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.FeedbackShippingDAO {
+          {abstract} + deleteFeedbackShipping()
+          {abstract} + getAllFeedbackShipping()
+          {abstract} + getFeedbackOfAccount()
+          {abstract} + getFeedbackOfShippingUnit()
+          {abstract} + getFeedbackShipping()
+          {abstract} + getFeedbackShippingCount()
+          {abstract} + insertFeedbackShipping()
+          {abstract} + updateFeedbackShipping()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.NotificationDAO {
+          {abstract} + deleteNotification()
+          {abstract} + getAllNotification()
+          {abstract} + getNotification()
+          {abstract} + getNotificationCount()
+          {abstract} + insertNotification()
+          {abstract} + updateNotification()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.OrderDetailDAO {
+          {abstract} + deleteOrderCart()
+          {abstract} + deleteOrderDetail()
+          {abstract} + getAllCartInOrder()
+          {abstract} + getAllOrderDetail()
+          {abstract} + getAllOrderDetailByOrderID()
+          {abstract} + getOrderDetailByOrderIDAndProductID()
+          {abstract} + getOrderDetailCount()
+          {abstract} + getTotalCostOfOrderDetailByOrderID()
+          {abstract} + insertOrderDetail()
+          {abstract} + setStatusOrderDetail()
+          {abstract} + updateOrderDetail()
+          {abstract} + updateQuantityAndPrice()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.OrdersDAO {
+          {abstract} + checkOut()
+          {abstract} + deleteOrder()
+          {abstract} + getAllOrders()
+          {abstract} + getCurrentOrder()
+          {abstract} + getFeeByShippingID()
+          {abstract} + getOrder()
+          {abstract} + getOrderIsCheckout()
+          {abstract} + getOrdersCount()
+          {abstract} + getOrdersOfAccount()
+          {abstract} + getOrdersOfAccountOrderByDESC()
+          {abstract} + getOrdersOfShipping()
+          {abstract} + getOrdersOfStoreHouse()
+          {abstract} + getStoreNameByStoreID()
+          {abstract} + getTotalCostOfOrderDetailByOrderID()
+          {abstract} + insertOrder()
+          {abstract} + updateDate()
+          {abstract} + updateOrder()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductDAO {
+          {abstract} + deleteProduct()
+          {abstract} + getActiveProductByCategory()
+          {abstract} + getActiveProductByCategoryExcludeThis()
+          {abstract} + getActiveProductByStoreHouseAsc()
+          {abstract} + getActiveProductByStoreHouseDesc()
+          {abstract} + getActiveProductSaleRateDesc()
+          {abstract} + getAllActiveProduct()
+          {abstract} + getProduct()
+          {abstract} + getProductCount()
+          {abstract} + insertProduct()
+          {abstract} + updateProduct()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductImageDAO {
+          {abstract} + deleteProductImage()
+          {abstract} + deleteProductImages()
+          {abstract} + getAllProductImage()
+          {abstract} + getOneProductImageByProductID()
+          {abstract} + getProductImageByProductID()
+          {abstract} + getProductImageCount()
+          {abstract} + insertProductImage()
+          {abstract} + insertProductImages()
+          {abstract} + updateProductImage()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ProductTypeDAO {
+          {abstract} + deleteProductType()
+          {abstract} + getAllProductType()
+          {abstract} + getProductType()
+          {abstract} + getProductTypeCount()
+          {abstract} + insertProductType()
+          {abstract} + updateProductType()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.ShippingUnitDAO {
+          {abstract} + deleteShippingUnit()
+          {abstract} + getAllShippingUnits()
+          {abstract} + getShippingUnit()
+          {abstract} + getShippingUnitCount()
+          {abstract} + getShippingUnitOfAccount()
+          {abstract} + insertShippingUnit()
+          {abstract} + updateShippingUnit()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace dao {
+      interface com.example.farmersmarket.dao.StoreHouseDAO {
+          {abstract} + deleteStoreHouse()
+          {abstract} + getActiveStoreHouse()
+          {abstract} + getActiveStoreHousesByAccountID()
+          {abstract} + getAllActiveStoreHouse()
+          {abstract} + getStoreHouseCount()
+          {abstract} + insertStoreHouse()
+          {abstract} + updateStoreHouse()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

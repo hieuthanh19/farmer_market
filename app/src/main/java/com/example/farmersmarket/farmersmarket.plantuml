@@ -1,0 +1,294 @@
+@startuml
+
+title __FARMERSMARKET's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.AddProduct {
+        {static} ~ CAMERA_PERMISSION_REQUEST_CODE : int
+        {static} ~ REQUEST_TAKE_PHOTO : int
+        ~ amountInputLayout : TextInputLayout
+        ~ currentPriceInputLayout : TextInputLayout
+        ~ descriptionInputLayout : TextInputLayout
+        ~ nameInputLayout : TextInputLayout
+        ~ originInputLayout : TextInputLayout
+        ~ originalPriceInputLayout : TextInputLayout
+        ~ productImageList : List<ProductImage>
+        ~ productTypes : List<ProductType>
+        ~ spinner : Spinner
+        {static} - MODE : int
+        - photoURI : Uri
+        {static} - product : Product
+        + back()
+        + done()
+        + onRequestPermissionsResult()
+        + takePhoto()
+        # onActivityResult()
+        # onCreate()
+        - askCameraPermission()
+        - createImageFile()
+        - isFilledAndCorrect()
+        - loadData()
+        - openCamera()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.AddWarehouse {
+        ~ addressLayout : TextInputLayout
+        ~ nameLayout : TextInputLayout
+        {static} - MODE : int
+        {static} - WAREHOUSE_ID : int
+        {static} - storeHouse : StoreHouse
+        + back()
+        + done()
+        # onCreate()
+        - isFilled()
+        - loadData()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.App {
+        {static} + ACCOUNT_ID : int
+        + isLoggedIn()
+        # onCreate()
+        - loadFragment()
+        - onNavigationItemSelectedListener()
+        - setStatusBarColor()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Cart {
+        ~ arrCart : List<OrderDetail>
+        ~ btnCheckOut : Button
+        ~ c : Date
+        ~ recyclerView : RecyclerView
+        ~ txtEmpty : TextView
+        + back()
+        + builAdapter()
+        + findView()
+        + getDatabase()
+        + removeItem()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryDetail {
+        - categoryID : int
+        + onCreateView()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryPoultryDetail {
+        - categoryID : int
+        + onCreateView()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategorySeafoodDetail {
+        - categoryID : int
+        + onCreateView()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CategoryVegetableDetail {
+        - categoryID : int
+        + onCreateView()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.CheckoutSuccess {
+        ~ btnBackToHome : Button
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Login {
+        # onCreate()
+        - loadFragment()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Order {
+        {static} + ORDER_ID : int
+        + accountID : int
+        ~ arrOrder : List<Orders>
+        ~ dateOrder : Date
+        ~ recyclerView : RecyclerView
+        ~ txtEmpty : TextView
+        + back()
+        + builAdapter()
+        + findView()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.OrderDetailAct {
+        ~ arrOrder : List<Orders>
+        ~ arrOrderDetail : List<OrderDetail>
+        ~ recyclerView : RecyclerView
+        ~ txtOrderDetailShippingTotalRS : TextView
+        ~ txtOrderDetailTotalRS : TextView
+        ~ txtOrderDtailOrderDateRS : TextView
+        ~ txtOrderDtailOrderIDRS : TextView
+        ~ txtOrderDtailProductTotalRS : TextView
+        ~ txtOrderDtailStatusRS : TextView
+        + back()
+        + builAdapter()
+        + finView()
+        + getStatus()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.ProductDetail {
+        {static} + PRODUCT_ID : String
+        ~ arrCartByProductID : List<OrderDetail>
+        ~ carouselView : CarouselView
+        ~ category : TextView
+        ~ description : TextView
+        ~ origin : TextView
+        ~ productAmount : TextView
+        ~ productImageList : List<ProductImage>
+        ~ productName : TextView
+        ~ productOriginalPrice : TextView
+        ~ productPrice : TextView
+        ~ productSale : TextView
+        ~ product_detail_add_to_cart_btn : Button
+        ~ product_detail_user_avatar : ImageView
+        ~ similarList : RecyclerView
+        ~ suggestList : RecyclerView
+        ~ username : TextView
+        ~ warehouseAddress : TextView
+        + back()
+        + displayCart()
+        # onCreate()
+        - emptyImageListener()
+        - imageListener()
+        - populateDataIntoViews()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Setting {
+        + back()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.Warehouse {
+        {static} + MODE_ADD : int
+        {static} + MODE_EDIT : int
+        {static} + REQUEST_CODE : int
+        {static} + WAREHOUSE_ID : String
+        {static} + WAREHOUSE_MODE : String
+        {static} + recyclerView : RecyclerView
+        ~ storeHouseList : List<StoreHouse>
+        ~ warehouseEmpty : TextView
+        + back()
+        + navigateToAddWarehouse()
+        # onActivityResult()
+        # onCreate()
+        - populateData()
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    class com.example.farmersmarket.WarehouseDetail {
+        {static} + MODE_ADD : int
+        {static} + MODE_EDIT : int
+        {static} + PRODUCT_ID : String
+        {static} + PRODUCT_MODE : String
+        {static} + REQUEST_CODE : int
+        {static} + WAREHOUSE_ID : int
+        ~ addProduct : ImageView
+        ~ productEmptyMsg : TextView
+        ~ productLayout : ConstraintLayout
+        ~ productList : List<Product>
+        ~ productListView : RecyclerView
+        ~ search : ImageView
+        ~ title : TextView
+        {static} - IMAGE_VIEW_MODE_ADD : int
+        {static} - IMAGE_VIEW_MODE_SEARCH : int
+        + back()
+        # onActivityResult()
+        # onCreate()
+        - addProductOnClickListener()
+        - changeModeImageView()
+        - loadWarehouseDetail()
+        - searchProductOnClickListener()
+    }
+  }
+  
+
+  com.example.farmersmarket.AddProduct -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.AddProduct o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.AddProduct o-- com.example.farmersmarket.viewadapter.ProductImageAdapter : productImageAdapter
+  com.example.farmersmarket.AddWarehouse -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.AddWarehouse o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.App -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.App o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Cart -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Cart o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Cart o-- com.example.farmersmarket.viewadapter.CarAdapter : carAdapter
+  com.example.farmersmarket.CategoryDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategoryPoultryDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategorySeafoodDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CategoryVegetableDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.CheckoutSuccess -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Login -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Order -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Order o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.Order o-- com.example.farmersmarket.viewadapter.OrderListAdapter : orderListAdapter
+  com.example.farmersmarket.OrderDetailAct -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.OrderDetailAct o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.OrderDetailAct o-- com.example.farmersmarket.viewadapter.OrderDetailListAdapter : orderAdapter
+  com.example.farmersmarket.ProductDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.ProductDetail o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.ProductDetail o-- com.example.farmersmarket.object.Product : product
+  com.example.farmersmarket.Setting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Warehouse -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.Warehouse o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.WarehouseDetail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.farmersmarket.WarehouseDetail o-- com.example.farmersmarket.database.AppDatabase : appDatabase
+  com.example.farmersmarket.WarehouseDetail o-- com.example.farmersmarket.object.StoreHouse : storeHouse
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,20 +1,17 @@
 package com.example.farmersmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.farmersmarket.database.AppDatabase;
 import com.example.farmersmarket.fragment.CategoryFragment;
-import com.example.farmersmarket.object.Product;
 import com.example.farmersmarket.object.ProductType;
-import com.example.farmersmarket.viewadapter.ProductHorizontalViewAdapter;
-import com.example.farmersmarket.viewadapter.ProductVerticalViewAdapter;
 
 import java.util.List;
 

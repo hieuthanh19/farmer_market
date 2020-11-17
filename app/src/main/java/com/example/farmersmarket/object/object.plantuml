@@ -1,0 +1,245 @@
+@startuml
+
+title __OBJECT's Class Diagram__\n
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Account {
+          + accountID : int
+          + address : String
+          + email : String
+          + gender : int
+          + image : String
+          + name : String
+          + password : String
+          + phone : String
+          + status : int
+          + typeID : int
+          + Account()
+          + Account()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.AccountType {
+          + status : int
+          + typeID : int
+          + typeName : String
+          + AccountType()
+          + AccountType()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ConvertDate {
+          {static} + fromDate()
+          {static} + toDate()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.CurrentAccount {
+          + accountID : int
+          + CurrentAccount()
+          + CurrentAccount()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.FeedbackProduct {
+          + accountID : int
+          + description : String
+          + productID : int
+          + rating : float
+          + status : int
+          + time : Date
+          + FeedbackProduct()
+          + FeedbackProduct()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.FeedbackShipping {
+          + accountID : int
+          + description : String
+          + rating : float
+          + shippingID : int
+          + status : int
+          + time : Date
+          + FeedbackShipping()
+          + FeedbackShipping()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Notification {
+          + accountID : int
+          + content : String
+          + createdDate : Date
+          + notificationID : int
+          + status : int
+          + title : String
+          + Notification()
+          + Notification()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.OrderDetail {
+          + description : String
+          + orderID : int
+          + productID : int
+          + quantity : int
+          + status : int
+          + totalPrice : double
+          + OrderDetail()
+          + OrderDetail()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Orders {
+          + accountID : int
+          + address : String
+          + deliveredDate : Date
+          + description : String
+          + orderID : int
+          + orderedDate : Date
+          + shippingID : int
+          + status : int
+          + storeHouseID : int
+          + total : double
+          + Orders()
+          + Orders()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Product {
+          + amount : double
+          + currentPrice : double
+          + description : String
+          + name : String
+          + origin : String
+          + price : double
+          + productID : int
+          + productTypeID : int
+          + status : int
+          + storeHouseID : int
+          + Product()
+          + Product()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ProductImage {
+          + URL : String
+          + imageID : int
+          + productID : int
+          + status : int
+          + ProductImage()
+          + ProductImage()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ProductType {
+          + productTypeID : int
+          + productTypeName : String
+          + status : int
+          + ProductType()
+          + ProductType()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.ShippingUnit {
+          + accountID : int
+          + image : String
+          + name : String
+          + phoneNumber : String
+          + shippingID : int
+          + status : int
+          + transportFee : double
+          + ShippingUnit()
+          + ShippingUnit()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.StoreHouse {
+          + accountID : int
+          + address : String
+          + description : String
+          + latitude : double
+          + longitude : double
+          + status : int
+          + storeHouseID : int
+          + storeName : String
+          + StoreHouse()
+          + StoreHouse()
+      }
+    }
+  }
+  
+
+  namespace com.example.farmersmarket {
+    namespace object {
+      class com.example.farmersmarket.object.Utils {
+          {static} + ENCRYPT_ALGORITHM : String
+          {static} + encryptPassword()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

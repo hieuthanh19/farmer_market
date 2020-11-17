@@ -9,13 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmersmarket.database.AppDatabase;
-import com.example.farmersmarket.fragment.InfomationCheckoutFragment;
-import com.example.farmersmarket.object.OrderDetail;
-import com.example.farmersmarket.viewadapter.OrderListAdapter;
 import com.example.farmersmarket.object.Orders;
+import com.example.farmersmarket.viewadapter.OrderListAdapter;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Order extends AppCompatActivity {

@@ -40,6 +40,7 @@ public class WarehouseDetail extends AppCompatActivity {
     RecyclerView productListView;
     ConstraintLayout productLayout;
 
+    StoreHouse storeHouse;
     List<Product> productList = new ArrayList<>();
     AppDatabase appDatabase;
 
@@ -88,7 +89,7 @@ public class WarehouseDetail extends AppCompatActivity {
         if (warehouseID >= 0) {
             // Get warehouse info and products of that warehouse
             WAREHOUSE_ID = warehouseID;
-            StoreHouse storeHouse = appDatabase.storeHouseDAO().getActiveStoreHouse(warehouseID);
+            storeHouse = appDatabase.storeHouseDAO().getActiveStoreHouse(warehouseID);
             productList = appDatabase.productDAO().getActiveProductByStoreHouseDesc(storeHouse.storeHouseID);
 
             // Update activity title

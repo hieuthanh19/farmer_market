@@ -1,26 +1,19 @@
 package com.example.farmersmarket;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.farmersmarket.database.AppDatabase;
-import com.example.farmersmarket.object.Account;
 import com.example.farmersmarket.object.ConvertDate;
 import com.example.farmersmarket.object.OrderDetail;
 import com.example.farmersmarket.object.Orders;
-import com.example.farmersmarket.object.ProductImage;
 import com.example.farmersmarket.viewadapter.OrderDetailListAdapter;
 
-import java.sql.Date;
 import java.util.List;
 
 public class OrderDetailAct extends AppCompatActivity {
